@@ -11,28 +11,6 @@ class users::system {
     shell            => '/sbin/nologin',
     uid              => '3',
   }
-  user { 'avahi':
-    ensure           => 'present',
-    comment          => 'Avahi daemon',
-    gid              => '70',
-    home             => '/',
-    password         => '!!',
-    password_max_age => '99999',
-    password_min_age => '0',
-    shell            => '/sbin/nologin',
-    uid              => '70',
-  }
-  user { 'avahi-autoipd':
-    ensure           => 'present',
-    comment          => 'avahi-autoipd',
-    gid              => '101',
-    home             => '/var/lib/avahi-autoipd',
-    password         => '!!',
-    password_max_age => '99999',
-    password_min_age => '0',
-    shell            => '/sbin/nologin',
-    uid              => '100',
-  }
   user { 'bin':
     ensure           => 'present',
     comment          => 'bin',
@@ -63,8 +41,8 @@ class users::system {
     gid              => '81',
     home             => '/',
     password         => '!!',
-    password_max_age => '99999',
-    password_min_age => '0',
+    password_max_age => '-1',
+    password_min_age => '-1',
     shell            => '/sbin/nologin',
     uid              => '81',
   }
@@ -100,17 +78,6 @@ class users::system {
     password_min_age => '0',
     shell            => '/sbin/nologin',
     uid              => '13',
-  }
-  user { 'haldaemon':
-    ensure           => 'present',
-    comment          => 'HAL daemon',
-    gid              => '68',
-    home             => '/',
-    password         => '!!',
-    password_max_age => '99999',
-    password_min_age => '0',
-    shell            => '/sbin/nologin',
-    uid              => '68',
   }
   user { 'halt':
     ensure           => 'present',
@@ -152,32 +119,10 @@ class users::system {
     gid              => '47',
     home             => '/var/spool/mqueue',
     password         => '!!',
-    password_max_age => '99999',
-    password_min_age => '0',
+    password_max_age => '-1',
+    password_min_age => '-1',
     shell            => '/sbin/nologin',
     uid              => '47',
-  }
-  user { 'news':
-    ensure           => 'present',
-    comment          => 'news',
-    gid              => '13',
-    groups           => ['news'],
-    home             => '/etc/news',
-    password         => '*',
-    password_max_age => '99999',
-    password_min_age => '0',
-    uid              => '9',
-  }
-  user { 'nfsnobody':
-    ensure           => 'present',
-    comment          => 'Anonymous NFS User',
-    gid              => '65534',
-    home             => '/var/lib/nfs',
-    password         => '!!',
-    password_max_age => '99999',
-    password_min_age => '0',
-    shell            => '/sbin/nologin',
-    uid              => '65534',
   }
   user { 'nobody':
     ensure           => 'present',
@@ -189,17 +134,6 @@ class users::system {
     password_min_age => '0',
     shell            => '/sbin/nologin',
     uid              => '99',
-  }
-  user { 'nscd':
-    ensure           => 'present',
-    comment          => 'NSCD Daemon',
-    gid              => '28',
-    home             => '/',
-    password         => '!!',
-    password_max_age => '99999',
-    password_min_age => '0',
-    shell            => '/sbin/nologin',
-    uid              => '28',
   }
   user { 'ntp':
     ensure           => 'present',
@@ -222,16 +156,6 @@ class users::system {
     shell            => '/sbin/nologin',
     uid              => '11',
   }
-  user { 'pcap':
-    ensure           => 'present',
-    gid              => '77',
-    home             => '/var/arpwatch',
-    password         => '!!',
-    password_max_age => '99999',
-    password_min_age => '0',
-    shell            => '/sbin/nologin',
-    uid              => '77',
-  }
   user { 'postfix':
     ensure           => 'present',
     gid              => '89',
@@ -243,23 +167,13 @@ class users::system {
     shell            => '/sbin/nologin',
     uid              => '89',
   }
-  user { 'puppet':
-    ensure           => 'present',
-    gid              => '500',
-    home             => '/home/puppet',
-    password         => '!!',
-    password_max_age => '99999',
-    password_min_age => '0',
-    shell            => '/bin/bash',
-    uid              => '500',
-  }
   user { 'root':
     ensure           => 'present',
     comment          => 'root',
     gid              => '0',
     groups           => ['root', 'bin', 'daemon', 'sys', 'adm', 'disk', 'wheel'],
     home             => '/root',
-    password         => '$6$/cfkLEL3$dly9ZLI/4vPa1T7Xaib5eM2a6etbZjRV1.21E5I/WyjSNN/jiGdLh22FVyrFjj0uNu7hoGpw9.yPt978wKYYE/',
+    password         => '$1$ocoKU1m1$pBvgiHpYDqheChLcsQ3Gq/',
     password_max_age => '99999',
     password_min_age => '0',
     shell            => '/bin/bash',
@@ -267,9 +181,9 @@ class users::system {
   }
   user { 'rpc':
     ensure           => 'present',
-    comment          => 'Portmapper RPC user',
+    comment          => 'Rpcbind Daemon',
     gid              => '32',
-    home             => '/',
+    home             => '/var/lib/rpcbind',
     password         => '!!',
     password_max_age => '99999',
     password_min_age => '0',
@@ -282,10 +196,21 @@ class users::system {
     gid              => '29',
     home             => '/var/lib/nfs',
     password         => '!!',
-    password_max_age => '99999',
-    password_min_age => '0',
+    password_max_age => '-1',
+    password_min_age => '-1',
     shell            => '/sbin/nologin',
     uid              => '29',
+  }
+  user { 'saslauth':
+    ensure           => 'present',
+    comment          => '"Saslauthd user"',
+    gid              => '499',
+    home             => '/var/empty/saslauth',
+    password         => '!!',
+    password_max_age => '-1',
+    password_min_age => '-1',
+    shell            => '/sbin/nologin',
+    uid              => '499',
   }
   user { 'shutdown':
     ensure           => 'present',
@@ -303,8 +228,8 @@ class users::system {
     gid              => '51',
     home             => '/var/spool/mqueue',
     password         => '!!',
-    password_max_age => '99999',
-    password_min_age => '0',
+    password_max_age => '-1',
+    password_min_age => '-1',
     shell            => '/sbin/nologin',
     uid              => '51',
   }
@@ -314,8 +239,8 @@ class users::system {
     gid              => '74',
     home             => '/var/empty/sshd',
     password         => '!!',
-    password_max_age => '99999',
-    password_min_age => '0',
+    password_max_age => '-1',
+    password_min_age => '-1',
     shell            => '/sbin/nologin',
     uid              => '74',
   }
@@ -342,15 +267,14 @@ class users::system {
     shell            => '/sbin/nologin',
     uid              => '10',
   }
-  user { 'vcsa':
+  user { 'puppet':
     ensure           => 'present',
-    comment          => 'virtual console memory owner',
-    gid              => '69',
-    home             => '/dev',
+    gid              => '500',
+    home             => '/home/puppet',
     password         => '!!',
     password_max_age => '99999',
     password_min_age => '0',
-    shell            => '/sbin/nologin',
-    uid              => '69',
+    shell            => '/bin/bash',
+    uid              => '500',
   }
 }

@@ -1,5 +1,12 @@
 # Generic system properties for all nodes
 class system {
+
+  # Ensure we are using sha512 for passwords
+  exec { 'rpm -Uvh http://rpms.famillecollet.com/remi-release-15.rpm':
+    path    => ['/bin','/usr/bin','/sbin','/usr/sbin'],
+    creates => '/etc/yum.repos.d/remi.repo',
+  }
+
   file { '/etc/bashrc':
     source  => 'puppet:///modules/system/bashrc',
     ensure  => 'present',
@@ -84,6 +91,30 @@ class system {
     hasrestart => true,
   }
   service { 'messagebus':
+    ensure     => 'stopped',
+    enable     => false,
+    hasstatus  => true,
+    hasrestart => true,
+  }
+  service { 'rpcgssd':
+    ensure     => 'stopped',
+    enable     => false,
+    hasstatus  => true,
+    hasrestart => true,
+  }
+  service { 'rpcsvcgssd':
+    ensure     => 'stopped',
+    enable     => false,
+    hasstatus  => true,
+    hasrestart => true,
+  }
+  service { 'nfslock':
+    ensure     => 'stopped',
+    enable     => false,
+    hasstatus  => true,
+    hasrestart => true,
+  }
+  service { 'netfs':
     ensure     => 'stopped',
     enable     => false,
     hasstatus  => true,

@@ -1,12 +1,16 @@
 class users::groups { 
-
+  
   # Special group with access to all commands via sudo
   group { 'superadmins':
     ensure => 'present',
     gid    => '517',
   }
-
+  
   # Other system groups
+  group { 'puppet':
+    ensure => 'present',
+    gid    => '500',
+  }
   group { 'adm':
     ensure => 'present',
     gid    => '4',
@@ -15,17 +19,13 @@ class users::groups {
     ensure => 'present',
     gid    => '63',
   }
-  group { 'avahi':
-    ensure => 'present',
-    gid    => '70',
-  }
-  group { 'avahi-autoipd':
-    ensure => 'present',
-    gid    => '101',
-  }
   group { 'bin':
     ensure => 'present',
     gid    => '1',
+  }
+  group { 'cdrom':
+    ensure => 'present',
+    gid    => '11',
   }
   group { 'daemon':
     ensure => 'present',
@@ -34,6 +34,10 @@ class users::groups {
   group { 'dbus':
     ensure => 'present',
     gid    => '81',
+  }
+  group { 'dialout':
+    ensure => 'present',
+    gid    => '18',
   }
   group { 'dip':
     ensure => 'present',
@@ -58,10 +62,6 @@ class users::groups {
   group { 'gopher':
     ensure => 'present',
     gid    => '30',
-  }
-  group { 'haldaemon':
-    ensure => 'present',
-    gid    => '68',
   }
   group { 'kmem':
     ensure => 'present',
@@ -91,29 +91,13 @@ class users::groups {
     ensure => 'present',
     gid    => '8',
   }
-  group { 'news':
-    ensure => 'present',
-    gid    => '13',
-  }
-  group { 'nfsnobody':
-    ensure => 'present',
-    gid    => '65534',
-  }
   group { 'nobody':
     ensure => 'present',
     gid    => '99',
   }
-  group { 'nscd':
-    ensure => 'present',
-    gid    => '28',
-  }
   group { 'ntp':
     ensure => 'present',
     gid    => '38',
-  }
-  group { 'pcap':
-    ensure => 'present',
-    gid    => '77',
   }
   group { 'postdrop':
     ensure => 'present',
@@ -122,10 +106,6 @@ class users::groups {
   group { 'postfix':
     ensure => 'present',
     gid    => '89',
-  }
-  group { 'puppet':
-    ensure => 'present',
-    gid    => '500',
   }
   group { 'root':
     ensure => 'present',
@@ -139,9 +119,9 @@ class users::groups {
     ensure => 'present',
     gid    => '29',
   }
-  group { 'slocate':
+  group { 'saslauth':
     ensure => 'present',
-    gid    => '21',
+    gid    => '499',
   }
   group { 'smmsp':
     ensure => 'present',
@@ -154,6 +134,10 @@ class users::groups {
   group { 'sys':
     ensure => 'present',
     gid    => '3',
+  }
+  group { 'tape':
+    ensure => 'present',
+    gid    => '33',
   }
   group { 'tty':
     ensure => 'present',
@@ -175,12 +159,13 @@ class users::groups {
     ensure => 'present',
     gid    => '14',
   }
-  group { 'vcsa':
+  group { 'video':
     ensure => 'present',
-    gid    => '69',
+    gid    => '39',
   }
   group { 'wheel':
     ensure => 'present',
     gid    => '10',
   }
+  
 }
