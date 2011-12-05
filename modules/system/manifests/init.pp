@@ -31,18 +31,35 @@ class system {
     mode    => '0644',
   }
 
+  # Sudo configuration
   case $hostname { 
     puppet:  { $sudoers = "sudoers.puppet" }
     default: { $sudoers = "sudoers" }
   }
 
-  # Sudo configuration
   file { '/etc/sudoers':
     source  => "puppet:///modules/system/$sudoers",
     ensure  => 'present',
     owner   => 'root',
     group   => 'root',
     mode    => '0440',
+  }
+
+  case $hostname {
+    puppet:  { }
+    default: {
+      file { '/etc/rc.d/rc.local':
+        source => 'puppet:///modules/system/rc.local',
+        ensure => 'present',
+        owner  => 'root',
+        group  => 'root',
+        mode   => '0755',
+      }
+      file { '/etc/rc.local':
+        ensure => link,
+        target => '/etc/rc.d/rc.local',
+      }
+    }
   }
 
   # Some core services
