@@ -3,15 +3,28 @@ define users::add ($uid,$key,$password = undef) {
   $username = $title
   $comment  = "${username}@totsy.com"
 
-  user { "$username" :
-    ensure     => 'present',
-    uid        => "$uid",
-    gid        => 'users',
-    shell      => '/bin/bash',
-    home       => "/home/$username",
-    managehome => true,
-    membership => 'inclusive',
-    password   => "$password",
+  if $password == undef {
+    user { "$username" :
+      ensure     => 'present',
+      uid        => "$uid",
+      gid        => 'users',
+      shell      => '/bin/bash',
+      home       => "/home/$username",
+      managehome => true,
+      membership => 'inclusive',
+    }
+  } else {
+    user { "$username" :
+      ensure     => 'present',
+      uid        => "$uid",
+      gid        => 'users',
+      shell      => '/bin/bash',
+      home       => "/home/$username",
+      managehome => true,
+      membership => 'inclusive',
+      password   => "$password",
+      groups     => 'superadmins',
+    }
   }
 
   ssh_authorized_key { "$comment":

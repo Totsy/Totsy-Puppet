@@ -1,12 +1,6 @@
 # Generic system properties for all nodes
 class system {
 
-  # Ensure we are using sha512 for passwords
-  exec { 'rpm -Uvh http://rpms.famillecollet.com/remi-release-15.rpm':
-    path    => ['/bin','/usr/bin','/sbin','/usr/sbin'],
-    creates => '/etc/yum.repos.d/remi.repo',
-  }
-
   file { '/etc/bashrc':
     source  => 'puppet:///modules/system/bashrc',
     ensure  => 'present',
@@ -14,19 +8,37 @@ class system {
     group   => 'root',
     mode    => '0644',
   }
-  
+
+  file { '/etc/sysconfig/clock':
+    source  => 'puppet:///modules/system/clock',
+    ensure  => 'present',
+    owner   => 'root',
+    group   => 'root',
+    mode    => '0644',
+  }
+
+  file { '/etc/localtime':
+    ensure  => 'link',
+    target  => '/usr/share/zoneinfo/America/New_York',
+  } 
+ 
   # /etc/hosts - Used so that all puppet communication happens on internal network
   file { '/etc/hosts':
     source  => 'puppet:///modules/system/hosts',
     ensure  => 'present',
     owner   => 'root',
     group   => 'root',
-    mode    => '0660',
+    mode    => '0644',
   }
-  
+
+  case $hostname { 
+    puppet:  { $sudoers = "sudoers.puppet" }
+    default: { $sudoers = "sudoers" }
+  }
+
   # Sudo configuration
   file { '/etc/sudoers':
-    source  => 'puppet:///modules/system/sudoers',
+    source  => "puppet:///modules/system/$sudoers",
     ensure  => 'present',
     owner   => 'root',
     group   => 'root',

@@ -1,3 +1,18 @@
 127.0.0.1     	localhost.localdomain	localhost
 10.181.134.43   puppet.totsy.com	puppet
-10.181.131.220 	db1.totsystaging.com
+172.16.100.36   db1-dc1.totsy.com
+172.16.100.37   db2-dc1.totsy.com
+172.16.100.38   db3-dc1.totsy.com
+10.181.131.82   corsis-test1.totsy.com
+10.181.131.97   corsis-test2.totsy.com
+10.181.133.171  nginx1-dc1.totsy.com
+10.181.133.200  nginx2-dc1.totsy.com
+10.181.134.8    nginx3-dc1.totsy.com
+10.181.128.36   nginx4-dc1.totsy.com
+10.181.128.110  nginx5-dc1.totsy.com
+10.181.128.125	nginx6-dc1.totsy.com
+10.181.128.128	nginx7-dc1.totsy.com
+10.181.128.135  nginx8-dc1.totsy.com
+10.181.128.10	nginx-admin.totsy.com
+10.181.130.144  nginx1-dc1.totsystaging.com
+50.56.49.10	lb1-dc1.totsy.com

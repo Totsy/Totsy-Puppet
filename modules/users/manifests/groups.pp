@@ -11,6 +11,14 @@ class users::groups {
     ensure => 'present',
     gid    => '500',
   }
+  group { 'nagios':
+    ensure => 'present',
+    gid    => '501',
+  }
+  group { 'mongod':
+    ensure => 'present',
+    gid    => '502',
+  }
   group { 'adm':
     ensure => 'present',
     gid    => '4',
@@ -167,5 +175,8 @@ class users::groups {
     ensure => 'present',
     gid    => '10',
   }
-  
+  group { 'nginx':
+    ensure => 'present',
+    gid    => '102',
+  }
 }

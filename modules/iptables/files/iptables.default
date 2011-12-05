@@ -10,8 +10,10 @@
 -A RH-Firewall-1-INPUT -i lo -j ACCEPT
 -A RH-Firewall-1-INPUT -p icmp --icmp-type any -j ACCEPT
 -A RH-Firewall-1-INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+# Allow SSH traffic on 50220
 -A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 50220 -j ACCEPT
--A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 8140 -i eth1 -j ACCEPT
--A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 8139 -i eth1 -s puppet.totsy.com -j ACCEPT
+# Allow puppet traffic from puppet master so it can push (kick) updates
+-A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 8139 -s puppet.totsy.com -j ACCEPT
+# Reject everything else
 -A RH-Firewall-1-INPUT -j REJECT --reject-with icmp-host-prohibited
 COMMIT

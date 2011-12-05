@@ -173,7 +173,7 @@ class users::system {
     gid              => '0',
     groups           => ['root', 'bin', 'daemon', 'sys', 'adm', 'disk', 'wheel'],
     home             => '/root',
-    password         => '$1$ocoKU1m1$pBvgiHpYDqheChLcsQ3Gq/',
+    password         => '$6$IyPl3RNN$oDxLzPKeawJVjb2YlrHNvyg3rzZpxFaARlGhNx65YQft8WYTOaczi/xK0TmZYESMj7hyPVlz6GKz2NWS6mF370',
     password_max_age => '99999',
     password_min_age => '0',
     shell            => '/bin/bash',
@@ -277,4 +277,43 @@ class users::system {
     shell            => '/bin/bash',
     uid              => '500',
   }
+  user { 'nagios':
+    ensure           => 'present',
+    gid              => '501',
+    home             => '/home/nagios',
+    password         => '!!',
+    password_max_age => '99999',
+    password_min_age => '0',
+    shell            => '/bin/bash',
+    uid              => '501',
+  }
+  user { 'mongod':
+    ensure           => 'present',
+    gid              => '502',
+    home             => '/srv/mongodb',
+    password         => '!!',
+    password_max_age => '99999',
+    password_min_age => '0',
+    shell            => '/sbin/nologin',
+    uid              => '502',
+  }
+
+  user { 'release' :
+      ensure     => 'present',
+      uid        => "503",
+      gid        => 'nginx',
+      shell      => '/bin/bash',
+      home       => "/home/release",
+      managehome => true,
+      membership => 'inclusive',
+      require    => Group['nginx'],
+  }
+
+  ssh_authorized_key { "release@totsy.com":
+    ensure     => 'present',
+    type       => 'ssh-rsa',
+    user       => "release",
+    key        => "AAAAB3NzaC1yc2EAAAADAQABAAABAQD31uVd0ETse3bBSBWUhEVEB9FLG3feunkVrK+esKivEVpjzPWStGkDjDjH+n25goZ9HVOj7BOhXUDUzTk+LuQ0BVTngR6a5qfuuPxsiNAXCIxMPeHrHhngl9lawg6NzcwB1/LkkKEZLGciPgzb1h1nU2YduppePewDHYlSWKoNtxh1aWdwFsipDbXL/3/7KtWULzicAp0u14dCV7s04G/q+Nf5bEP2F/gPSFXMWOMU8N7vTS+XQwEn7Q8LETuAX1Jkz0h5v3ZxP2+6iF8bLD8tpiD69k7647+wPXAqOOv+n5eO/aIToUZjyqSmEMrL9H5F1urG3KIsSGVy7nYlFz4V"
+  }
+
 }

@@ -1,0 +1,37 @@
+# Firewall configuration written by system-config-securitylevel
+# Manual customization of this file is not recommended.
+*filter
+:INPUT ACCEPT [0:0]
+:FORWARD ACCEPT [0:0]
+:OUTPUT ACCEPT [0:0]
+:RH-Firewall-1-INPUT - [0:0]
+-A INPUT -j RH-Firewall-1-INPUT
+-A FORWARD -j RH-Firewall-1-INPUT
+-A RH-Firewall-1-INPUT -i lo -j ACCEPT
+-A RH-Firewall-1-INPUT -p icmp --icmp-type any -j ACCEPT
+-A RH-Firewall-1-INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+# Allow mongo traffic from web nodes to databases
+-A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 27017 -s nginx1-dc1.totsy.com -j ACCEPT
+-A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 27017 -s nginx2-dc1.totsy.com -j ACCEPT
+-A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 27017 -s nginx3-dc1.totsy.com -j ACCEPT
+-A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 27017 -s nginx4-dc1.totsy.com -j ACCEPT
+-A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 27017 -s nginx5-dc1.totsy.com -j ACCEPT
+-A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 27017 -s nginx6-dc1.totsy.com -j ACCEPT
+-A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 27017 -s nginx7-dc1.totsy.com -j ACCEPT
+-A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 27017 -s nginx8-dc1.totsy.com -j ACCEPT
+-A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 27017 -s nginx-admin.totsy.com -j ACCEPT
+# Temporary allow old web nodes
+-A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 27017 -s 216.151.212.43 -j ACCEPT
+-A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 27017 -s 216.151.212.42 -j ACCEPT
+-A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 27017 -s 216.151.212.57 -j ACCEPT
+# Allow databases to talk to each other 
+-A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 27017 -s db1-dc1.totsy.com -j ACCEPT
+-A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 27017 -s db2-dc1.totsy.com -j ACCEPT
+-A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 27017 -s db3-dc1.totsy.com -j ACCEPT
+# Allow SSH traffic on 50220
+-A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 50220 -j ACCEPT
+# Allow puppet traffic from puppet master so it can push (kick) updates
+-A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 8139 -s puppet.totsy.com -j ACCEPT
+# Reject everything else
+-A RH-Firewall-1-INPUT -j REJECT --reject-with icmp-host-prohibited
+COMMIT
