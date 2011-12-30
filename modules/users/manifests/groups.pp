@@ -19,6 +19,10 @@ class users::groups {
     ensure => 'present',
     gid    => '502',
   }
+  group { 'totsydevs':
+    ensure => 'present',
+    gid    => '503',
+  }
   group { 'adm':
     ensure => 'present',
     gid    => '4',

@@ -21,20 +21,22 @@ class system {
     ensure  => 'link',
     target  => '/usr/share/zoneinfo/America/New_York',
   } 
+
  
+  case $hostname { 
+    puppet:  { $sudoers = "sudoers.puppet" }
+    default: { $sudoers = "sudoers" }
+    /^web.*/: { $sudoers = "sudoers.web" }
+    /^nginx.*/: { $sudoers = "sudoers.web" }
+  }
+
   # /etc/hosts - Used so that all puppet communication happens on internal network
   file { '/etc/hosts':
-    source  => 'puppet:///modules/system/hosts',
+    source  => "puppet:///modules/system/hosts",
     ensure  => 'present',
     owner   => 'root',
     group   => 'root',
     mode    => '0644',
-  }
-
-  # Sudo configuration
-  case $hostname { 
-    puppet:  { $sudoers = "sudoers.puppet" }
-    default: { $sudoers = "sudoers" }
   }
 
   file { '/etc/sudoers':
@@ -58,6 +60,29 @@ class system {
       file { '/etc/rc.local':
         ensure => link,
         target => '/etc/rc.d/rc.local',
+      }
+    }
+  }
+
+  case $fqdn {
+    /^nginx.*totsystaging.com/: {
+      file { '/var/www':
+        ensure => directory,
+        owner  => 'release',
+        group  => 'nginx',
+        require => [User['release'], Group['nginx']],
+      }
+      file { '/var/www/www.totsy.com':
+        ensure => link,
+        target => 'current',
+        force  => true,
+      }
+      file { '/etc/nginx/sites-enabled/totsy':
+        ensure => absent,
+      }
+      file { '/etc/nginx/sites-enabled/totsystaging':
+        ensure => link,
+        target => '../sites-available/totsystaging',
       }
     }
   }

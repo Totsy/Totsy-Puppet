@@ -1,4 +1,4 @@
-define users::add ($uid,$key,$password = undef) {
+define users::add ($uid,$key,$password = undef,$type = undef) {
 
   $username = $title
   $comment  = "${username}@totsy.com"
@@ -27,9 +27,15 @@ define users::add ($uid,$key,$password = undef) {
     }
   }
 
+  if $type == undef {
+     $keytype = 'ssh-rsa'
+  } else {
+     $keytype = $type
+  }
+
   ssh_authorized_key { "$comment":
     ensure     => 'present',
-    type       => 'ssh-rsa',
+    type       => $keytype,
     user       => "$username",
     key        => "$key",
   }

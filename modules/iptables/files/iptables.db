@@ -11,23 +11,39 @@
 -A RH-Firewall-1-INPUT -p icmp --icmp-type any -j ACCEPT
 -A RH-Firewall-1-INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
 # Allow mongo traffic from web nodes to databases
--A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 27017 -s nginx1-dc1.totsy.com -j ACCEPT
--A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 27017 -s nginx2-dc1.totsy.com -j ACCEPT
--A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 27017 -s nginx3-dc1.totsy.com -j ACCEPT
--A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 27017 -s nginx4-dc1.totsy.com -j ACCEPT
--A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 27017 -s nginx5-dc1.totsy.com -j ACCEPT
--A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 27017 -s nginx6-dc1.totsy.com -j ACCEPT
--A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 27017 -s nginx7-dc1.totsy.com -j ACCEPT
--A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 27017 -s nginx8-dc1.totsy.com -j ACCEPT
 -A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 27017 -s nginx-admin.totsy.com -j ACCEPT
+-A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 27017 -s web1-dc1.totsy.com -j ACCEPT
+-A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 27017 -s web2-dc1.totsy.com -j ACCEPT
+-A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 27017 -s web3-dc1.totsy.com -j ACCEPT
+-A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 27017 -s web4-dc1.totsy.com -j ACCEPT
+-A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 27017 -s web5-dc1.totsy.com -j ACCEPT
+-A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 27017 -s web6-dc1.totsy.com -j ACCEPT
+-A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 27017 -s web7-dc1.totsy.com -j ACCEPT
+-A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 27017 -s web8-dc1.totsy.com -j ACCEPT
+-A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 27017 -s web9-dc1.totsy.com -j ACCEPT
+-A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 27017 -s web10-dc1.totsy.com -j ACCEPT
+-A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 27017 -s web11-dc1.totsy.com -j ACCEPT
+-A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 27017 -s web12-dc1.totsy.com -j ACCEPT
+-A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 27017 -s web13-dc1.totsy.com -j ACCEPT
+-A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 27017 -s web14-dc1.totsy.com -j ACCEPT
+# Allow public interface on web10-12 (temporary)
+-A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 27017 -s 184.106.80.27 -j ACCEPT
+-A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 27017 -s 184.106.80.34 -j ACCEPT
+-A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 27017 -s 184.106.80.42 -j ACCEPT
+-A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 27017 -s 50.56.86.140 -j ACCEPT
+-A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 27017 -s 50.56.86.141 -j ACCEPT
+-A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 27017 -s 184.106.80.9 -j ACCEPT
+-A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 27017 -s 50.57.137.236 -j ACCEPT
+# Zabbix agent
+-A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 10050 -s nagios.totsy.com -j ACCEPT
+-A RH-Firewall-3-INPUT -m state --state NEW -m tcp -p tcp --dport 10051 -s nagios.totsy.com -j ACCEPT
 # Temporary allow old web nodes
--A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 27017 -s 216.151.212.43 -j ACCEPT
 -A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 27017 -s 216.151.212.42 -j ACCEPT
--A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 27017 -s 216.151.212.57 -j ACCEPT
 # Allow databases to talk to each other 
 -A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 27017 -s db1-dc1.totsy.com -j ACCEPT
 -A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 27017 -s db2-dc1.totsy.com -j ACCEPT
 -A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 27017 -s db3-dc1.totsy.com -j ACCEPT
+-A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 27017 -s db4-dc1.totsy.com -j ACCEPT
 # Allow SSH traffic on 50220
 -A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 50220 -j ACCEPT
 # Allow puppet traffic from puppet master so it can push (kick) updates

@@ -34,7 +34,7 @@ class users {
   #}
 
   case $hostname {
-    /^nginx.*/: {
+    /^nginx.*/,/^web.*/: {
 
       file { '/home/release/.ssh/id_rsa':
         source  => 'puppet:///modules/users/release@totsy.com',
