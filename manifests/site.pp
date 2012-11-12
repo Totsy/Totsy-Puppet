@@ -10,7 +10,7 @@ file { '/etc/puppet/auth.conf':
   mode     => '0640',
 }
 
-include iptables
+#include iptables
 
 # Users, groups and ssh keys in the users module
 # /etc/puppet/modules/users/manifests/init.pp

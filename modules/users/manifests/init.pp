@@ -15,8 +15,8 @@ class users {
     before  => Group['root'],
   }
 
-  include users::groups
   include users::system
+  include users::groups
   include users::human
 
   # Make sure superadmins only has what was declared in puppet
@@ -25,9 +25,9 @@ class users {
   #}
 
   # Remove any undeclared users
-  resources { 'user':
-    purge   => true,
-  }
+  #resources { 'user':
+  #  purge   => true,
+  #}
   # Remove any undeclared groups
   #resources { 'group':
   #  purge   => true,
@@ -46,11 +46,7 @@ class users {
       }
 
       file { '/root/.ssh/id_rsa':
-        source  => 'puppet:///modules/users/release@totsy.com',
-        ensure  => 'present',
-        owner   => 'root',
-        group   => 'root',
-        mode    => '0600',
+        ensure  => 'absent',
         require => User['root'],
       }
 

@@ -9,5 +9,7 @@ Defaults    env_keep = "COLORS DISPLAY HOSTNAME HISTSIZE INPUTRC KDEDIR \
                         _XKB_CHARSET XAUTHORITY"
 
 root	ALL=(ALL) 	ALL
-release ALL = NOPASSWD: /etc/init.d/php-fpm, /etc/init.d/nginx
+release ALL = NOPASSWD: /etc/init.d/haproxy
+%users  ALL = NOPASSWD: /usr/bin/totsy-release, /usr/bin/totsy-rollback
 %superadmins	ALL=(ALL)	ALL
+#%superadmins	ALL=(ALL)	NOPASSWD: ALL

@@ -1,11 +1,12 @@
-Port 50220
+Port 22
 SyslogFacility AUTHPRIV
-PermitRootLogin no
+PermitRootLogin yes
 PubkeyAuthentication yes
-PasswordAuthentication no
+PasswordAuthentication yes
 ChallengeResponseAuthentication no
 UsePAM yes
 AcceptEnv LANG LC_CTYPE LC_NUMERIC LC_TIME LC_COLLATE LC_MONETARY LC_MESSAGES 
 AcceptEnv LC_PAPER LC_NAME LC_ADDRESS LC_TELEPHONE LC_MEASUREMENT 
 AcceptEnv LC_IDENTIFICATION LC_ALL
 X11Forwarding no
+Subsystem sftp /usr/libexec/openssh/sftp-server

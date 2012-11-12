@@ -19,24 +19,15 @@ class system {
 
   file { '/etc/localtime':
     ensure  => 'link',
-    target  => '/usr/share/zoneinfo/America/New_York',
+    target  => '/usr/share/zoneinfo/UTC',
   } 
 
  
   case $hostname { 
-    puppet:  { $sudoers = "sudoers.puppet" }
+    master:  { $sudoers = "sudoers.master" }
     default: { $sudoers = "sudoers" }
     /^web.*/: { $sudoers = "sudoers.web" }
     /^nginx.*/: { $sudoers = "sudoers.web" }
-  }
-
-  # /etc/hosts - Used so that all puppet communication happens on internal network
-  file { '/etc/hosts':
-    source  => "puppet:///modules/system/hosts",
-    ensure  => 'present',
-    owner   => 'root',
-    group   => 'root',
-    mode    => '0644',
   }
 
   file { '/etc/sudoers':
@@ -45,46 +36,6 @@ class system {
     owner   => 'root',
     group   => 'root',
     mode    => '0440',
-  }
-
-  case $hostname {
-    puppet:  { }
-    default: {
-      file { '/etc/rc.d/rc.local':
-        source => 'puppet:///modules/system/rc.local',
-        ensure => 'present',
-        owner  => 'root',
-        group  => 'root',
-        mode   => '0755',
-      }
-      file { '/etc/rc.local':
-        ensure => link,
-        target => '/etc/rc.d/rc.local',
-      }
-    }
-  }
-
-  case $fqdn {
-    /^nginx.*totsystaging.com/: {
-      file { '/var/www':
-        ensure => directory,
-        owner  => 'release',
-        group  => 'nginx',
-        require => [User['release'], Group['nginx']],
-      }
-      file { '/var/www/www.totsy.com':
-        ensure => link,
-        target => 'current',
-        force  => true,
-      }
-      file { '/etc/nginx/sites-enabled/totsy':
-        ensure => absent,
-      }
-      file { '/etc/nginx/sites-enabled/totsystaging':
-        ensure => link,
-        target => '../sites-available/totsystaging',
-      }
-    }
   }
 
   # Some core services
@@ -121,57 +72,6 @@ class system {
   }
 
   package { 'sendmail': ensure => 'absent' }
-  package { 'postfix' : ensure => 'present'}
-
-  service { 'postfix':
-    ensure     => 'running',
-    enable     => true,
-    hasstatus  => true,
-    hasrestart => true,
-    require    => Package['postfix'],
-  }
-
-  # Stop some extra services
-  service { 'rhnsd':
-    ensure     => 'stopped',
-    enable     => false,
-    hasstatus  => true,
-    hasrestart => true,
-  }
-  service { 'haldaemon':
-    ensure     => 'stopped',
-    enable     => false,
-    hasstatus  => true,
-    hasrestart => true,
-  }
-  service { 'messagebus':
-    ensure     => 'stopped',
-    enable     => false,
-    hasstatus  => true,
-    hasrestart => true,
-  }
-  service { 'rpcgssd':
-    ensure     => 'stopped',
-    enable     => false,
-    hasstatus  => true,
-    hasrestart => true,
-  }
-  service { 'rpcsvcgssd':
-    ensure     => 'stopped',
-    enable     => false,
-    hasstatus  => true,
-    hasrestart => true,
-  }
-  service { 'nfslock':
-    ensure     => 'stopped',
-    enable     => false,
-    hasstatus  => true,
-    hasrestart => true,
-  }
-  service { 'netfs':
-    ensure     => 'stopped',
-    enable     => false,
-    hasstatus  => true,
-    hasrestart => true,
-  }
+  package { 'postfix' : ensure => 'absent'}
+  package { 'exim' : ensure => 'present'}
 }
