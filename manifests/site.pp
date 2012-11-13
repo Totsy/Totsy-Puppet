@@ -1,5 +1,20 @@
-# Generic system settings for all nodes
-include system
+# node: application server
+node /^web-(.+)\.totsy.net$/ {
+  include system
+  include cache
+  include web
+}
+
+# node: database server
+node /^db-(.+)\.totsy.net$/ {
+  include system
+  include database
+}
+
+# node: unrecognized
+node 'default' {
+  include system
+}
 
 # Puppet configuration
 file { '/etc/puppet/auth.conf':
@@ -10,8 +25,3 @@ file { '/etc/puppet/auth.conf':
   mode     => '0640',
 }
 
-#include iptables
-
-# Users, groups and ssh keys in the users module
-# /etc/puppet/modules/users/manifests/init.pp
-include users
