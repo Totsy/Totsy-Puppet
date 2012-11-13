@@ -26,8 +26,7 @@ class system {
   case $hostname { 
     master:  { $sudoers = "sudoers.master" }
     default: { $sudoers = "sudoers" }
-    /^web.*/: { $sudoers = "sudoers.web" }
-    /^nginx.*/: { $sudoers = "sudoers.web" }
+    /^web-/: { $sudoers = "sudoers.web" }
   }
 
   file { '/etc/sudoers':
@@ -69,6 +68,14 @@ class system {
     hasstatus  => true,
     hasrestart => true,
     require    => Package['ntp'],
+  }
+
+  yumrepo { 'totsyrepo':
+    baseurl => 'http://master.totsy.net:18724/6/x86_64/',
+    name    => 'totsy',
+    descr   => 'Totsy Repository',
+    enabled => 1,
+    gpgcheck => 0
   }
 
   package { 'sendmail': ensure => 'absent' }
