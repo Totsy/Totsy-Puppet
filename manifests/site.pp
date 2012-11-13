@@ -3,6 +3,7 @@ node /^web-(.+)\.totsy.net$/ {
   include system
   include cache
   include web
+  include app
 }
 
 # node: database server
