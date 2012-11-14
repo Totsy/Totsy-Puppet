@@ -1,20 +1,19 @@
 # node: application server
 node /^web-(.+)\.totsy.net$/ {
-  include system
-  include cache
-  include web
-  include app
+  include system, group, user
+  include cache, web, app
 }
 
 # node: database server
 node /^db-(.+)\.totsy.net$/ {
-  include system
+  include system, group, user
+
   include database
 }
 
 # node: unrecognized
-node 'default' {
-  include system
+node default {
+  include system, group, user
 }
 
 # Puppet configuration
