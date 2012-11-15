@@ -77,8 +77,4 @@ class system {
     enabled => 1,
     gpgcheck => 0
   }
-
-  package { 'sendmail': ensure => 'absent' }
-  package { 'postfix' : ensure => 'absent'}
-  package { 'exim' : ensure => 'present'}
 }

@@ -22,10 +22,11 @@ class app {
   ]
 
   file { $sitedirs:
-    ensure => directory,
-    owner  => 'nginx',
-    group  => 'nginx',
-    mode   => '775'
+    ensure  => directory,
+    owner   => 'nginx',
+    group   => 'nginx',
+    mode    => '775',
+    require => Package['nginx']
   }
 
   package { $phpcore:

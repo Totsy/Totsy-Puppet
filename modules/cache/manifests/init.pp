@@ -2,7 +2,8 @@
 
 class cache {
   package { 'redis':
-    ensure => '2.4.10-1.el6',
+    ensure  => '2.6.2-1.el6.remi',
+    require => Yumrepo['totsyrepo']
   }
 
   file { '/etc/redis.conf':
