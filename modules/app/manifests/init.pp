@@ -18,6 +18,7 @@ class app {
   $sitedirs = [
     '/etc/nginx/sites-available',
     '/etc/nginx/sites-enabled',
+    '/usr/share/magento',
     '/etc/magento'
   ]
 
@@ -34,6 +35,8 @@ class app {
   }
 
   package { 'php-pecl-apc': ensure => '3.1.13-2.el6.remi' }
+
+  package { 'git': ensure => latest }
  
   file { '/etc/php.ini':
     source  => 'puppet:///modules/app/php.ini',
@@ -101,6 +104,14 @@ class app {
     owner   => 'nobody',
     group   => 'nobody',
     mode    => '775'
+  }
+
+  file { '/usr/share/magento/magento-enterprise-1.11.1.tar.bz2':
+    source  => 'puppet:///modules/app/magento-enterprise-1.11.1.tar.bz2',
+    owner   => 'nobody',
+    group   => 'nobody',
+    mode    => '775',
+    require => File[$sitedirs]
   }
 
   file { '/etc/nginx/sites-available/totsy':
