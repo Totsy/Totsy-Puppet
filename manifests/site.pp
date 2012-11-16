@@ -1,17 +1,15 @@
-# node: application server
-node /^web-(.+)\.totsy.net$/ {
-  include system, group, user
-  include cache, web, app
-}
+node /^web\d?-(.+)\.totsy.net$/ inherits 'webapp' {}
 
-# node: database server
-node /^db-(.+)\.totsy.net$/ {
-  include system, group, user
+node /^db\d?-(.+)\.totsy.net$/ inherits 'db' {}
 
+node 'db' inherits default {
   include database
 }
 
-# node: unrecognized
+node 'webapp' inherits default {
+  include cache, web, app
+}
+
 node default {
   include system, group, user
 }
