@@ -1,7 +1,9 @@
 # module: user
 
-class user::person ($username) {
+define user::person ($groups = undef) {
   include user::data
+
+  $username = "$title"
 
   if $username in $user::data::collection {
     $userinfo = $user::data::collection[$username]
@@ -13,9 +15,19 @@ class user::person ($username) {
       membership => 'inclusive'
     }
 
-    if 'groups' in $userinfo {
+    if $groups == undef {
+      if 'groups' in $userinfo {
+        $usergroups = $userinfo['groups']
+      } else {
+        $usergroups = ''
+      }
+    } else {
+      $usergroups = $groups
+    }
+
+    if $usergroups != '' {
       User[$username] {
-        groups => $userinfo['groups']
+        groups => $usergroups
       }
     }
 
