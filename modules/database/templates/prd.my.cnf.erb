@@ -1,0 +1,63 @@
+######
+[mysqld]
+server-id=<%= scope.function_regsubst(@hostname, 'db(\d)-dc0$', '\1') %>
+skip-slave-start
+log-bin=mysql-bin
+innodb_flush_log_at_trx_commit=1
+sync_binlog=1
+innodb_buffer_pool_size=68719476736
+innodb_buffer_pool_instances = 6
+slow_query_log=1
+slow_query_log_file=/var/lib/mysql/slow-query.log
+open-files-limit=16384
+innodb_lock_wait_timeout=300
+expire_logs_days=2
+###### added by Omar to correct issues with indexing #####
+max_allowed_packet=64M
+###### this was added by Pierre #############
+innodb_flush_method=ALL_O_DIRECT
+innodb_thread_concurrency=32 
+
+# Added by Jeremy 2012-07-18, as per Percona's recommendation
+innodb_log_file_size=2048M
+binlog-format=ROW
+skip_name_resolve=on
+innodb_lazy_drop_table=1
+binlog_cache_size=2M
+query_cache_type=0
+innodb_file_format=Barracuda
+max_heap_table_size = 350M
+tmp_table_size = 350M
+
+
+# Settings user and group are ignored when systemd is used (fedora >= 15).
+# If you need to run mysqld under different user or group,
+# customize your systemd unit file for mysqld according to the
+# instructions in http://fedoraproject.org/wiki/Systemd
+user=mysql
+
+datadir=/db/database
+socket=/var/lib/mysql/mysql.sock
+
+# Disabling symbolic-links is recommended to prevent assorted security risks
+symbolic-links=0
+
+# Semisynchronous Replication
+# http://dev.mysql.com/doc/refman/5.5/en/replication-semisync.html
+# uncomment next line on MASTER
+;plugin-load=rpl_semi_sync_master=semisync_master.so
+# uncomment next line on SLAVE
+;plugin-load=rpl_semi_sync_slave=semisync_slave.so
+
+# Others options for Semisynchronous Replication
+;rpl_semi_sync_master_enabled=1
+;rpl_semi_sync_master_timeout=10
+;rpl_semi_sync_slave_enabled=1
+
+# http://dev.mysql.com/doc/refman/5.5/en/performance-schema.html
+#performance_schema
+
+
+[mysqld_safe]
+log-error=/var/log/mysqld.log
+pid-file=/var/run/mysqld/mysqld.pid
