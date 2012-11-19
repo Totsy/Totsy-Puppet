@@ -13,21 +13,12 @@ node dbdev inherits default {
   include database
 }
 
-# Mystery (test) developer
-node 'db-mysterydev' inherits dbdev {
-  user::person { 'mysterydev': }
+# Tharsan Bhuvanendran
+node 'db-tharsan' inherits dbdev {
+  user::person { 'tbhuvanendran': }
 }
-node 'web-mysterydev' inherits webdev {
-  user::person { 'mysterydev': }
-  app::vhost { ['totsy', 'mamasource']: }
-}
-
-# Puppet configuration
-file { '/etc/puppet/auth.conf':
-  source   => 'puppet:///modules/puppet/auth.conf',
-  ensure   => 'present',
-  owner    => 'puppet',
-  group    => 'root',
-  mode     => '0640',
+node 'web-tharsan' inherits webdev {
+  user::person { 'tbhuvanendran': }
+  app:::vhost { 'totsy': }
 }
 
