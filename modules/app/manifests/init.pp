@@ -96,14 +96,16 @@ class app {
     content => template('app/local.xml.erb'),
     owner   => 'nobody',
     group   => 'nobody',
-    mode    => '775'
+    mode    => '775',
+    require => File[$sitedirs]
   }
 
   file { '/etc/magento/enterprise.xml':
     content => template('app/enterprise.xml.erb'),
     owner   => 'nobody',
     group   => 'nobody',
-    mode    => '775'
+    mode    => '775',
+    require => File[$sitedirs]
   }
 
   file { '/usr/share/magento/magento-enterprise-1.11.1.tar.bz2':
@@ -111,21 +113,6 @@ class app {
     owner   => 'nobody',
     group   => 'nobody',
     mode    => '775',
-    require => File[$sitedirs]
-  }
-
-  file { '/etc/nginx/sites-available/totsy':
-    content => template('app/site-totsy.conf.erb'),
-    owner   => 'nginx',
-    group   => 'nginx',
-    mode    => '604',
-    notify  => Service['nginx'],
-    require => [ Package['nginx'], File[$sitedirs] ]
-  }
-
-  file { '/etc/nginx/sites-enabled/totsy':
-    ensure  => 'link',
-    target  => '/etc/nginx/sites-available/totsy',
     require => File[$sitedirs]
   }
 

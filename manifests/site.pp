@@ -1,17 +1,25 @@
-node /^web\d?-(.+)\.totsy.net$/ inherits 'webapp' {}
-
-node /^db\d?-(.+)\.totsy.net$/ inherits 'db' {}
-
-node 'db' inherits default {
-  include database
+# default node applies to all servers managed by puppet
+node default {
+  include system, group, user
 }
 
-node 'webapp' inherits default {
+# developer web app
+node webdev inherits default {
   include cache, web, app
 }
 
-node default {
-  include system, group, user
+# developer database
+node dbdev inherits default {
+  include database
+}
+
+# Mystery (test) developer
+node 'db-mysterydev' inherits dbdev {
+  user::person { 'mysterydev': }
+}
+node 'web-mysterydev' inherits webdev {
+  user::person { 'mysterydev': }
+  app::vhost { ['totsy', 'mamasource']: }
 }
 
 # Puppet configuration

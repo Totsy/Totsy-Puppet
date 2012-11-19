@@ -6,8 +6,6 @@ class database {
     default     => 'dev',
   }
 
-  notify { "Environment: ${environment}": }
-
   package { 'percona-release':
     ensure => installed,
     provider => rpm,

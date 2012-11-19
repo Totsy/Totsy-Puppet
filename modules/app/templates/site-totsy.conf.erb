@@ -1,4 +1,11 @@
-<% servername = scope.function_regsubst(@hostname, 'web-(.+)', '\1.totsy.com') -%>
+<%
+
+documentroot = servername = scope.function_regsubst(@hostname, 'web-(.+)', '\1.totsy.com')
+if @site and @site != 'totsy'
+  servername = "#{site}-#{servername}"
+end
+
+%>
 map $http_user_agent $magecode {
 	default				"";
 	"~ (iPhone|Android|BlackBerry)"	mobile;
@@ -14,7 +21,7 @@ server {
 	listen 80;
 	server_name <%= servername %>;
 
-	root /var/www/<%= servername %>;
+	root /var/www/<%= documentroot %>;
 	index index.php index.html;
 	fastcgi_index index.php;
 
