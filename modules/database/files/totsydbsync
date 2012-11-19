@@ -8,31 +8,31 @@
 ###################
 
 # backup config data
-sudo mysqldump -u root magento core_config_data > /tmp/core_config_data.sql
+mysqldump -u root magento core_config_data > /tmp/core_config_data.sql
 
 # shutdown mysql server (if it's running)
 service mysql status
 if [ $? -eq 0 ]
 then
-    sudo service mysql stop
+    service mysql stop
 fi;
 
 # delete existing mysql data
-sudo rm -rf /var/lib/mysql/*
+rm -rf /var/lib/mysql/*
 
 # copy mysql data from remote data store
-sudo rsync -avP 10.68.18.98::stagingdata /var/lib/mysql/
+rsync -avP 10.68.18.98::stagingdata /var/lib/mysql/
 if [ $? -ne 0 ]
 then
     echo "Failed copying mysql data from remote server!"
     exit
 fi;
 
-sudo chown -R mysql:mysql /var/lib/mysql/
+chown -R mysql:mysql /var/lib/mysql/
 
 # restart mysql server
-sudo service mysql start
+service mysql start
 
 # restore config data
-sudo mysql -u root magento < /home/tbhuvanendran/bin/core_config_data.sql
+mysql -u root magento < /tmp/core_config_data.sql
 
