@@ -18,8 +18,10 @@ class user::data {
       ssh_pub_key => 'AAAAB3NzaC1kc3MAAACBALdYTITrnQwAEYTzFXlQw8IqMIZbMb6YBknKiXFLNSOoiwzvL9vyXdXeSvnhuY3xFvxeBsfp6GnAl2HkoA7ahr97stcDZ6BMv4qkHGrZk86/dOeoBkrUYFEs8yYs38NZjdIl6NqIgSk7yqOxozSNBZ0CXWaui3XhMfambMN+cjGJAAAAFQDl+fK+Cvzg0fl6CCcwfLYo/o3lOQAAAIBkm7sGutayoMx4BkndT4BCjzz8565/vsLkkegA4VGWAM6pAWNM7vIZdiuvJiNMcJimarGzqwQrliCeNPop0XWrMkzldH5FIiOwkjkXaMSPS3CgsCYy+8Yu2CvvH8kwZ7Q0geShb0EUNK/DDaJPF1KdiGYUHTOOUGiPnYBS6VvkrgAAAIAwaiUM835MfRRSnwdl7jZ3Dti8QqVBhJPvkQNb6BJIdSEPYiO9uEAV22eMGApeO/1wFx3Kd6Y+cyo/o14tZm7rXdr2vp3lZn9pYhgXmXY6IKDOxahsqDuOEMt37EYFV/VKQCTMNijQeLsJqG71jAwpbbDKIMisdVNA91xvruiYbA==',
       password    => '$6$pD3COtyw$pgOFm7A8Qkrgqo8qix0IQyhufuTLsDLsSS44qoprf7zc2m1DMx3S1bVSvTmNzE8Tld9RIhnsMn7ft9OxhY29L/'
     },
-    mysterydev => {
-     name => 'Mystery Developer'
+    esmith => {
+      name => 'Eric Smith',
+      ssh_pub_key => 'AAAAB3NzaC1yc2EAAAADAQABAAABAQDYSzGHqNDcD7lScKzheL06EyF8g5Gp4IHY9a0eCYDW38pr3kHQREFd7Tc//wMvzIHNApysgWMddlcvkY/b9Wx+d9UsGbnrK4rRjTJPAm7VhxP2yGWb4ZLyDE4DmbcUyvEe7JtHMf0VDSxz3hEgqAf0mko+T/J/cYJeWgjXKsMo7t2vtrQ1lYgzkZjuT56Cdb70cW8dmGRrABSEsZDIR2tOxzQAE+3fVCrWGDUZHa6cEHqFX5TnldP/11XPAgiTuPemA2fXCPd6raZmKynK9yJOLXKtv7lPdrrUB6sczh4oY09ydG2Tw9kQdA+RE7HKVwdSZUWz2bUybhsiwcnfCexP',
+      password => '$6$RwBTQ5xu$HSPlMd.hnAwxYL/M0jdnW/4zrX4l235hNR/kaY7RehgynCdJyCVbJqEYNRKgvVw5130zCdpovyHTzSNywQp8Z/'
     }
   }
 }

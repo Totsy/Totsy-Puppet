@@ -35,6 +35,9 @@ class app {
   }
 
   package { 'php-pecl-apc': ensure => '3.1.13-2.el6.remi' }
+  package { 'php-redis':    ensure => '2.2.2-5.git6f7087f.el6' }
+
+  package { 'nfs-utils': ensure => latest }
 
   package { 'git': ensure => latest }
  
@@ -122,6 +125,20 @@ class app {
     hasstatus  => true,
     hasrestart => true,
     require    => Package[$phpcore]
+  }
+
+  file { '/srv/cache':
+    ensure => directory
+  }
+
+  mount { '/srv/cache':
+    ensure   => mounted,
+    device   => '10.68.1.97:/nfsshare/cache',
+    fstype   => 'nfs',
+    options  => 'ro',
+    remounts => true,
+    atboot   => true,
+    require  => [ File['/srv/cache'], Package['nfs-utils'] ]
   }
 }
 

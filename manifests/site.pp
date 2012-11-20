@@ -24,3 +24,11 @@ node 'web-tharsan' inherits webdev {
   app::vhost { 'totsy': }
 }
 
+# Eric Smith
+node 'db-eric' inherits dbdev {
+  user::person { 'esmith': groups => 'superadmins' }
+}
+node 'web-eric' inherits webdev {
+  user::person { 'esmith': groups => 'superadmins' }
+  app::vhost { 'totsy': }
+}
