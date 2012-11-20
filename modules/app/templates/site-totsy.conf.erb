@@ -28,14 +28,14 @@ server {
 	access_log /var/log/nginx/<%= servername %>-access.log;
 	error_log  /var/log/nginx/<%= servername %>-errors.log debug;
 
-	rewrite ^/skin/m/([0-9]+)(/.*.(js|css))$ /lib/minify/m.php?f=$2&d=$1 last;
+#	rewrite ^/skin/m/([0-9]+)(/.*.(js|css))$ /lib/minify/m.php?f=$2&d=$1 last;
 
 	rewrite ^/invite/([^/\.]+)/$  /invitation/customer_account/genericcreate/invitation/$1 permanent;
 
 	# Protect internal resources
-	location ~ (/(app/|includes/|lib/|/pkginfo/|var/|report/config.xml)|/\.svn/|/.hta.+) {
-		deny all;
-	}
+#	location ~ (/(app/|includes/|lib/|/pkginfo/|var/|report/config.xml)|/\.svn/|/.hta.+) {
+#		deny all;
+#	}
 
 	# Try static files first
 	location ~ .(css|js|gif|jpg|jpeg|png)$ {
@@ -77,14 +77,14 @@ server {
         access_log /var/log/nginx/<%= servername %>-access.log;
         error_log  /var/log/nginx/<%= servername %>-errors.log warn;
 
-	rewrite ^/skin/m/([0-9]+)(/.*.(js|css))$ /lib/minify/m.php?f=$2&d=$1 last;
+#	rewrite ^/skin/m/([0-9]+)(/.*.(js|css))$ /lib/minify/m.php?f=$2&d=$1 last;
 
 	rewrite ^/invite/([^/\.]+)/$  /invitation/customer_account/genericcreate/invitation/$1 permanent;
 
 	# Protect internal resources
-	location ~ (/(app/|includes/|lib/|/pkginfo/|var/|report/config.xml)|/\.svn/|/.hta.+) {
-		deny all;
-	}
+#	location ~ (/(app/|includes/|lib/|/pkginfo/|var/|report/config.xml)|/\.svn/|/.hta.+) {
+#		deny all;
+#	}
 
 	# Try static files first
 	location ~ .(css|js|gif|jpg|jpeg|png)$ {
