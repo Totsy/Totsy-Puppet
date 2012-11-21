@@ -47,6 +47,7 @@ server {
 		fastcgi_param SCRIPT_FILENAME $document_root/index.php;
         	fastcgi_param SCRIPT_NAME /index.php;
 		fastcgi_param MAGE_RUN_CODE $magecode;
+		fastcgi_param MAGE_IS_DEVELOPER_MODE true;
 
         	# rewrite - if file not found, pass it to the backend
         	if (!-f $request_filename) {
@@ -95,7 +96,11 @@ server {
                 include /etc/nginx/fastcgi_params;
                 fastcgi_param SCRIPT_FILENAME $document_root/index.php;
                 fastcgi_param SCRIPT_NAME /index.php;
+		fastcgi_param MAGE_RUN_CODE $magecode;
+		fastcgi_param MAGE_IS_DEVELOPER_MODE true;
+
 		fastcgi_param HTTPS on;
+
                 # rewrite - if file not found, pass it to the backend
                 if (!-f $request_filename) {
                         fastcgi_pass 127.0.0.1:9000;
