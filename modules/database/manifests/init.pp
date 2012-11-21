@@ -41,7 +41,7 @@ class database {
   }
 
   file { '/usr/local/bin/totsydbsync':
-    source  => 'puppet:///modules/database/totsydbsync',
+    content => template('database/bin/totsydbsync'),
     owner   => 'root',
     group   => 'root',
     mode    => '755'

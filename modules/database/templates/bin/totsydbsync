@@ -1,0 +1,50 @@
+<% webname = scope.function_regsubst(@hostname, 'db-(.+)', '\1') %>
+#!/bin/bash
+
+###################
+#
+# Totsy development database restore script
+# Copies raw database files from a special rsync location to locally.
+#
+###################
+
+# shutdown mysql server (if it's running)
+service mysql status > /dev/null
+if [ $? -eq 0 ]
+then
+    service mysql stop
+fi;
+
+# delete existing mysql data
+rm -rf /var/lib/mysql/*
+
+# copy mysql data from remote data store
+rsync -Pavog 10.68.18.98::sanitizedsnapshot /var/lib/mysql/
+if [ $? -ne 0 ]
+then
+    echo "Failed copying mysql data from remote server!"
+    exit
+fi;
+
+chown -R mysql:mysql /var/lib/mysql/
+
+# restart mysql server
+service mysql start
+
+# restore config data
+echo "
+UPDATE core_config_data SET value = '<%= webname %>-mama.totsy.com' WHERE config_id = 478;
+UPDATE core_config_data SET value = 'https://<%= webname %>.totsy.com/js/' WHERE config_id = 475;
+UPDATE core_config_data SET value = 'https://<%= webname %>.totsy.com/media/' WHERE config_id = 474;
+UPDATE core_config_data SET value = 'https://<%= webname %>.totsy.com/skin/' WHERE config_id = 473;
+UPDATE core_config_data SET value = 'https://<%= webname %>-mama.totsy.com/' WHERE config_id = 472;
+UPDATE core_config_data SET value = 'http://<%= webname %>.totsy.com/js/' WHERE config_id = 471;
+UPDATE core_config_data SET value = 'http://<%= webname %>.totsy.com/media/' WHERE config_id = 470;
+UPDATE core_config_data SET value = 'http://<%= webname %>.totsy.com/skin/' WHERE config_id = 469;
+UPDATE core_config_data SET value = 'http://<%= webname %>-mama.totsy.com/' WHERE config_id = 468;
+UPDATE core_config_data SET value = '<%= webname %>.totsy.com' WHERE config_id = 66;
+UPDATE core_config_data SET value = 'https://<%= webname %>.totsy.com/' WHERE config_id = 5;
+UPDATE core_config_data SET value = 'http://<%= webname %>.totsy.com/' WHERE config_id = 4;
+DELETE FROM core_config_data WHERE value LIKE '%staging%';
+" | mysql -uroot magento
+
