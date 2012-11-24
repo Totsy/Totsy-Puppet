@@ -18,7 +18,7 @@ define app::vhost ($site = $title, $port = 80) {
   }
 
   file { "/etc/nginx/sites-available/$site":
-    content => template('app/site-totsy.conf.erb'),
+    content => template('app/site.conf.erb'),
     owner   => 'nginx',
     group   => 'nginx',
     mode    => '604',

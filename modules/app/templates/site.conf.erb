@@ -1,0 +1,63 @@
+map $http_user_agent $magecode {
+	default				"";
+	"~ (iPhone|Android|BlackBerry)"	mobile;
+}
+
+<% [ 'insecure', 'secure' ].each do |securestate| -%>
+
+###############################################################################
+#
+# <%= servername %> (<%= securestate %>)
+#
+###############################################################################
+
+server {
+	listen <%= ('secure' == securestate) ? 443 : 80 %>;
+	server_name <%= servername %>;
+
+<% if ('secure' == securestate) -%>
+	#ssl on;
+        #ssl_certificate     /etc/nginx/totsy_certs/totsy.com.crt;
+        #ssl_certificate_key /etc/nginx/totsy_certs/totsy.com.key;
+<% end -%>
+
+	root /var/www/<%= documentroot %>/current;
+	index index.php index.html;
+	fastcgi_index index.php;
+
+	access_log /var/log/nginx/<%= servername %>-access.log;
+	error_log  /var/log/nginx/<%= servername %>-errors.log debug;
+
+#	rewrite ^/skin/m/([0-9]+)(/.*.(js|css))$ /lib/minify/m.php?f=$2&d=$1 last;
+
+	rewrite ^/invite/([^/\.]+)/$  /invitation/customer_account/genericcreate/invitation/$1 permanent;
+
+	# Protect internal resources
+#	location ~ (/(app/|includes/|lib/|/pkginfo/|var/|report/config.xml)|/\.svn/|/.hta.+) {
+#		deny all;
+#	}
+
+	# Try static files first
+	location ~ .(css|js|gif|jpg|jpeg|png)$ {
+		try_files $uri code=404;
+	}
+
+	location / {
+		include /etc/nginx/fastcgi_params;
+		fastcgi_param SCRIPT_FILENAME $document_root/index.php;
+        	fastcgi_param SCRIPT_NAME /index.php;
+		fastcgi_param MAGE_RUN_CODE $magecode;
+		fastcgi_param MAGE_IS_DEVELOPER_MODE true;
+
+<% if ('secure' == securestate) -%>
+		fastcgi_param HTTPS on;
+<% end -%>
+
+        	# rewrite - if file not found, pass it to the backend
+        	if (!-f $request_filename) {
+			fastcgi_pass 127.0.0.1:9000;
+            		break;
+        	}
+	}
+}
+<% end -%>
