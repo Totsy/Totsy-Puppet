@@ -22,8 +22,6 @@ class database {
     require => [ Package['percona-release'], Package['mysql-libs'] ]
   }
 
-  package { 'rsync':      ensure => installed }
-
   package { 'mysql-libs': ensure => absent    }
 
   service { 'mysql':

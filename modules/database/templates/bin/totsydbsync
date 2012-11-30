@@ -3,8 +3,11 @@
 
 ###################
 #
+# totsydbsync
+#
 # Totsy development database restore script
-# Copies raw database files from a special rsync location to locally.
+# Copies raw database files from a special rsync location to the local mysql
+# server data directory.
 #
 ###################
 

@@ -60,7 +60,7 @@ class system {
   }
 
   package { 'ntp':
-    ensure     => 'present',
+    ensure => latest
   }
   service { 'ntpd':
     ensure     => 'running',
@@ -68,6 +68,10 @@ class system {
     hasstatus  => true,
     hasrestart => true,
     require    => Package['ntp'],
+  }
+
+  package { 'rsync':
+    ensure => latest
   }
 
   yumrepo { 'totsyrepo':
