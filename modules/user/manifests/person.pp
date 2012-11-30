@@ -10,6 +10,8 @@ define user::person ($groups = undef) {
 
     user { $username:
       ensure => present,
+      uid     => $userinfo['uid'],
+      comment => $userinfo['name'],
       home   => "/home/$username",
       managehome => true,
       membership => 'inclusive'
@@ -39,10 +41,10 @@ define user::person ($groups = undef) {
 
     if 'ssh_pub_key' in $userinfo {
       ssh_authorized_key { $username:
-        ensure => present,
-        user   => $username,
-        type   => 'ssh-rsa',
-        key    => $userinfo['ssh_pub_key']
+        ensure  => present,
+        user    => $username,
+        type    => 'ssh-rsa',
+        key     => $userinfo['ssh_pub_key']
       }
     }  
   }
