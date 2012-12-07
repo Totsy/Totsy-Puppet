@@ -1,15 +1,50 @@
 # module: app
 
-define app::vhost ($site = $title, $port = 80) {
+define app::vhost ($site = $title, $options = {}, $port = 80) {
 
-  $documentroot = regsubst($hostname, 'web-(.+)', '\1.totsy.com')
-  $servername   = regsubst($hostname, 'web-(.+)', '\1.totsy.com')
+  case $hostname {
+    /^web\d+-dc0$/: { # production (and staging)
+      $documentroot = 'www.totsy.com'
+    }
+    /^web-/: { # development
+      $documentroot = regsubst($hostname, 'web-(.+)', '\1.totsy.com')
+    }
+  }
 
-  if $site != 'totsy' {
-    $servername = "#{$site}-#{$servername}"
+  if 'servername' in $options {
+    $servername = $options['servername']
   } else {
+    $servername = $documentroot
+  }
+
+  if 'release_prune' in $options {
+    cron { "release-prune-$site":
+      command => "/bin/find /var/www/$servername/releases -mindepth 1 -maxdepth 1 -type d -mtime +4 ! -wholename \"$(readlink -f /var/www/$servername/current)\" -exec rm -rf {} +",
+      user    => release,
+      hour    => 0,
+      minute  => 0,
+    }
+  }
+
+  if $site == 'totsy' {
+    if 'disablecron' in $options {
+      $cronensure = 'absent'
+    } else {
+      $cronensure = 'present'
+    }
+
     cron { 'magento':
-      command => "/usr/bin/php /var/www/$documentroot/cron.php",
+      ensure  => $cronensure,
+      command => "/usr/bin/php /var/www/$servername/current/cron.php",
+      user    => 'nginx',
+      hour    => '*',
+      minute  => '*/5',
+      require => Package['nginx']
+    }
+
+    cron { 'sailthruqueue':
+      ensure  => $cronensure,
+      command => "/usr/bin/php /var/www/$servername/current/dev/queue.php",
       user    => 'nginx',
       hour    => '*',
       minute  => '*/5',
@@ -18,7 +53,7 @@ define app::vhost ($site = $title, $port = 80) {
   }
 
   file { "/etc/nginx/sites-available/$site":
-    content => template('app/site.conf.erb'),
+    content => template("app/vhost/$site.conf.erb"),
     owner   => 'nginx',
     group   => 'nginx',
     mode    => '604',

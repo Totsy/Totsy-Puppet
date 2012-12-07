@@ -140,5 +140,11 @@ class app {
     atboot   => true,
     require  => [ File['/srv/cache'], Package['nfs-utils'] ]
   }
+
+  # Install PHP Composer
+  exec { "curl -s https://getcomposer.org/installer | php && sudo mv composer.phar /usr/local/bin/composer":
+    creates => "/usr/local/bin/composer",
+    path    => "/usr/bin:/bin"
+  }
 }
 
