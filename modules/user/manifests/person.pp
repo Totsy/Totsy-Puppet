@@ -39,6 +39,24 @@ define user::person ($groups = undef) {
       }
     }
 
+    if 'known_hosts' in $userinfo {
+      file { "/home/$username/.ssh/known_hosts":
+        source  => "puppet:///modules/user/known_hosts/$username",
+        owner   => $username,
+        group   => $username,
+        mode    => '600',
+      }
+    }
+
+    if 'id_rsa' in $userinfo {
+      file { "/home/$username/.ssh/id_rsa":
+        source  => "puppet:///modules/user/id_rsa/$username",
+        owner   => $username,
+        group   => $username,
+        mode    => '600',
+      }
+    }
+
     if 'ssh_pub_key' in $userinfo {
       ssh_authorized_key { $username:
         ensure  => present,

@@ -2,6 +2,15 @@
 
 class user::data {
   $collection = {
+    release => {
+      name        => 'System Release User',
+      uid         => 503,
+      groups      => 'nginx',
+      ssh_pub_key => 'AAAAB3NzaC1yc2EAAAADAQABAAABAQD31uVd0ETse3bBSBWUhEVEB9FLG3feunkVrK+esKivEVpjzPWStGkDjDjH+n25goZ9HVOj7BOhXUDUzTk+LuQ0BVTngR6a5qfuuPxsiNAXCIxMPeHrHhngl9lawg6NzcwB1/LkkKEZLGciPgzb1h1nU2YduppePewDHYlSWKoNtxh1aWdwFsipDbXL/3/7KtWULzicAp0u14dCV7s04G/q+Nf5bEP2F/gPSFXMWOMU8N7vTS+XQwEn7Q8LETuAX1Jkz0h5v3ZxP2+6iF8bLD8tpiD69k7647+wPXAqOOv+n5eO/aIToUZjyqSmEMrL9H5F1urG3KIsSGVy7nYlFz4V',
+      known_hosts => true,
+      id_rsa      => true
+    },
+
     tbhuvanendran => {
       name        => 'Tharsan Bhuvanendran',
       uid         => 1023,
@@ -34,6 +43,7 @@ class user::data {
 
     troyer => {
       name        => 'Tom Royer',
+      groups      => 'superadmins',
       uid         => 1014,
       ssh_pub_key => 'AAAAB3NzaC1yc2EAAAADAQABAAABAQC1LFtyj3MIcFumzvUzlt9DMMcvrjPwoM5AJTLR+H4w56vhnFsuO/QVl31aIWoH6tObsUE4oucY7jDMIXQs9VDjd2fsxX/eXmLoI0FbJhFV/hg9w2wMDfgSqUcPg09+bo6vvd/kqPTmsazTeBFKdCM9Si57xuLx8elS40q8Ey7CVhfeY9OB690a+WQy5NxmU5uFe/JQ63vfG7jDroMzAe5Ew37ba9kN82lok/x4LYKlE9yzcWEcHukvyBfHvyWQh22rWfevHaoq5gsF4AIvSavT6F9QMkLHpDzLMo220/hE35hETaslGPvvpfY6QuV6YpPcosm8OqxrM4B99yrMInH5',
       password    => '$6$iW2GqBGZ$4.qmmIMEAaX2G7O/j5bSha//4BWtfA0ZxaKXp8Ubv2RZa0zX4CB/E6KjohoUxI8CVwy9hKN0PbG0YHvluvSD90'
@@ -57,6 +67,12 @@ class user::data {
       uid         => 1022,
       ssh_pub_key => 'AAAAB3NzaC1yc2EAAAADAQABAAABAQDNtEQi+Ck8EYulxMNADGOeurA2XBoH+DLJ6DCpmxabr1rNwMLRSFW/smOTq8QOhIQrlaPlw0k+Q5/SLGT1HyQRzABumh8Kx7kcqyzbuGcxiw+nkvYA1Fr7N7keBs2qLUuB/tUmACAnyILuXNnbR99CRglgL0N1jdlUY4cipkTv3/F+GVTKTq0yl33/lY6C7ryBFxN7si7EwR0PeWSexA+l8g8dkzf9zlZxdcuA1mvEVi+QR1Slrl6FogSY3r0fZ1FeIflwy8GznyRuTFEL88nZ5Hac8XL5oAvsZaO3bcNzoWgg4UL7sQLf8SXBFwVqGHMrtvQO8sWRiWHDc04r2csF',
       password    => '$6$yL/fWIrd$IeAbkM2ucNNyLlqkUCXxrXwbRm2c0T62Xfr5o/86TiCxZsQM2q4NIS/V/R/MyrBT47tgvkKQ4f9PE0Xf5qhwZ.'
+    },
+
+    crownchris => {
+      uid         => '1025',
+      groups      => 'superadmin',
+      ssh_pub_key => 'AAAAB3NzaC1yc2EAAAABIwAAAQEA1kC4lUt21ez0UxWMBkzUhVi0tntfwRZCuO/0dD/XC7Lj8+leh3o6aJ/r7cF/zKwX9tREqDISBMggaVIF7wQz9wefr4wqIp5EnuSB8x9/dCEnDOSZxBQbLNFHa1wqO1eKTg50jVsMwjCDLkcOUUWoG9uhuylsCvCxSHu8BfWsOx/HNM80CcbiDHZw7H7OVsgrNTSsxq3KHbK1cTb4J56zEEXeNhKImCsun+zUEOEd++Zoqok/Ji0wfrbnCMK5s0xDqkNlIheYytP7itmk5pStc+hrjoadiiUNOkPsohOLJ5X743ztdDSojInQccmdLd3JS0TS2wKBYRVXUlE/QqSi4w=='
     }
   }
 }
