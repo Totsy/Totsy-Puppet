@@ -17,6 +17,15 @@ class web {
     require => Package['nginx']
   }
 
+  file { '/etc/nginx/conf.d/default.conf':
+    source  => 'puppet:///modules/web/conf.d/default.conf',
+    owner   => 'nginx',
+    group   => 'nginx',
+    mode    => '604',
+    notify  => Service['nginx'],
+    require => Package['nginx']
+  }
+
   service { 'nginx':
     ensure     => running,
     enable     => true,
