@@ -42,13 +42,18 @@ node /^web\d+-dc0$/ inherits baseweb {
     app::vhost { 'totsy': options => { 'servername' => 'staging.totsy.com', 'release_prune' => true } }
     app::vhost { 'api': options => { 'servername' => 'api-staging.totsy.com', 'release_prune' => true } }
     host { 'db_rw': ensure => present, ip => '10.68.1.67', name => 'db_read', host_aliases => 'db_write' }
-  } else {
+
+    $env = 'stg'
+  } else { # production web servers
     app::vhost { [ 'totsy', 'api' ]:  }
     host { 'db_rw': ensure => present, ip => '10.68.1.65', name => 'db_read', host_aliases => 'db_write' }
+
+    $env = 'prd'
   }
 
   $scout_key = $hostname ? {
     'web9-dc0' => '4903064d-2f06-4a3d-9cec-3c4536f89527',
+    'web7-dc0' => 'c6fe7a7c-77a4-40a4-8027-c312f760e8ca',
     default    => '0'
   }
 
@@ -56,7 +61,7 @@ node /^web\d+-dc0$/ inherits baseweb {
     include scout
   }
 
-  user::person { [ 'release', 'tbhuvanendran', 'chriscrown', 'troyer' ]: }
+  user::person { [ 'release', 'kdowley', 'skharlamov', 'tbhuvanendran', 'chriscrown', 'troyer' ]: }
 }
 
 # Tharsan Bhuvanendran
@@ -66,7 +71,7 @@ node 'db-tharsan' inherits devdb {
 node 'web-tharsan' inherits devweb {
   user::person { 'tbhuvanendran': }
   app::vhost { 'totsy': }
-  host { 'db_rw': ensure => present, ip => '10.68.18.167', name => 'db_read', host_aliases => 'db_write' }
+  host { 'db_rw': ensure => present, ip => '10.68.18.171', name => 'db_read', host_aliases => 'db_write' }
 }
 
 # Eric Smith
@@ -76,7 +81,7 @@ node 'db-eric' inherits devdb {
 node 'web-eric' inherits devweb {
   user::person { 'esmith': groups => 'superadmins' }
   app::vhost { 'totsy': }
-  host { 'db_rw': ensure => present, ip => '10.68.18.166', name => 'db_read', host_aliases => 'db_write' }
+  host { 'db_rw': ensure => present, ip => '10.68.18.186', name => 'db_read', host_aliases => 'db_write' }
 }
 
 # Tom Royer
@@ -86,7 +91,7 @@ node 'db-tom' inherits devdb {
 node 'web-tom' inherits devweb {
   user::person { 'troyer': groups => 'superadmins' }
   app::vhost { 'totsy': }
-  host { 'db_rw': ensure => present, ip => '10.68.18.165', name => 'db_read', host_aliases => 'db_write' }
+  host { 'db_rw': ensure => present, ip => '10.68.18.185', name => 'db_read', host_aliases => 'db_write' }
 }
 
 # Evan Ubiera
@@ -96,7 +101,7 @@ node 'db-evan' inherits devdb {
 node 'web-evan' inherits devweb {
   user::person { 'eubiera': groups => 'superadmins' }
   app::vhost { 'totsy': }
-  host { 'db_rw': ensure => present, ip => '10.68.18.168', name => 'db_read', host_aliases => 'db_write' }
+  host { 'db_rw': ensure => present, ip => '10.68.18.187', name => 'db_read', host_aliases => 'db_write' }
 }
 
 # David Gowrie
@@ -106,7 +111,7 @@ node 'db-david' inherits devdb {
 node 'web-david' inherits devweb {
   user::person { 'dgowrie': groups => 'superadmins' }
   app::vhost { 'totsy': }
-  host { 'db_rw': ensure => present, ip => '10.68.18.156', name => 'db_read', host_aliases => 'db_write' }
+  host { 'db_rw': ensure => present, ip => '10.68.18.191', name => 'db_read', host_aliases => 'db_write' }
 }
 
 # Lawrenberg Hanson
@@ -116,6 +121,6 @@ node 'db-lawren' inherits devdb {
 node 'web-lawren' inherits devweb {
   user::person { 'lhanson': groups => 'superadmins' }
   app::vhost { 'totsy': }
-  host { 'db_rw': ensure => present, ip => '10.68.18.159', name => 'db_read', host_aliases => 'db_write' }
+  host { 'db_rw': ensure => present, ip => '10.68.18.192', name => 'db_read', host_aliases => 'db_write' }
 }
 

@@ -45,6 +45,7 @@ define user::person ($groups = undef) {
         owner   => $username,
         group   => $username,
         mode    => '600',
+        require => User[$username]
       }
     }
 
@@ -54,6 +55,7 @@ define user::person ($groups = undef) {
         owner   => $username,
         group   => $username,
         mode    => '600',
+        require => User[$username]
       }
     }
 

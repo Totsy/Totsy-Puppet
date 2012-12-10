@@ -4,7 +4,10 @@ define app::vhost ($site = $title, $options = {}, $port = 80) {
 
   case $hostname {
     /^web\d+-dc0$/: { # production (and staging)
-      $documentroot = 'www.totsy.com'
+      case $site {
+        'api':   { $documentroot = 'api.totsy.com' }
+        default: { $documentroot = 'www.totsy.com' }
+      }
     }
     /^web-/: { # development
       $documentroot = regsubst($hostname, 'web-(.+)', '\1.totsy.com')
@@ -23,6 +26,7 @@ define app::vhost ($site = $title, $options = {}, $port = 80) {
       user    => release,
       hour    => 0,
       minute  => 0,
+      require => User['release']
     }
   }
 
@@ -52,19 +56,27 @@ define app::vhost ($site = $title, $options = {}, $port = 80) {
     }
   }
 
-  file { "/etc/nginx/sites-available/$site":
-    content => template("app/vhost/$site.conf.erb"),
-    owner   => 'nginx',
-    group   => 'nginx',
-    mode    => '604',
-    notify  => Service['nginx'],
-    require => Package['nginx']
-  }
+  file {
+    "/etc/nginx/sites-available/$site":
+      content => template("app/vhost/$site.conf.erb"),
+      owner   => 'nginx',
+      group   => 'nginx',
+      mode    => '604',
+      notify  => Service['nginx'],
+      require => Package['nginx'];
 
-  file { "/etc/nginx/sites-enabled/$site":
-    ensure  => 'link',
-    target  => "/etc/nginx/sites-available/$site",
-    require => File["/etc/nginx/sites-available/$site"]
+    "/etc/nginx/sites-enabled/$site":
+      ensure  => 'link',
+      target  => "/etc/nginx/sites-available/$site",
+      require => File["/etc/nginx/sites-available/$site"];
+
+    "/var/www/$servername":
+      ensure  => directory,
+      owner   => 'release',
+      group   => 'nginx',
+      mode    => 'g+w',
+      require => Package['nginx'],
+      recurse => true
   }
 }
 

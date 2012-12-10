@@ -21,12 +21,12 @@ class system {
     ensure  => 'link',
     target  => '/usr/share/zoneinfo/UTC',
   } 
-
  
   case $hostname { 
-    master:  { $sudoers = "sudoers.master" }
-    default: { $sudoers = "sudoers" }
-    /^web-/: { $sudoers = "sudoers.web" }
+    master:         { $sudoers = "sudoers.master" }
+    default:        { $sudoers = "sudoers" }
+    /^web\d+-dc0$/: { $sudoers = "sudoers.web" }
+    /^web-/:        { $sudoers = "sudoers.web" }
   }
 
   file { '/etc/sudoers':
@@ -63,22 +63,31 @@ class system {
     ensure => latest
   }
   service { 'ntpd':
-    ensure     => 'running',
+    ensure     => running,
     enable     => true,
     hasstatus  => true,
     hasrestart => true,
     require    => Package['ntp'],
   }
 
-  package { 'rsync':
+  package { 'acpid':
     ensure => latest
   }
+  service { 'acpid':
+    ensure     => running,
+    enable     => true,
+    hasstatus  => true,
+    hasrestart => true,
+    require    => Package['acpid'],
+  }
+
+  package { 'rsync': ensure => latest }
 
   yumrepo { 'totsyrepo':
-    baseurl => 'http://master.totsy.net:18724/6/x86_64/',
-    name    => 'totsy',
-    descr   => 'Totsy Repository',
-    enabled => 1,
+    baseurl  => 'http://master.totsy.net:18724/6/x86_64/',
+    name     => 'totsy',
+    descr    => 'Totsy Repository',
+    enabled  => 1,
     gpgcheck => 0
   }
 }

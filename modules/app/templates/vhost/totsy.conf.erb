@@ -47,7 +47,7 @@ server {
 		fastcgi_param SCRIPT_FILENAME $document_root/index.php;
         	fastcgi_param SCRIPT_NAME /index.php;
 		fastcgi_param MAGE_RUN_CODE $magecode;
-<% if $hostname =~ /^web\d+-dc0$/ -%>
+<% unless $hostname =~ /^web\d+-dc0$/ -%>
 		fastcgi_param MAGE_IS_DEVELOPER_MODE true;
 <% end -%>
 
