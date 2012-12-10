@@ -1,28 +1,8 @@
 # module: database
 
-class database {
-  $environment = $hostname ? {
-    /db\d?-dc0/ => 'prd',
-    default     => 'dev',
-  }
-
-  package { 'percona-release':
-    ensure => installed,
-    provider => rpm,
-    source => 'http://www.percona.com/downloads/percona-release/percona-release-0.0-1.x86_64.rpm'
-  }
-
-  package { 'Percona-Server-server-55':
-    ensure => '5.5.28-rel29.1.335.rhel6',
-    require => [ Package['percona-release'], Package['mysql-libs'] ]
-  }
-
-  package { 'Percona-Server-client-55':
-    ensure => '5.5.28-rel29.1.335.rhel6',
-    require => [ Package['percona-release'], Package['mysql-libs'] ]
-  }
-
-  package { 'mysql-libs': ensure => absent    }
+class database ($environment = 'dev') {
+  package { 'Percona-Server-server-55': ensure  => latest }
+  package { 'Percona-Server-client-55': ensure  => latest }
 
   service { 'mysql':
     ensure => running,
