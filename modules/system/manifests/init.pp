@@ -38,6 +38,22 @@ class system {
   }
 
   # Some core services
+
+  file { "/etc/rsyslog.conf":
+    content => template("system/rsyslog.conf.erb"),
+    ensure  => present,
+    owner   => 'root',
+    group   => 'root',
+    mode    => '0600'
+  }
+  service { 'rsyslog':
+    ensure     => running,
+    enable     => true,
+    hasstatus  => true,
+    hasrestart => true,
+    subscribe  => File['/etc/rsyslog.conf'],
+  }
+
   file { '/etc/ssh/sshd_config':
     source  => 'puppet:///modules/system/sshd_config',
     ensure  => 'present',
@@ -81,7 +97,9 @@ class system {
     require    => Package['acpid'],
   }
 
-  package { 'rsync': ensure => latest }
+  package { 'rsync':       ensure => latest }
+  package { 'tar':         ensure => latest }
+  package { 'ruby-shadow': ensure => latest }
 
   yumrepo { 'totsyrepo':
     baseurl  => 'http://master.totsy.net:18724/6/x86_64/',
