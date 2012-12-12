@@ -13,7 +13,7 @@ map $http_user_agent $magecode {
 
 server {
 	listen <%= ('secure' == securestate) ? 443 : 80 %>;
-	server_name <%= servername %>;
+	server_name <%= servername %><%= ' ' + scope.function_regsubst(servername, 'www.', '') if 'www.totsy.com' == servername %><%= ' ' + scope.function_regsubst(servername, 'www', 'admin') if hostname == 'web7-dc0' %><%= ' ' + scope.function_regsubst(servername, 'www', 'admin1') if hostname == 'web7-dc0' %>;
 
 <% if ('secure' == securestate) -%>
 	#ssl on;
@@ -26,20 +26,37 @@ server {
 	fastcgi_index index.php;
 
 	access_log /var/log/nginx/<%= servername %>-access.log;
-	error_log  /var/log/nginx/<%= servername %>-errors.log debug;
+	error_log  /var/log/nginx/<%= servername %>-errors.log warn;
 
 #	rewrite ^/skin/m/([0-9]+)(/.*.(js|css))$ /lib/minify/m.php?f=$2&d=$1 last;
 
-	rewrite ^/invite/([^/\.]+)/$  /invitation/customer_account/genericcreate/invitation/$1 permanent;
+        rewrite ^/invite/([^/\.]+)/$  https://<%= servername %>/invitation/customer_account/genericcreate/invitation/$1 permanent;
 
-	# Protect internal resources
-#	location ~ (/(app/|includes/|lib/|/pkginfo/|var/|report/config.xml)|/\.svn/|/.hta.+) {
-#		deny all;
-#	}
+<% if hostname == 'web7-dc0' -%>
+	location ~ /var\/log\/import_error/ {
+                allow all;
+        }
+<% end -%>
 
 	# Try static files first
 	location ~ .(css|js|gif|jpg|jpeg|png)$ {
-		try_files $uri code=404;
+		try_files $uri =404;
+	}
+
+	# Protect internal resources
+	location ~ (/(app/|lib/|var/|shell/|includes/|tmp/)) {
+                deny all;
+        }
+
+	location ~ \.php$ {
+		fastcgi_index index.php;
+		fastcgi_param HTTPS on;
+		fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+		include /etc/nginx/fastcgi_params;
+
+		if (-e $request_filename) {
+			fastcgi_pass 127.0.0.1:9000;
+		}
 	}
 
 	location / {
@@ -47,7 +64,7 @@ server {
 		fastcgi_param SCRIPT_FILENAME $document_root/index.php;
         	fastcgi_param SCRIPT_NAME /index.php;
 		fastcgi_param MAGE_RUN_CODE $magecode;
-<% unless $hostname =~ /^web\d+-dc0$/ -%>
+<% unless hostname =~ /^web\d+-dc0$/ -%>
 		fastcgi_param MAGE_IS_DEVELOPER_MODE true;
 <% end -%>
 

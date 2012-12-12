@@ -29,11 +29,11 @@
     <global>
         <cache>
             <backend>Cm_Cache_Backend_Redis</backend>
-            <id_prefix>cache_</id_prefix>
+            <id_prefix>tmpcache_</id_prefix>
             <backend_options>
                 <server><%= redis_obj_host %></server>
                 <port><%= redis_obj_port %></port>
-                <database>totsy</database>
+                <database>totsytmp</database>
                 <force_standalone>0</force_standalone>
                 <automatic_cleaning_factor>0</automatic_cleaning_factor>
                 <compress_data>6</compress_data>
@@ -44,11 +44,11 @@
         </cache>
         <full_page_cache>
             <backend>Cm_Cache_Backend_Redis</backend>
- 	    <id_prefix>fpc_</id_prefix>
+ 	    <id_prefix>tmpfpc_</id_prefix>
             <backend_options>
                 <server><%= redis_obj_host %></server>
                 <port><%= redis_obj_port %></port>
-                <database>totsy</database>
+                <database>totsytmp</database>
                 <force_standalone>0</force_standalone>
                 <automatic_cleaning_factor>0</automatic_cleaning_factor>
                 <compress_data>6</compress_data>

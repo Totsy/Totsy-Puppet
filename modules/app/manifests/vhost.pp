@@ -20,18 +20,8 @@ define app::vhost ($site = $title, $options = {}, $port = 80) {
     $servername = $documentroot
   }
 
-  if 'release_prune' in $options {
-    cron { "release-prune-$site":
-      command => "/bin/find /var/www/$servername/releases -mindepth 1 -maxdepth 1 -type d -mtime +4 ! -wholename \"$(readlink -f /var/www/$servername/current)\" -exec rm -rf {} +",
-      user    => release,
-      hour    => 0,
-      minute  => 0,
-      require => User['release']
-    }
-  }
-
   if $site == 'totsy' {
-    if 'disablecron' in $options {
+    if 'disablecron' in $options or $environment in [ 'dev', 'stg' ] or $hostname != 'web7-dc0'{
       $cronensure = 'absent'
     } else {
       $cronensure = 'present'
@@ -56,6 +46,22 @@ define app::vhost ($site = $title, $options = {}, $port = 80) {
     }
   }
 
+  if $site == 'api' {
+    file { "/etc/totsy-api":
+      ensure => directory,
+      owner  => 'root',
+      group  => 'root',
+    }
+
+    file { "/etc/totsy-api/logger.yaml":
+      source  => "puppet:///modules/app/totsy-api-logger.yaml",
+      owner   => 'root',
+      group   => 'root',
+      mode    => '644',
+      require => File['/etc/totsy-api']
+    }
+  }
+
   file {
     "/etc/nginx/sites-available/$site":
       content => template("app/vhost/$site.conf.erb"),
@@ -72,11 +78,23 @@ define app::vhost ($site = $title, $options = {}, $port = 80) {
 
     "/var/www/$servername":
       ensure  => directory,
-      owner   => 'release',
       group   => 'nginx',
-      mode    => 'g+w',
-      require => Package['nginx'],
-      recurse => true
+      mode    => '0755',
+      require => Package['nginx']
+  }
+
+  if $hostname =~ /^web\d+-dc0$/ {
+    File["/var/www/$servername"] {
+      owner => 'release'
+    }
+
+    cron { "release-prune-$site":
+      command => "/bin/find /var/www/$servername/releases -mindepth 1 -maxdepth 1 -type d -mtime +4 ! -wholename \"$(readlink -f /var/www/$servername/current)\" -exec rm -rf {} +",
+      user    => 'release',
+      hour    => 0,
+      minute  => 0,
+      require => User['release']
+    }
   }
 }
 

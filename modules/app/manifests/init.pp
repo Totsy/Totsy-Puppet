@@ -22,6 +22,21 @@ class app {
     '/etc/magento'
   ]
 
+  case $environment {
+    /^(dev|stg)$/: {
+      $redis_obj_host = '127.0.0.1'
+      $redis_obj_port = '6379'
+      $redis_session_host = '127.0.0.1'
+      $redis_session_port = '6379'
+    }
+    default: {
+      $redis_obj_host = '10.68.1.97'
+      $redis_obj_port = '6379'
+      $redis_session_host = '10.68.1.97'
+      $redis_session_port = '6380'
+    }
+  }
+
   file { $sitedirs:
     ensure  => directory,
     owner   => 'nginx',
@@ -31,15 +46,16 @@ class app {
   }
 
   package { $phpcore:
-    ensure => '5.3.17-2.el6.remi',
+    ensure  => '5.3.17-2.el6.remi'
   }
 
-  package { 'php-pecl-apc': ensure => '3.1.13-2.el6.remi' }
-  package { 'php-redis':    ensure => '2.2.2-5.git6f7087f.el6' }
+  package {
+    'php-pecl-apc': ensure => '3.1.13-2.el6.remi';
+    'php-redis':    ensure => '2.2.2-5.git6f7087f.el6';
 
-  package { 'nfs-utils': ensure => latest }
-
-  package { 'git': ensure => latest }
+    'nfs-utils': ensure => latest;
+    'git':       ensure => latest
+  }
  
   file { '/etc/php.ini':
     source  => 'puppet:///modules/app/php.ini',
@@ -103,8 +119,8 @@ class app {
     require => File[$sitedirs]
   }
 
-  file { '/etc/magento/enterprise.xml':
-    content => template('app/enterprise.xml.erb'),
+  file { '/etc/magento/local-alt.xml':
+    content => template('app/local-alt.xml.erb'),
     owner   => 'nobody',
     group   => 'nobody',
     mode    => '775',
@@ -127,18 +143,26 @@ class app {
     require    => Package[$phpcore]
   }
 
-  file { '/srv/cache':
+  file { '/srv/share':
     ensure => directory
   }
 
-  mount { '/srv/cache':
-    ensure   => mounted,
-    device   => '10.68.1.97:/nfsshare/cache',
-    fstype   => 'nfs',
-    options  => 'ro',
-    remounts => true,
-    atboot   => true,
-    require  => [ File['/srv/cache'], Package['nfs-utils'] ]
+  if $hostname != 'web7-dc0' {
+    if $environment == 'production' {
+        $mountopts = 'rw'
+    } else {
+        $mountopts = 'ro'
+    }
+
+    mount { '/srv/share':
+      ensure   => mounted,
+      device   => '10.68.1.123:/srv/share',
+      fstype   => 'nfs',
+      options  => $mountopts,
+      remounts => true,
+      atboot   => true,
+      require  => [ File['/srv/share'], Package['nfs-utils'] ]
+    }
   }
 
   # Install PHP Composer
