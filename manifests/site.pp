@@ -42,18 +42,25 @@ node /^web\d+-dc0$/ inherits baseweb {
     app::vhost { 'totsy': options => { 'servername' => 'staging.totsy.com', 'release_prune' => true } }
     app::vhost { 'api': options => { 'servername' => 'api-staging.totsy.com', 'release_prune' => true } }
     host { 'db_rw': ensure => present, ip => '10.68.1.67', name => 'db_read', host_aliases => 'db_write' }
-
-    $env = 'stg'
   } else { # production web servers
     app::vhost { [ 'totsy', 'api' ]:  }
-    host { 'db_rw': ensure => present, ip => '10.68.1.65', name => 'db_read', host_aliases => 'db_write' }
+    host { 'db_write': ensure => present, ip => '10.68.1.65' }
 
-    $env = 'prd'
+    if $hostname in [ 'web0-dc0', 'web1-dc0', 'web2-dc0' ] {
+      host { 'db_read': ensure => present, ip => '10.68.1.66', name => 'db_read' }
+    } else {
+      host { 'db_read': ensure => present, ip => '10.68.1.65', name => 'db_read' }
+    }
   }
 
   $scout_key = $hostname ? {
     'web9-dc0' => '4903064d-2f06-4a3d-9cec-3c4536f89527',
     'web7-dc0' => 'c6fe7a7c-77a4-40a4-8027-c312f760e8ca',
+    'web4-dc0' => 'd457880f-e4f1-482b-a9cd-29ac0d89ccd4',
+    'web3-dc0' => '2d2abd27-219d-4825-8e93-c51aea54e703',
+    'web2-dc0' => 'bf7fcb60-d138-4971-9cd4-05b2ffc44f99',
+    'web1-dc0' => '3a4aaefd-6a9d-47cf-892f-ebcfb79602bb',
+    'web0-dc0' => '9f29b420-0588-47e0-9647-da4b25b957a9',
     default    => '0'
   }
 
@@ -61,7 +68,7 @@ node /^web\d+-dc0$/ inherits baseweb {
     include scout
   }
 
-  user::person { [ 'release', 'kdowley', 'skharlamov', 'tbhuvanendran', 'chriscrown', 'troyer' ]: }
+  user::person { [ 'release', 'kdowley', 'skharlamov', 'tbhuvanendran', 'cdavidowski', 'troyer' ]: }
 }
 
 # Tharsan Bhuvanendran
@@ -71,7 +78,7 @@ node 'db-tharsan' inherits devdb {
 node 'web-tharsan' inherits devweb {
   user::person { 'tbhuvanendran': }
   app::vhost { 'totsy': }
-  host { 'db_rw': ensure => present, ip => '10.68.18.171', name => 'db_read', host_aliases => 'db_write' }
+  host { 'db_rw': ensure => present, ip => '10.68.18.196', name => 'db_read', host_aliases => 'db_write' }
 }
 
 # Eric Smith
