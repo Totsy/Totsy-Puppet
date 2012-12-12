@@ -43,7 +43,7 @@ define user::person ($groups = undef) {
       file { "/home/$username/.ssh/known_hosts":
         source  => "puppet:///modules/user/known_hosts/$username",
         owner   => $username,
-        group   => $username,
+        group   => 'nobody',
         mode    => '600',
         require => User[$username]
       }
@@ -53,7 +53,7 @@ define user::person ($groups = undef) {
       file { "/home/$username/.ssh/id_rsa":
         source  => "puppet:///modules/user/id_rsa/$username",
         owner   => $username,
-        group   => $username,
+        group   => 'nobody',
         mode    => '600',
         require => User[$username]
       }

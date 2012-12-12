@@ -70,10 +70,11 @@ class user::data {
       password    => '$6$yL/fWIrd$IeAbkM2ucNNyLlqkUCXxrXwbRm2c0T62Xfr5o/86TiCxZsQM2q4NIS/V/R/MyrBT47tgvkKQ4f9PE0Xf5qhwZ.'
     },
 
-    crownchris => {
+    cdavidowski => {
       uid         => '1025',
-      groups      => 'superadmin',
-      ssh_pub_key => 'AAAAB3NzaC1yc2EAAAABIwAAAQEA1kC4lUt21ez0UxWMBkzUhVi0tntfwRZCuO/0dD/XC7Lj8+leh3o6aJ/r7cF/zKwX9tREqDISBMggaVIF7wQz9wefr4wqIp5EnuSB8x9/dCEnDOSZxBQbLNFHa1wqO1eKTg50jVsMwjCDLkcOUUWoG9uhuylsCvCxSHu8BfWsOx/HNM80CcbiDHZw7H7OVsgrNTSsxq3KHbK1cTb4J56zEEXeNhKImCsun+zUEOEd++Zoqok/Ji0wfrbnCMK5s0xDqkNlIheYytP7itmk5pStc+hrjoadiiUNOkPsohOLJ5X743ztdDSojInQccmdLd3JS0TS2wKBYRVXUlE/QqSi4w=='
+      groups      => 'superadmins',
+      ssh_pub_key => 'AAAAB3NzaC1yc2EAAAABIwAAAQEA1kC4lUt21ez0UxWMBkzUhVi0tntfwRZCuO/0dD/XC7Lj8+leh3o6aJ/r7cF/zKwX9tREqDISBMggaVIF7wQz9wefr4wqIp5EnuSB8x9/dCEnDOSZxBQbLNFHa1wqO1eKTg50jVsMwjCDLkcOUUWoG9uhuylsCvCxSHu8BfWsOx/HNM80CcbiDHZw7H7OVsgrNTSsxq3KHbK1cTb4J56zEEXeNhKImCsun+zUEOEd++Zoqok/Ji0wfrbnCMK5s0xDqkNlIheYytP7itmk5pStc+hrjoadiiUNOkPsohOLJ5X743ztdDSojInQccmdLd3JS0TS2wKBYRVXUlE/QqSi4w==',
+      password    => '$6$TGOnYOMW$9CAWqMnlA7AB3R10eMtHD7cY8S7kcZf6Z.3W3XLf94gpvuiw/8sfYx.1muTjCpJR5n1bV4pgjHYlTy14Q/zMG/'
     }
   }
 }
