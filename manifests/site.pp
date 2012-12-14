@@ -39,17 +39,22 @@ node /^web\d+-dc0$/ inherits baseweb {
   if $hostname in [ 'web9-dc0' ] { # staging web servers
     include cache
 
-    app::vhost { 'totsy': options => { 'servername' => 'staging.totsy.com', 'release_prune' => true } }
-    app::vhost { 'api': options => { 'servername' => 'api-staging.totsy.com', 'release_prune' => true } }
+    app::vhost { 'totsy': options => { 'servername' => 'staging.totsy.com' } }
+    app::vhost { 'api': options => { 'servername' => 'api-staging.totsy.com' } }
     host { 'db_rw': ensure => present, ip => '10.68.1.67', name => 'db_read', host_aliases => 'db_write' }
   } else { # production web servers
     app::vhost { [ 'totsy', 'api' ]:  }
-    host { 'db_write': ensure => present, ip => '10.68.1.65' }
+
+    host {
+      'service.myspeedtax.com': ensure => present, ip => '204.12.84.39';
+      'ics2ws.ic3.com':         ensure => present, ip => '66.185.180.169';
+      'db_write':               ensure => present, ip => '10.68.1.65';
+    }
 
     if $hostname in [ 'web0-dc0', 'web1-dc0', 'web2-dc0' ] {
-      host { 'db_read': ensure => present, ip => '10.68.1.66', name => 'db_read' }
+      host { 'db_read': ensure => present, ip => '10.68.1.66' }
     } else {
-      host { 'db_read': ensure => present, ip => '10.68.1.65', name => 'db_read' }
+      host { 'db_read': ensure => present, ip => '10.68.1.65' }
     }
   }
 
@@ -69,6 +74,11 @@ node /^web\d+-dc0$/ inherits baseweb {
   }
 
   user::person { [ 'release', 'kdowley', 'skharlamov', 'tbhuvanendran', 'cdavidowski', 'troyer' ]: }
+}
+
+# Jenkins continuous integration server
+node 'jenkins' inherits default {
+  user::person { 'tbhuvanendran': }
 }
 
 # Tharsan Bhuvanendran
@@ -129,5 +139,25 @@ node 'web-lawren' inherits devweb {
   user::person { 'lhanson': groups => 'superadmins' }
   app::vhost { 'totsy': }
   host { 'db_rw': ensure => present, ip => '10.68.18.192', name => 'db_read', host_aliases => 'db_write' }
+}
+
+# Chris Davidowski
+node 'db-chris' inherits devdb {
+  user::person { 'cdavidowski': groups => 'superadmins' }
+}
+node 'web-chris' inherits devweb {
+  user::person { 'cdavidowski': groups => 'superadmins' }
+  app::vhost { 'totsy': }
+  host { 'db_rw': ensure => present, ip => '10.68.18.197', name => 'db_read', host_aliases => 'db_write' }
+}
+
+# Jason Grim
+node 'db-jason' inherits devdb {
+  user::person { 'jgrim': groups => 'superadmins' }
+}
+node 'web-jason' inherits devweb {
+  user::person { 'jgrim': groups => 'superadmins' }
+  app::vhost { 'totsy': }
+  host { 'db_rw': ensure => present, ip => '10.68.18.198', name => 'db_read', host_aliases => 'db_write' }
 }
 

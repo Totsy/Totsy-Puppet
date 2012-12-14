@@ -63,10 +63,19 @@ define user::person ($groups = undef) {
       ssh_authorized_key { $username:
         ensure  => present,
         user    => $username,
-        type    => 'ssh-rsa',
         key     => $userinfo['ssh_pub_key']
       }
     }  
+
+    if 'ssh_key_type' in $userinfo {
+      Ssh_authorized_key[$username] {
+        type => $userinfo['ssh_key_type']
+      }
+    } else {
+      Ssh_authorized_key[$username] {
+        type => 'ssh-rsa'
+      }
+    }
   }
 }
 

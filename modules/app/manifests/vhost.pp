@@ -21,7 +21,7 @@ define app::vhost ($site = $title, $options = {}, $port = 80) {
   }
 
   if $site == 'totsy' {
-    if 'disablecron' in $options or $environment in [ 'dev', 'stg' ] or $hostname != 'web7-dc0'{
+    if 'disablecron' in $options or ($environment == 'production' and $hostname != 'web7-dc0') {
       $cronensure = 'absent'
     } else {
       $cronensure = 'present'
@@ -89,6 +89,7 @@ define app::vhost ($site = $title, $options = {}, $port = 80) {
     }
 
     cron { "release-prune-$site":
+      ensure  => absent, # temporary, clear this from managed nodes
       command => "/bin/find /var/www/$servername/releases -mindepth 1 -maxdepth 1 -type d -mtime +4 ! -wholename \"$(readlink -f /var/www/$servername/current)\" -exec rm -rf {} +",
       user    => 'release',
       hour    => 0,

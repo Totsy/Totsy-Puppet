@@ -51,7 +51,7 @@ class app {
 
   package {
     'php-pecl-apc': ensure => '3.1.13-2.el6.remi';
-    'php-redis':    ensure => '2.2.2-5.git6f7087f.el6';
+    'php-redis':    ensure => '2.2.2-1.el6.remi';
 
     'nfs-utils': ensure => latest;
     'git':       ensure => latest

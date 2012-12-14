@@ -75,6 +75,13 @@ class user::data {
       groups      => 'superadmins',
       ssh_pub_key => 'AAAAB3NzaC1yc2EAAAABIwAAAQEA1kC4lUt21ez0UxWMBkzUhVi0tntfwRZCuO/0dD/XC7Lj8+leh3o6aJ/r7cF/zKwX9tREqDISBMggaVIF7wQz9wefr4wqIp5EnuSB8x9/dCEnDOSZxBQbLNFHa1wqO1eKTg50jVsMwjCDLkcOUUWoG9uhuylsCvCxSHu8BfWsOx/HNM80CcbiDHZw7H7OVsgrNTSsxq3KHbK1cTb4J56zEEXeNhKImCsun+zUEOEd++Zoqok/Ji0wfrbnCMK5s0xDqkNlIheYytP7itmk5pStc+hrjoadiiUNOkPsohOLJ5X743ztdDSojInQccmdLd3JS0TS2wKBYRVXUlE/QqSi4w==',
       password    => '$6$TGOnYOMW$9CAWqMnlA7AB3R10eMtHD7cY8S7kcZf6Z.3W3XLf94gpvuiw/8sfYx.1muTjCpJR5n1bV4pgjHYlTy14Q/zMG/'
+    },
+
+    jgrim => {
+      uid          => '1027',
+      ssh_key_type => 'ssh-dss',
+      ssh_pub_key  => 'AAAAB3NzaC1kc3MAAACBAKEzPD45bkA7VxaxQkDCsnFQC9fX+lo5V+qs5qLowxRYi/kCMLdyEvRkhOvwp6ehy+fp0TfEqQs6qkNSmXJve48mcEWIeRPHM3GqSHux2Fa6MpTSO/nzLRkrLHAxJDMxqePMJrgstQAGrvDlAMlTjeWbhhehEzkb5COusJTXn1vTAAAAFQCkq0b17U1nHMlezWgKLNxxDGrnIQAAAIByBjgkyj1UZBLcgYnmOYdf+L4FalFeWbPILVeLKJX0quh2g6h+l4o7ogsctwdGmDyyf63nogk3eKNasuxA0L2yA5n6PmKY1Ec3EW7VzZNtVgcJ9aHLG9NML6eFxtP8cmm5AbVhLSlLG6Pc9GlQmvK7dg26rywfuocp+n+7BNmJ5QAAAIEAixRPOWctQ0tz7qX8j0ilGAcnY3Y6APvvd7V1ZiXyIY6RzwdsGolEmCWEfnImvPQGskIT4VPUoyDGvC8oein7hUZ+6rGWiW8450v2uMjz2lGz85mWq66BAK15qz7eZHX3+7bv17/Zyh4FmXCyZApCXX6TSyC3yRkjvdwKRbDY3fI=',
+      password     => '$6$cO11UG5N$1x9Ii4k76.OA6Z4q.zmoc.Mop4mDI1xSslnqRtUDuBdzwAoSBTCJfXm5nrTlJ6.jPMLG5TBjS3ulJgizHrqGb/'
     }
   }
 }
