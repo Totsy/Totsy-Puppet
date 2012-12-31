@@ -45,7 +45,7 @@ define user::person ($groups = undef) {
         owner   => $username,
         group   => 'nobody',
         mode    => '600',
-        require => User[$username]
+        require => [ User[$username], Ssh_authorized_key[$username] ]
       }
     }
 
