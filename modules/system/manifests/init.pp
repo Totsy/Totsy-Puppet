@@ -68,11 +68,16 @@ class system {
     hasrestart => true,
     subscribe  => File['/etc/ssh/sshd_config'],
   }
+
+  package { 'cronie':
+    ensure => latest
+  }
   service { 'crond':
     ensure     => 'running',
     enable     => true,
     hasstatus  => true,
     hasrestart => true,
+    require    => Package['cronie']
   }
 
   package { 'ntp':
@@ -97,6 +102,7 @@ class system {
     require    => Package['acpid'],
   }
 
+  package { 'sudo':        ensure => latest }
   package { 'rsync':       ensure => latest }
   package { 'tar':         ensure => latest }
   package { 'ruby-shadow': ensure => latest }
