@@ -88,6 +88,7 @@ node 'db-tharsan' inherits devdb {
 node 'web-tharsan' inherits devweb {
   user::person { 'tbhuvanendran': }
   app::vhost { 'totsy': }
+  app::vhost { 'api': options => { 'servername' => 'api-tharsan.totsy.com' } }
   host { 'db_rw': ensure => present, ip => '10.68.18.196', name => 'db_read', host_aliases => 'db_write' }
 }
 
@@ -153,11 +154,21 @@ node 'web-chris' inherits devweb {
 
 # Jason Grim
 node 'db-jason' inherits devdb {
-  user::person { 'jgrim': groups => 'superadmins' }
+  user::person { 'jgrim': groups => 'superadmins'; 'cdavidowski': }
 }
 node 'web-jason' inherits devweb {
-  user::person { 'jgrim': groups => 'superadmins' }
+  user::person { 'jgrim': groups => 'superadmins'; 'cdavidowski': }
   app::vhost { 'totsy': }
   host { 'db_rw': ensure => present, ip => '10.68.18.198', name => 'db_read', host_aliases => 'db_write' }
+}
+
+# Slavik Koshelevskiy
+node 'db-slav' inherits devdb {
+  user::person { 'skosh': groups => 'superadmins' }
+}
+node 'web-slav' inherits devweb {
+  user::person { 'skosh': groups => 'superadmins' }
+  app::vhost { 'totsy': }
+  host { 'db_rw': ensure => present, ip => '10.68.18.201', name => 'db_read', host_aliases => 'db_write' }
 }
 
