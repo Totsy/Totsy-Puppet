@@ -54,7 +54,7 @@ define app::vhost ($site = $title, $options = {}, $port = 80) {
     }
 
     file { "/etc/totsy-api/logger.yaml":
-      source  => "puppet:///modules/app/totsy-api-logger.yaml",
+      content => template("app/logger.yaml.erb"),
       owner   => 'root',
       group   => 'root',
       mode    => '644',

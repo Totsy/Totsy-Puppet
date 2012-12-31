@@ -50,8 +50,9 @@ class app {
   }
 
   package {
-    'php-pecl-apc': ensure => '3.1.13-2.el6.remi';
-    'php-redis':    ensure => '2.2.2-1.el6.remi';
+    'php-pecl-apc':      ensure => '3.1.13-2.el6.remi';
+    'php-pecl-memcache': ensure => '3.0.7-4.el6.remi';
+    'php-redis':         ensure => '2.2.2-5.git6f7087f.el6';
 
     'nfs-utils': ensure => latest;
     'git':       ensure => latest
@@ -115,15 +116,15 @@ class app {
     content => template('app/local.xml.erb'),
     owner   => 'nobody',
     group   => 'nobody',
-    mode    => '775',
+    mode    => '664',
     require => File[$sitedirs]
   }
 
-  file { '/etc/magento/local-alt.xml':
-    content => template('app/local-alt.xml.erb'),
+  file { '/etc/magento/local.twolevels.xml':
+    content => template('app/local.twolevels.xml.erb'),
     owner   => 'nobody',
     group   => 'nobody',
-    mode    => '775',
+    mode    => '664',
     require => File[$sitedirs]
   }
 

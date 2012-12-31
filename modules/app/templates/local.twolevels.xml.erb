@@ -28,34 +28,68 @@
 <config>
     <global>
         <cache>
-            <backend>Cm_Cache_Backend_Redis</backend>
-            <id_prefix>tmpcache_</id_prefix>
-            <backend_options>
+            <backend><![CDATA[memcached]]></backend>
+            <slow_backend>Cm_Cache_Backend_Redis</slow_backend>
+            <default_priority>10</default_priority>
+            <backend_options><![CDATA[Memcached]]></backend_options>
+            <auto_refresh_fast_cache>0</auto_refresh_fast_cache>
+            <id_prefix>cache_</id_prefix>
+            <memcached>
+                <servers>
+                    <server>
+                        <host><![CDATA[<%= redis_obj_host %>]]></host>
+                        <port><![CDATA[11211]]></port>
+                        <persistent><![CDATA[0]]></persistent>
+                    </server>
+                </servers>
+                <compression><![CDATA[0]]></compression>
+                <cache_dir><![CDATA[]]></cache_dir>
+                <hashed_directory_level><![CDATA[]]></hashed_directory_level>
+                <hashed_directory_umask><![CDATA[]]></hashed_directory_umask>
+                <file_name_prefix><![CDATA[]]></file_name_prefix>
+            </memcached>
+            <slow_backend_options>
                 <server><%= redis_obj_host %></server>
                 <port><%= redis_obj_port %></port>
-                <database>totsytmp</database>
+                <database>totsy</database>
                 <force_standalone>0</force_standalone>
                 <automatic_cleaning_factor>0</automatic_cleaning_factor>
                 <compress_data>6</compress_data>
                 <compress_tags>0</compress_tags>
                 <compress_threshold>20480</compress_threshold>
                 <compression_lib>gzip</compression_lib>
-            </backend_options>
+            </slow_backend_options>
         </cache>
         <full_page_cache>
-            <backend>Cm_Cache_Backend_Redis</backend>
- 	    <id_prefix>tmpfpc_</id_prefix>
-            <backend_options>
+            <backend><![CDATA[memcached]]></backend>
+            <slow_backend>Cm_Cache_Backend_Redis</slow_backend>
+            <default_priority>10</default_priority>
+            <id_prefix>fpc_</id_prefix>
+            <memcached>
+                <servers>
+                    <server>
+                        <host><![CDATA[<%= redis_obj_host %>]]></host>
+                        <port><![CDATA[11211]]></port>
+                        <persistent><![CDATA[0]]></persistent>
+                    </server>
+                </servers>
+                <compression><![CDATA[0]]></compression>
+                <cache_dir><![CDATA[]]></cache_dir>
+                <hashed_directory_level><![CDATA[]]></hashed_directory_level>
+                <hashed_directory_umask><![CDATA[]]></hashed_directory_umask>
+                <file_name_prefix><![CDATA[]]></file_name_prefix>
+            </memcached>
+            <slow_backend_options>
                 <server><%= redis_obj_host %></server>
                 <port><%= redis_obj_port %></port>
-                <database>totsytmp</database>
+                <database>totsy</database>
                 <force_standalone>0</force_standalone>
                 <automatic_cleaning_factor>0</automatic_cleaning_factor>
                 <compress_data>6</compress_data>
                 <compress_tags>0</compress_tags>
                 <compress_threshold>20480</compress_threshold>
                 <compression_lib>gzip</compression_lib>
-            </backend_options>
+            </slow_backend_options>
         </full_page_cache>
 	<install>
             <date><![CDATA[Mon, 14 May 2012 16:47:16 +0000]]></date>

@@ -33,8 +33,11 @@
             <backend_options>
                 <server><%= redis_obj_host %></server>
                 <port><%= redis_obj_port %></port>
-                <database>totsy</database>
+                <persistent>obj-cache</persistent>
+                <database>0</database>
                 <force_standalone>0</force_standalone>
+                <connect_retries>1</connect_retries>
+                <read_timeout>10</read_timeout>
                 <automatic_cleaning_factor>0</automatic_cleaning_factor>
                 <compress_data>6</compress_data>
                 <compress_tags>0</compress_tags>
@@ -48,8 +51,10 @@
             <backend_options>
                 <server><%= redis_obj_host %></server>
                 <port><%= redis_obj_port %></port>
-                <database>totsy</database>
+                <persistent>fpc-cache</persistent>
+                <database>1</database>
                 <force_standalone>0</force_standalone>
+                <connect_retries>1</connect_retries>
                 <automatic_cleaning_factor>0</automatic_cleaning_factor>
                 <compress_data>6</compress_data>
                 <compress_tags>0</compress_tags>
@@ -108,10 +113,15 @@
         <redis_session>
             <host><%= redis_session_host %></host>
             <port><%= redis_session_port %></port>
+            <persistent>session-cache</persistent>
             <timeout>2.5</timeout>
             <db>1</db>
             <compression_threshold>20480</compression_threshold>
             <compression_lib>gzip</compression_lib>
+            <log_broken_locks>1</log_broken_locks>
+            <max_concurrency>6</max_concurrency>
+            <break_after_frontend>5</break_after_frontend>
+            <break_after_adminhtml>30</break_after_adminhtml>
         </redis_session>
     </global>
     <admin>

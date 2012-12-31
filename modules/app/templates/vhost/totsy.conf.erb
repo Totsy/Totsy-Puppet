@@ -13,7 +13,7 @@ map $http_user_agent $magecode {
 
 server {
 	listen <%= ('secure' == securestate) ? 443 : 80 %>;
-	server_name <%= servername %><%= ' ' + scope.function_regsubst(servername, 'www.', '') if 'www.totsy.com' == servername %><%= ' ' + scope.function_regsubst(servername, 'www', 'admin') if hostname == 'web7-dc0' %><%= ' ' + scope.function_regsubst(servername, 'www', 'admin1') if hostname == 'web7-dc0' %>;
+	server_name <%= servername %><%= ' ' + scope.function_regsubst(servername, 'www.', '') if 'www.totsy.com' == servername %><%= ' ' + scope.function_regsubst(servername, 'www', 'admin') if hostname == 'web7-dc0' %><%= ' ' + scope.function_regsubst(servername, 'www', 'admin1') if hostname == 'web7-dc0' %><%= ' ' + scope.function_regsubst(servername, 'www', 'static') if hostname == 'web7-dc0' %>;
 
 <% if ('secure' == securestate) -%>
 	#ssl on;
@@ -40,6 +40,9 @@ server {
 
 	# Try static files first
 	location ~ .(css|js|gif|jpg|jpeg|png)$ {
+		expires max;
+		add_header Cache-Control max-age=3600;
+		add_header Last-Modified "";
 		try_files $uri =404;
 	}
 

@@ -1,8 +1,10 @@
 - handler: file
   level: WARNING
-  filename: /var/www/api.totsy.com/current/log/rest-api.log
+  filename: ../log/rest-api.log
+<% if $environment != 'production' -%>
 - handler: mail
   level: CRITICAL
   recipient: tbhuvanendran@totsy.com
   sender: noreply-restapi@totsy.com
   subject: Totsy REST API Error
+<% end -%>

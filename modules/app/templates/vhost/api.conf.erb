@@ -6,14 +6,7 @@ else
     $mageroot = 'www.totsy.com'
 end
 
--%>
-
-map $http_user_agent $magecode {
-	default				"";
-	"~ (iPhone|Android|BlackBerry)"	mobile;
-}
-
-<% [ 'insecure', 'secure' ].each do |securestate| -%>
+[ 'insecure', 'secure' ].each do |securestate| -%>
 
 ###############################################################################
 #
@@ -37,6 +30,11 @@ server {
 
 	access_log /var/log/nginx/<%= servername %>-access.log common;
 	error_log  /var/log/nginx/<%= servername %>-errors.log warn;
+
+	location /doc {
+                root /var/www/<%= servername %>/current;
+                allow all;
+        }
 
 	location / {
 		include /etc/nginx/fastcgi_params;
