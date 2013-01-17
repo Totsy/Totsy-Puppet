@@ -87,15 +87,6 @@ define app::vhost ($site = $title, $options = {}, $port = 80) {
     File["/var/www/$servername"] {
       owner => 'release'
     }
-
-    cron { "release-prune-$site":
-      ensure  => absent, # temporary, clear this from managed nodes
-      command => "/bin/find /var/www/$servername/releases -mindepth 1 -maxdepth 1 -type d -mtime +4 ! -wholename \"$(readlink -f /var/www/$servername/current)\" -exec rm -rf {} +",
-      user    => 'release',
-      hour    => 0,
-      minute  => 0,
-      require => User['release']
-    }
   }
 }
 

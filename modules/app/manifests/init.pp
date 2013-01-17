@@ -128,6 +128,14 @@ class app {
     require => File[$sitedirs]
   }
 
+  file { '/etc/magento/local.xml.phpunit':
+    content => template('app/local.xml.phpunit.erb'),
+    owner   => 'nobody',
+    group   => 'nobody',
+    mode    => '664',
+    require => File[$sitedirs]
+  }
+
   file { '/usr/share/magento/magento-enterprise-1.11.1.tar.bz2':
     source  => 'puppet:///modules/app/magento-enterprise-1.11.1.tar.bz2',
     owner   => 'nobody',
