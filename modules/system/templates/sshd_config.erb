@@ -1,6 +1,16 @@
-Port 22
+<%
+
+ssh_port = 22
+ssh_root = "yes"
+if @hostname == 'mamasource'
+    ssh_port = 27182
+    ssh_root = "no"
+end
+
+%>
+Port <%= ssh_port %>
 SyslogFacility AUTHPRIV
-PermitRootLogin yes
+PermitRootLogin <%= ssh_root %>
 PubkeyAuthentication yes
 PasswordAuthentication yes
 ChallengeResponseAuthentication no

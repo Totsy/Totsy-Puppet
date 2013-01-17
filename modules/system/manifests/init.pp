@@ -55,7 +55,7 @@ class system {
   }
 
   file { '/etc/ssh/sshd_config':
-    source  => 'puppet:///modules/system/sshd_config',
+    content => template("system/sshd_config.erb"),
     ensure  => 'present',
     owner   => 'root',
     group   => 'root',
