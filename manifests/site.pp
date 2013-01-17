@@ -81,6 +81,21 @@ node 'jenkins' inherits default {
   user::person { 'tbhuvanendran': }
 }
 
+# Mamasource utilities
+node 'mamasource' inherits default {
+  user::person { [ 'tbhuvanendran', 'rminns', 'kdowley', 'jbogaty', 'mmsbackup' ]: }
+}
+
+# Beta
+node 'db-beta' inherits devdb {
+  user::person { [ 'cdavidowski', 'tbhuvanendran' ]: }
+}
+node 'web-beta' inherits devweb {
+  user::person { [ 'cdavidowski', 'tbhuvanendran' ]: }
+  app::vhost { 'totsy': }
+  host { 'db_rw': ensure => present, ip => '10.68.18.203', name => 'db_read', host_aliases => 'db_write' }
+}
+
 # Tharsan Bhuvanendran
 node 'db-tharsan' inherits devdb {
   user::person { 'tbhuvanendran': }

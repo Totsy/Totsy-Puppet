@@ -6,9 +6,10 @@ class user::data {
       name        => 'System Release User',
       uid         => 503,
       groups      => 'nginx',
-      ssh_pub_key => 'AAAAB3NzaC1yc2EAAAADAQABAAABAQD31uVd0ETse3bBSBWUhEVEB9FLG3feunkVrK+esKivEVpjzPWStGkDjDjH+n25goZ9HVOj7BOhXUDUzTk+LuQ0BVTngR6a5qfuuPxsiNAXCIxMPeHrHhngl9lawg6NzcwB1/LkkKEZLGciPgzb1h1nU2YduppePewDHYlSWKoNtxh1aWdwFsipDbXL/3/7KtWULzicAp0u14dCV7s04G/q+Nf5bEP2F/gPSFXMWOMU8N7vTS+XQwEn7Q8LETuAX1Jkz0h5v3ZxP2+6iF8bLD8tpiD69k7647+wPXAqOOv+n5eO/aIToUZjyqSmEMrL9H5F1urG3KIsSGVy7nYlFz4V',
-      known_hosts => true,
-      id_rsa      => true
+      ssh_pub_key => 'AAAAB3NzaC1yc2EAAAABIwAAAQEArWu1YeAzpMLDU51WOTe7zk3rkQjQBjot5qSgbxuWX2RBQ/qxXtdohMylXUXGxTNIjlWm+xtAQ0lm2M2BaIB0hUVPewECpi2afiTzpHC2L3qSXiW8f086gHojCt962qtdVfx3uuNYeqt+qxF2FRK0Zdxe77ZY4mhBOuoTb+XYMVODFy3cffQfrKo76ujJ+vwZcX1fHddSWG/yqJ84iR/wkQv7mlwtwocFmsK6lNv004KQnfQUx4J9iAIq0r5FnG1QpvQfxIKw6qEDmOeTxZCznyB2qaxn0g/sIuGo5VjzeIg1fQqZv1lBKUJ96bVMEaMoXkDjP8Y3Z1DRDaLQAIUrFQ==',
+#      ssh_pub_key => 'AAAAB3NzaC1yc2EAAAADAQABAAABAQD31uVd0ETse3bBSBWUhEVEB9FLG3feunkVrK+esKivEVpjzPWStGkDjDjH+n25goZ9HVOj7BOhXUDUzTk+LuQ0BVTngR6a5qfuuPxsiNAXCIxMPeHrHhngl9lawg6NzcwB1/LkkKEZLGciPgzb1h1nU2YduppePewDHYlSWKoNtxh1aWdwFsipDbXL/3/7KtWULzicAp0u14dCV7s04G/q+Nf5bEP2F/gPSFXMWOMU8N7vTS+XQwEn7Q8LETuAX1Jkz0h5v3ZxP2+6iF8bLD8tpiD69k7647+wPXAqOOv+n5eO/aIToUZjyqSmEMrL9H5F1urG3KIsSGVy7nYlFz4V',
+      id_rsa      => true,
+      known_hosts => true
     },
 
     tbhuvanendran => {
@@ -38,7 +39,7 @@ class user::data {
     esmith => {
       name        => 'Eric Smith',
       uid         => 1007,
-      ssh_pub_key => 'AAAAB3NzaC1yc2EAAAADAQABAAABAQDYSzGHqNDcD7lScKzheL06EyF8g5Gp4IHY9a0eCYDW38pr3kHQREFd7Tc//wMvzIHNApysgWMddlcvkY/b9Wx+d9UsGbnrK4rRjTJPAm7VhxP2yGWb4ZLyDE4DmbcUyvEe7JtHMf0VDSxz3hEgqAf0mko+T/J/cYJeWgjXKsMo7t2vtrQ1lYgzkZjuT56Cdb70cW8dmGRrABSEsZDIR2tOxzQAE+3fVCrWGDUZHa6cEHqFX5TnldP/11XPAgiTuPemA2fXCPd6raZmKynK9yJOLXKtv7lPdrrUB6sczh4oY09ydG2Tw9kQdA+RE7HKVwdSZUWz2bUybhsiwcnfCexP',
+      ssh_pub_key => 'AAAAB3NzaC1yc2EAAAADAQABAAABAQCw4Yo/FeVvE9Vy8B+84ovUeR+KE+GY9xe8Xa+KWJsU54ZdtD0aVBWchVZ6ECUQ2MtTM1n5TOmVXlSAh7HbLAiPL2XJmzOOWvcywpVGqOXZXr5pZub2hPFaTcKDqL5ZfajlM53UCJeHAzsXftTWCsXdrz4wgVta06my3x45r9Q/WKNn0z00mr0bEgXUIw/MxGidFqHLT239TU61JBzbuMjcfY4rYyvRnT4wX6phsXpypl9Vr+e1vboTYHMWyrmmunkh59IQOPk3RE+emiawmzCaAkMNNnOSGsr5O2itL5582ZwfvSicCmgPAEEBJzFsza0RjJ4oiH9LbyRylnbkaC1p',
       password => '$6$RwBTQ5xu$HSPlMd.hnAwxYL/M0jdnW/4zrX4l235hNR/kaY7RehgynCdJyCVbJqEYNRKgvVw5130zCdpovyHTzSNywQp8Z/'
     },
 
@@ -88,6 +89,18 @@ class user::data {
       uid         => '1005',
       ssh_pub_key => 'AAAAB3NzaC1yc2EAAAABIwAAAQEAuk1R+G/2CvEHGlyqXhpHFRbXScIO6aSJj55dUdHfD/z7lXOu7srzQAnh3NkdYNz0tqAdRHFik/SIaGizsYh1B+djtfTSosR99V8RsgkO47gSWsuIPoWjplcXrft1ebVDwfUkdD5/ZS6g5kZBgv83fGe47xlC8/CMQ1F0B68WiiVtu90wTUF2bzjpXTMqTt7YjxiZT2hgpui3G8ReMx8SUq3wLmr4AtsWGAQrUebC/qk0P7wPLst4GKaI71Nvvi11UUkqxiyqk8v7qIDxyCBgM334r/Ej4D95eC5ITFjoubbHH8ihxarUXqryQ6VMWHavx3y8fvZZIx6ElA44BIcLqQ==',
       password => '$6$4G1QrzHe$4o5C.jWke9Tg2L.dN86MWtNx3NLdZb095XSlPvRjyHwdA1Ti7OIx2IPbWMv9notLdENoUmcf75LbXtOGXSgZY1'
+    },
+
+    jbogaty => {
+      uid         => 1028,
+      ssh_pub_key => 'AAAAB3NzaC1yc2EAAAADAQABAAACAQDDSKQ7QJcvC1AVR3UJUTfQLigo4+hEaq1TpwQGrE2FtZjZbfzexgzaCOFs0i475BJ2PywLT/d1Fi/G/fFV5sxu64TZhRGzWHWcdzaWNcSjKV3Cz88DuiUKWY0uTdu1jctOrZvuJsz+QryB3+UJCeJHf/Pz/58gNyRwbX5rXEobRmG0BiRJHmbqdBcG90pbttWE6ixUyvLBcSh1yW96by5EZ0MnhF+D41gLC3WlVU+KjTkriSpQP86dpWUD5M76jEOHhSrbf7d/wzxcyj4cDOjwKFUQRlYOl3H4/YwMqyK8m6lbwx/YDpKFi5KaFYLTZru7LlZE/+S2wNqCD4204KS0rUBhb76YEzlX3wodTIEdAb4JUG9+AfWUUT4FIPOd822fVUSIBoV1DyhCQlsVjLzhKQ+chls+l6S05kIynFZQGfePMI9P2bq5oNpZq6zFz9FmAMCYyOW8yBPmuNt1FZZlJia9XaeX+VinOBOgLYu9OzQJVxmjtw73Vyf5pJuhGKfCoHqxshGPSY7i6mpkINzIBp+eGOawOMaSlTANv8DOdi0t+SkwM5QGcm03KfPPdE1onsfeHNZ2HIZIEteoca1/tu3odoeaMBJ3qtqkOQZ+sU9QWINqNR0J5/j571UvOlJDo2lLiaM5pXQDUwAxS5wCrLlVL27QLxPUqLMO6T8pLw==',
+      password    => '$6$UGlo.9zA$A5rdx/iWhKN54jpFe76lVxG2UlNQON0Y2lVCPwbfsCg18xR4lTq0z.6Etn4ajCFT2CB4ViBeyzmTglSktDRch/'
+    },
+
+    mmsbackup => {
+      uid          => 1029,
+      ssh_key_type => 'ssh-dss',
+      ssh_pub_key  => 'AAAAB3NzaC1kc3MAAACBAPua1tDNZfCU1YQ/ftzSqfaMMZ1qazFz9uitVrcB+2tfh9vIKR6mE33D7y51lXz3ABLqB8elGoDUynb7cNDeNseUJpSvzuLNAMOyKFrfkoQ1G+wl91/f67+cHf+mYMxRZs3KWMB2S81YGbn7UhbL969ajmpKRHhlkJrmwAXSri5BAAAAFQDIhMqhp5I8RFSsJWyiq+zSvqBMVQAAAIEAq/r/7g6WCai2eJSbyHW+d4DorPHKTZqmZqj1XY7mYEgUKyvu9lMSWGnjfztzReJobHFy1cnEzKx4hv4Rf441Davi4fGYJr+QFB9b3+ULJa35BEa5ZcZflauV7GRPz0TW0pa05l/uG5bVUID0vcspen9LV9+O8/N1puD+cAKan9MAAACALoe6z+HriIXHw1A0rH9OpwdiXGfd2D42vU9hW/zr0wIF1Qmudhn9j6LrJ5L+6riWbIMs7LN/yw93pBZHvOL7AfMgGmv6Hy3RM1JsMFOZcPOtxRy0yvhvtutqWBxQ8Tc+3xa78ayg3IgPv2CPqmoA0Wwj7xK/9j8mPxPqP6om2WM='
     }
   }
 }
