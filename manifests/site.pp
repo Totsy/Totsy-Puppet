@@ -88,10 +88,10 @@ node 'mamasource' inherits default {
 
 # Beta
 node 'db-beta' inherits devdb {
-  user::person { [ 'cdavidowski', 'tbhuvanendran' ]: }
+  user::person { [ 'cdavidowski', 'tbhuvanendran', 'troyer' ]: }
 }
 node 'web-beta' inherits devweb {
-  user::person { [ 'cdavidowski', 'tbhuvanendran' ]: }
+  user::person { [ 'cdavidowski', 'rstreet', 'tbhuvanendran' ]: }
   app::vhost { 'totsy': }
   host { 'db_rw': ensure => present, ip => '10.68.18.203', name => 'db_read', host_aliases => 'db_write' }
 }

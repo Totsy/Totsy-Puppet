@@ -78,6 +78,12 @@ class user::data {
       password    => '$6$TGOnYOMW$9CAWqMnlA7AB3R10eMtHD7cY8S7kcZf6Z.3W3XLf94gpvuiw/8sfYx.1muTjCpJR5n1bV4pgjHYlTy14Q/zMG/'
     },
 
+    rstreet => {
+      uid          => '1026',
+      ssh_pub_key  => 'AAAAB3NzaC1yc2EAAAABJQAAAIEAl2ZkL6lyYbjWSFRz7InaZFtEO1KyjojQKS4mWoKusvTWfYJApJa/o1KUpG336XZITKG6giumSBP9++/uyar4A8YQQF0kQQvdBomE9wd/+F8MJ2U89Wwgf4O/x8vUzjnva5XusAGY/FZssYioY15aB9sJAetMm6beqpjtMNRq6Rs=',
+      password     => ''
+    },
+
     jgrim => {
       uid          => '1027',
       ssh_key_type => 'ssh-dss',
