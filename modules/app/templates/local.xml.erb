@@ -28,7 +28,7 @@
 <config>
     <global>
         <cache>
-            <backend>Cm_Cache_Backend_Redis</backend>
+            <backend>Totsy_Cache_Backend_Redis</backend>
             <id_prefix>cache_</id_prefix>
             <backend_options>
                 <server><%= redis_obj_host %></server>
@@ -46,13 +46,13 @@
             </backend_options>
         </cache>
         <full_page_cache>
-            <backend>Cm_Cache_Backend_Redis</backend>
- 	    <id_prefix>fpc_</id_prefix>
+            <backend>Totsy_Cache_Backend_Redis</backend>
+            <id_prefix>cache_</id_prefix>
             <backend_options>
                 <server><%= redis_obj_host %></server>
                 <port><%= redis_obj_port %></port>
-                <persistent>fpc-cache</persistent>
-                <database>1</database>
+                <persistent>obj-cache</persistent>
+                <database>0</database>
                 <force_standalone>0</force_standalone>
                 <connect_retries>1</connect_retries>
                 <automatic_cleaning_factor>0</automatic_cleaning_factor>
@@ -133,4 +133,5 @@
             </adminhtml>
         </routers>
     </admin>
+    <environment><%= environment %></environment>
 </config>

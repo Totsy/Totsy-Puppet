@@ -29,10 +29,10 @@ define app::vhost ($site = $title, $options = {}, $port = 80) {
 
     cron { 'magento':
       ensure  => $cronensure,
-      command => "/usr/bin/php /var/www/$servername/current/cron.php",
+      command => "/usr/bin/php /var/www/$servername/current/cron.php >> /tmp/magentocron.log 2>&1",
       user    => 'nginx',
       hour    => '*',
-      minute  => '*/5',
+      minute  => '*',
       require => Package['nginx']
     }
 
