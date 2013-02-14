@@ -81,6 +81,11 @@ node 'jenkins' inherits default {
   user::person { 'tbhuvanendran': }
 }
 
+# Atlassian services
+node 'confluence', 'jira', 'db-services' {
+  user::person { 'jbogaty', 'kdowley', 'skharlamov': }
+}
+
 # Mamasource utilities
 node 'mamasource' inherits default {
   user::person { [ 'tbhuvanendran', 'rminns', 'kdowley', 'jbogaty', 'mmsbackup' ]: }
@@ -91,7 +96,7 @@ node 'db-beta' inherits devdb {
   user::person { [ 'cdavidowski', 'tbhuvanendran', 'troyer' ]: }
 }
 node 'web-beta' inherits devweb {
-  user::person { [ 'cdavidowski', 'rstreet', 'tbhuvanendran' ]: }
+  user::person { [ 'cdavidowski', 'rstreet', 'tbhuvanendran', 'troyer' ]: }
   app::vhost { 'totsy': }
   host { 'db_rw': ensure => present, ip => '10.68.18.203', name => 'db_read', host_aliases => 'db_write' }
 }
