@@ -145,6 +145,13 @@ class app {
     require => File[$sitedirs]
   }
 
+  file { '/usr/local/bin/git-precommit-chkdebug':
+    source => 'puppet:///modules/app/git-precommit-chkdebug',
+    owner  => 'root',
+    group  => 'root',
+    mode   => '775'
+  }
+
   service { 'php-fpm':
     ensure     => running,
     enable     => true,
