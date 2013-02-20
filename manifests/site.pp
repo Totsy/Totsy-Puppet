@@ -83,7 +83,8 @@ node 'jenkins' inherits default {
 
 # Atlassian services
 node 'confluence', 'jira', 'db-services' {
-  user::person { 'jbogaty', 'kdowley', 'skharlamov': }
+  include group
+  user::person { [ 'jbogaty', 'kdowley', 'skharlamov' ]: }
 }
 
 # Mamasource utilities
