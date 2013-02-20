@@ -1,5 +1,0 @@
-Puppet configs for Totsy infrastructure.
- - Users & sudo access
- - SSH keys
- - Default system configs
- - Firewall configuration
