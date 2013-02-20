@@ -52,6 +52,10 @@ server {
         }
 
 	location ~ \.php$ {
+<% if environment == 'dev' -%>
+		auth_basic "Totsy Development";
+		auth_basic_user_file /etc/magento/dev.htpasswd;
+<% end -%>
 		fastcgi_index index.php;
 		fastcgi_param HTTPS on;
 		fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
@@ -63,6 +67,10 @@ server {
 	}
 
 	location / {
+<% if environment == 'dev' -%>
+		auth_basic "Totsy Development";
+		auth_basic_user_file /etc/magento/dev.htpasswd;
+<% end -%>
 		include /etc/nginx/fastcgi_params;
 		fastcgi_param SCRIPT_FILENAME $document_root/index.php;
         	fastcgi_param SCRIPT_NAME /index.php;

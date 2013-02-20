@@ -46,13 +46,13 @@ class app {
   }
 
   package { $phpcore:
-    ensure  => '5.3.17-2.el6.remi'
+    ensure  => '5.3.20-13.el6.art'
   }
 
   package {
-    'php-pecl-apc':       ensure => '3.1.13-2.el6.remi';
-    'php-pecl-memcache':  ensure => '3.0.7-4.el6.remi';
-    'php-ioncube-loader': ensure => '4.2.2-1.el6.remi';
+    'php-pecl-apc':       ensure => '3.1.9-3.el6.art';
+    'php-pecl-memcache':  ensure => absent;
+    'php-ioncube-loader': ensure => '4.2.2-2.el6.art';
     'php-redis':          ensure => '2.2.2-5.git6f7087f.el6';
 
     'nfs-utils': ensure => latest;
@@ -143,6 +143,13 @@ class app {
     group   => 'nobody',
     mode    => '775',
     require => File[$sitedirs]
+  }
+
+  file { '/etc/magento/dev.htpasswd':
+    source => 'puppet:///modules/app/dev.htpasswd',
+    owner  => 'nginx',
+    group  => 'nginx',
+    mode   => '664'
   }
 
   file { '/usr/local/bin/git-precommit-chkdebug':
