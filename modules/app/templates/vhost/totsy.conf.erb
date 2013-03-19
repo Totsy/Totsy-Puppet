@@ -51,6 +51,16 @@ server {
                 deny all;
         }
 
+	# Disable access of dot files
+	location ~ /\. {
+		deny all;
+	}
+	
+	# Disable cgi-bin
+	location ~ /cgi-bin {
+		deny all;
+	}
+
 	location ~ \.php$ {
 <% if environment == 'dev' -%>
 		auth_basic "Totsy Development";
