@@ -94,6 +94,33 @@ class user::data {
       uid          => 1029,
       ssh_key_type => 'ssh-dss',
       ssh_pub_key  => 'AAAAB3NzaC1kc3MAAACBAPua1tDNZfCU1YQ/ftzSqfaMMZ1qazFz9uitVrcB+2tfh9vIKR6mE33D7y51lXz3ABLqB8elGoDUynb7cNDeNseUJpSvzuLNAMOyKFrfkoQ1G+wl91/f67+cHf+mYMxRZs3KWMB2S81YGbn7UhbL969ajmpKRHhlkJrmwAXSri5BAAAAFQDIhMqhp5I8RFSsJWyiq+zSvqBMVQAAAIEAq/r/7g6WCai2eJSbyHW+d4DorPHKTZqmZqj1XY7mYEgUKyvu9lMSWGnjfztzReJobHFy1cnEzKx4hv4Rf441Davi4fGYJr+QFB9b3+ULJa35BEa5ZcZflauV7GRPz0TW0pa05l/uG5bVUID0vcspen9LV9+O8/N1puD+cAKan9MAAACALoe6z+HriIXHw1A0rH9OpwdiXGfd2D42vU9hW/zr0wIF1Qmudhn9j6LrJ5L+6riWbIMs7LN/yw93pBZHvOL7AfMgGmv6Hy3RM1JsMFOZcPOtxRy0yvhvtutqWBxQ8Tc+3xa78ayg3IgPv2CPqmoA0Wwj7xK/9j8mPxPqP6om2WM='
+    },
+
+    jkaplan => {
+      uid          => 1030,
+      ssh_pub_key  => 'AAAAB3NzaC1yc2EAAAABIwAAAQEAnS5Ad8FzJpjKC3t0CucnVcCjyT7u2P6uMwgiBjF+85ta/GPDQdZkqa+8jJR/P0thF7NIZiyLkE3eRsOf/+yswsyg/lHF3suQeb9khFcw+z+P1G2hzdBswz4OHMdeHhbJ/BOtIkL347eFxHgzaM1ZzduIasImKD7SDiDRY0Qa3P9+3TcBHgDxUwCYM1Ffx+f80RNbVBxR7fvPQFCFVa4wbMWZLN+P0vqkIhwq1DH1Hzlgo9wDQ+BnT/yBrQ6DmS72nWaTSE//xxb+L4SHKqc4FLVKpFhx292NL90soq3lYR3ijPU80eoRO3iyAgbPo/PO/5Z/netBVcQ/ybSbi3/s9Q==',
+    },
+
+    jgordon => {
+      uid          => 1031,
+      ssh_pub_key  => 'AAAAB3NzaC1yc2EAAAADAQABAAABAQClY8TgdL9fRg4H1KYVUCIqOY+zI1AxklEP8YBHpJihe6R/lDOxS5ZUWIW1SIuBQDRzME4TCxS/1WlHjF1m63efatmudP97EGKiFUHDiWeKFWVyyXU6ZPKy7vAok98mnbhkK6bSHF5IGFqn87kw/9CeaYVJYygW/rZOnX85J+tA1XtXuO60fK+0jyG9F2pie33P0pfUMcQwK9+isGgHCWdYG2jJED8XFQJVQ8G7L7Yf9izhZxGKwh/rY38YyGhMq7gLFbp/M14zFIYaDXh2vCWAJKGX6iEXM80UqxW8m/z3mnrg8N6AglwkwHoqYMxjK4UZFh6OwAFZWfusOsqJLV+z',
+    },
+
+    atonns => {
+      uid          => 1033,
+      ssh_key_type => 'ssh-dss',
+      ssh_pub_key  => 'AAAAB3NzaC1kc3MAAACBALeCfGg8DWGrYX5vFSMl7/a+UDmrWPWV3qtlJBaS/CFH9zCaxq+4ncseNfUWto0Z3iCf7x6pO8+MSfCrqvnixqWyX5IM4lebS2KGqzr0neQtn0Dqvc1QNq43EIt+JvD+6lUAzYTXbuPnUIvuQyIbGQwmYj2OSnJkgui3c1KnYg99AAAAFQCdWygZtPlgOkDVvaF5D68euaT9IwAAAIB7zuz8oSj5d/Z49Ox4qvlmaqMQNUc61u0tl3fPRtv3m8Wh3BiWiWalOjyx70znrFDCMO6KyWht5Yzf4xlAg0y2yzYyQOB4tCU2TH+hZvPpdBHZTQBJpAbSZLcac/9KCcHU2kHEMiWaYK+cbpJY+Jkjf1n4i7wi9JQKczNJmjywPgAAAIANE3JtopJ9dwHY5p4lVWYWHjugKCXgmBtXPlNRgNFOLTwGrUBmpcBwl0A4C2B7ltcjSZkH1JmLJrPDce4gWOu1P3kN9OK/zcLWWWCTblo2fhHewLYBA9UAP5OhjceEWd5lpytY0cDJbr6v59F4FN6BGlJGEPqz3cRlGQ8P9kJlOA==',
+    },
+
+    lherold => {
+      uid          => 1034,
+      ssh_pub_key  => 'AAAAB3NzaC1yc2EAAAABIwAAAQEA5eczuXeovLWs/GBNcAzqgkpbHUHt1JGF6V78NHbFt4DC/AUyHeJr6uHZrzAQd9HUkdVvb268eWXJL/3Jw+1yiiGe69MvFi0Rg+IaLl1kQAGhQkNGbh8yF4WyKMAPaiCLg3MGynOT6P7AsyksehH23SQehK3hp8yHSn8FBwkedfh2h/V/jbSuThws7N2k3T9RQIIgXnBkJUaE0irWiKXahaZF42UrB9VY1SN7cIoLvwmmyuxGCQIamn2aukT6/2092buxxE0x81ZLUlPZXktG1S6y4gfn6HTsW4PLeK4YoDt0NfXn7ywFi3OIBPA3CfUWbfRsZcbLz9lymj2Ue85Vuw==',
+    },
+
+    zselby => {
+      uid          => 1035,
+      ssh_pub_key  => 'AAAAB3NzaC1yc2EAAAADAQABAAABAQDHRrgH62blvoa00lGAoNVIZgYTl46hBAHUbFyUnlI+cvM96UtiNkT1QSrzB6Bs0joWHDZXPTKmS7lOUPEiKrb+2DrnJmxBWfHxrCBxLYZtBC4XvJep+jyP8Lz2IRYs0sG+j1S9nPseFN9oqcGzQatkJGOXKmCvcCMVW6AtyIdnG3d3ebDQUeQULRTCipMwZPPlNTqo4sT6Bm/SW+8l2ZWO7mTt30dyWgGln/pCCAOYejU/YKhXury2kRWnWoNlphkbSiBVogwlTb9DUatFwpKOd8NFzWexwJJ8vkUzgS9sRIydeDNZ6du/KnySbrry0ZcGxuUAgbzBZQ2Gi4CAVTHz',
+      password     => '$6$QMcbTdeL$BkXSRLL6ClqSpH0Mv1dg78XfwTOcCDx.M8g3UpjKBDeuRUDZGLN0blih37daKZGUm89jWGm2F0fVB7C8lIk421'
     }
   }
 }
