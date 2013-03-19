@@ -87,6 +87,11 @@ node 'confluence', 'jira', 'db-services' {
   user::person { [ 'jbogaty', 'kdowley', 'skharlamov' ]: }
 }
 
+# Totsy Yum Repo and new Atlassian box
+node 'repo', 'atlassian' inherits default {
+  user::person { [ 'tbhuvanendran', 'rminns', 'kdowley', 'jbogaty', 'skharlamov' ]: }
+}
+
 # Mamasource utilities
 node 'mamasource' inherits default {
   user::person { [ 'tbhuvanendran', 'rminns', 'kdowley', 'jbogaty', 'mmsbackup' ]: }
@@ -171,6 +176,16 @@ node 'web-chris' inherits devweb {
   user::person { 'cdavidowski': groups => 'superadmins' }
   app::vhost { 'totsy': }
   host { 'db_rw': ensure => present, ip => '10.68.18.197', name => 'db_read', host_aliases => 'db_write' }
+}
+
+# Zach Selby
+node 'db-zach' inherits devdb {
+  user::person { [ 'cdavidowski', 'zselby' ]: groups => 'superadmins' }
+}
+node 'web-zach' inherits devweb {
+  user::person { [ 'cdavidowski', 'zselby' ]: groups => 'superadmins' }
+  app::vhost { 'totsy': }
+  host { 'db_rw': ensure => present, ip => '10.68.18.21', name => 'db_read', host_aliases => 'db_write' }
 }
 
 # Jason Grim
