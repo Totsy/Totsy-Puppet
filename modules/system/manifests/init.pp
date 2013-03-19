@@ -1,5 +1,12 @@
 # Generic system properties for all nodes
 class system {
+  file { '/etc/yum.conf':
+    source => 'puppet:///modules/system/yum.conf',
+    ensure => 'present',
+    owner  => 'root',
+    group  => 'root',
+    mode   => '0644',
+  }
 
   file { '/etc/bashrc':
     source  => 'puppet:///modules/system/bashrc',
@@ -108,7 +115,7 @@ class system {
   package { 'ruby-shadow': ensure => latest }
 
   yumrepo { 'totsyrepo':
-    baseurl  => 'http://master.totsy.net:18724/6/x86_64/',
+    baseurl  => 'http://repo.totsy.com/6/x86_64/',
     name     => 'totsy',
     descr    => 'Totsy Repository',
     enabled  => 1,

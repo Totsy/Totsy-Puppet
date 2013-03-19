@@ -68,20 +68,10 @@ $template GRAYLOG2,"<%%PRI%>1 %timegenerated:::date-rfc3339% %HOSTNAME% %syslogt
 $ActionForwardDefaultTemplate GRAYLOG2
 
 $ModLoad imfile.so
-$InputFileName /var/log/nginx/www.totsy.com-errors.log
+$InputFileName /var/log/nginx/<%= $approot %>-errors.log
 $InputFileTag nginx:
 $InputFileStateFile stat-nginx-error
-#$InputFileSeverity error
-$InputRunFileMonitor
-# Magento System log
-$InputFileName /var/www/<%= $approot %>/current/var/log/system.log
-$InputFileTag magento-system:
-$InputFileStateFile magento-system
-$InputRunFileMonitor
-# Magento Exception log
-$InputFileName /var/www/<%= $approot %>/current/var/log/exception.log
-$InputFileTag magento-exception:
-$InputFileStateFile magento-exception
+$InputFileSeverity error
 $InputRunFileMonitor
 
 # ### begin forwarding rule ###
