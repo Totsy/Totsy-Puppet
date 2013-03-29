@@ -46,6 +46,9 @@ class system {
 
   # Some core services
 
+  package { 'rsyslog':
+    ensure  => '5.8.10-6.el6'
+  }
   file { "/etc/rsyslog.conf":
     content => template("system/rsyslog.conf.erb"),
     ensure  => present,
