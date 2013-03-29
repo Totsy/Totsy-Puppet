@@ -1,6 +1,5 @@
-<% webname = scope.function_regsubst(@hostname, 'db-(.+)', '\1') %>
 #!/bin/bash
-
+<% webname = scope.function_regsubst(@hostname, 'db-(.+)', '\1') %>
 ###################
 #
 # totsydbsync
@@ -11,11 +10,20 @@
 #
 ###################
 
+CONFIG_BAK=
+
+# backup the current configuration
+mysqldump -u root magento core_config_data > /tmp/core_config_data.sql
+if [ $? -ne 0 ]; then
+	echo "Could not backup current core configuration data"
+else
+	CONFIG_BAK=/tmp/core_config_data.sql
+fi;
+
 # shutdown mysql server (if it's running)
 service mysql status > /dev/null
-if [ $? -eq 0 ]
-then
-    service mysql stop
+if [ $? -eq 0 ]; then
+	service mysql stop
 fi;
 
 # delete existing mysql data
@@ -23,31 +31,36 @@ rm -rf /var/lib/mysql/*
 
 # copy mysql data from remote data store
 rsync -Pavog 10.68.18.98::sanitizedsnapshot /var/lib/mysql/
-if [ $? -ne 0 ]
-then
-    echo "Failed copying mysql data from remote server!"
-    exit
+if [ $? -ne 0 ]; then
+	echo "Failed copying mysql data from remote server!"
+	exit 1
 fi;
 
 chown -R mysql:mysql /var/lib/mysql/
 
 # restart mysql server
 service mysql start
+if [ $? -ne 0 ]; then
+	echo "Failed starting mysql after copying!"
+	exit 1
+fi;
 
 # restore config data
-echo "
-UPDATE core_config_data SET value = '<%= webname %>-mama.totsy.com' WHERE config_id = 478;
-UPDATE core_config_data SET value = 'https://<%= webname %>.totsy.com/js/' WHERE config_id = 475;
-UPDATE core_config_data SET value = 'https://<%= webname %>.totsy.com/media/' WHERE config_id = 474;
-UPDATE core_config_data SET value = 'https://<%= webname %>.totsy.com/skin/' WHERE config_id = 473;
-UPDATE core_config_data SET value = 'https://<%= webname %>-mama.totsy.com/' WHERE config_id = 472;
-UPDATE core_config_data SET value = 'http://<%= webname %>.totsy.com/js/' WHERE config_id = 471;
-UPDATE core_config_data SET value = 'http://<%= webname %>.totsy.com/media/' WHERE config_id = 470;
-UPDATE core_config_data SET value = 'http://<%= webname %>.totsy.com/skin/' WHERE config_id = 469;
-UPDATE core_config_data SET value = 'http://<%= webname %>-mama.totsy.com/' WHERE config_id = 468;
-UPDATE core_config_data SET value = '<%= webname %>.totsy.com' WHERE config_id = 66;
-UPDATE core_config_data SET value = 'https://<%= webname %>.totsy.com/' WHERE config_id = 5;
-UPDATE core_config_data SET value = 'http://<%= webname %>.totsy.com/' WHERE config_id = 4;
-DELETE FROM core_config_data WHERE value LIKE '%staging%';
-" | mysql -uroot magento
+if [ -z "$CONFIG_BAK" ]; then
+	echo "
+		UPDATE core_config_data SET value = 'https://<%= webname %>.totsy.com/js/' WHERE config_id = 475;
+		UPDATE core_config_data SET value = 'https://<%= webname %>.totsy.com/media/' WHERE config_id = 474;
+		UPDATE core_config_data SET value = 'https://<%= webname %>.totsy.com/skin/' WHERE config_id = 473;
+		UPDATE core_config_data SET value = 'http://<%= webname %>.totsy.com/js/' WHERE config_id = 471;
+		UPDATE core_config_data SET value = 'http://<%= webname %>.totsy.com/media/' WHERE config_id = 470;
+		UPDATE core_config_data SET value = 'http://<%= webname %>.totsy.com/skin/' WHERE config_id = 469;
+		UPDATE core_config_data SET value = 'http://<%= webname %>-mama.totsy.com/' WHERE config_id = 468;
+		UPDATE core_config_data SET value = '<%= webname %>.totsy.com' WHERE config_id = 66;
+		UPDATE core_config_data SET value = 'https://<%= webname %>.totsy.com/' WHERE config_id = 5;
+		UPDATE core_config_data SET value = 'http://<%= webname %>.totsy.com/' WHERE config_id = 4;
+		DELETE FROM core_config_data WHERE value LIKE '%staging%';
+	" | mysql -uroot magento
+else
+	cat $CONFIG_BAK | mysql -uroot magento
+fi;
 
