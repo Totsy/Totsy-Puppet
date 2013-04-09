@@ -1,5 +1,5 @@
 server {
-    listen       80;
+    listen       <%= ('stg' == environment) ? 8080 : 80 %>;
     server_name  localhost;
 
     #charset koi8-r;

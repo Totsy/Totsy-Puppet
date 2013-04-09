@@ -18,7 +18,7 @@ class web {
   }
 
   file { '/etc/nginx/conf.d/default.conf':
-    source  => 'puppet:///modules/web/conf.d/default.conf',
+    content => template('web/conf.d/default.conf.erb'),
     owner   => 'nginx',
     group   => 'nginx',
     mode    => '604',
