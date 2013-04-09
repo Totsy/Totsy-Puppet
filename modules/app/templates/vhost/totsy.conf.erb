@@ -4,6 +4,7 @@ map $http_user_agent $magecode {
 }
 
 <% [ 'insecure', 'secure' ].each do |securestate| -%>
+<% $port = ('stg' == environment) ? 8080 : 80 -%>
 
 ###############################################################################
 #
@@ -12,7 +13,7 @@ map $http_user_agent $magecode {
 ###############################################################################
 
 server {
-	listen <%= ('secure' == securestate) ? 443 : 80 %>;
+	listen <%= ('secure' == securestate) ? 443 : $port %>;
 	server_name <%= servername %><%= ' ' + scope.function_regsubst(servername, 'www.', '') if 'www.totsy.com' == servername %><%= ' ' + scope.function_regsubst(servername, 'www', 'admin') if hostname == 'web7-dc0' %><%= ' ' + scope.function_regsubst(servername, 'www', 'admin1') if hostname == 'web7-dc0' %><%= ' ' + scope.function_regsubst(servername, 'www', 'static') if hostname == 'web7-dc0' %>;
 
 <% if ('secure' == securestate) -%>
@@ -28,7 +29,7 @@ server {
 	access_log /var/log/nginx/<%= servername %>-access.log;
 	error_log  /var/log/nginx/<%= servername %>-errors.log warn;
 
-#	rewrite ^/skin/m/([0-9]+)(/.*.(js|css))$ /lib/minify/m.php?f=$2&d=$1 last;
+	rewrite ^/skin/m/([0-9]+)(/.*.(js|css))$ /lib/minify/m.php?f=$2&d=$1 last;
 
         rewrite ^/invite/([^/\.]+)/$  https://<%= servername %>/invitation/customer_account/genericcreate/invitation/$1 permanent;
 
@@ -47,9 +48,16 @@ server {
 	}
 
 	# Protect internal resources
-	location ~ (/(app/|lib/|var/|shell/|includes/|tmp/)) {
-                deny all;
-        }
+        location /app/                { deny all; }
+        location /includes/           { deny all; }
+        location /lib/                { deny all; }
+        location /lib/minify/         { allow all; }  ## Deny is applied after rewrites so must specifically allow minify
+        location /media/downloadable/ { deny all; }
+        location /pkginfo/            { deny all; }
+        location /report/config.xml   { deny all; }
+        location /var/                { deny all; }
+	location /var/log/import_error { allow all; }
+        location /tmp/                { deny all; }
 
 	# Disable access of dot files
 	location ~ /\. {

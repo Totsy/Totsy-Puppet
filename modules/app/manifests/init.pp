@@ -53,7 +53,7 @@ class app {
     'php-pecl-apc':       ensure => '3.1.9-3.el6.art';
     'php-pecl-memcache':  ensure => absent;
     'php-ioncube-loader': ensure => '4.2.2-2.el6.art';
-    'php-redis':          ensure => '2.2.2-5.git6f7087f.el6';
+    'php-redis':          ensure => '2.2.2-1.el6.remi';
 
     'nfs-utils': ensure => latest;
     'git':       ensure => latest
@@ -78,7 +78,7 @@ class app {
   }
 
   file { '/etc/php-fpm.d/www.conf':
-    source  => 'puppet:///modules/app/php-fpm.d/www.conf',
+    content => template('app/php-fpm.d/www.conf.erb'),
     owner   => 'root',
     group   => 'root',
     mode    => '604',
@@ -121,16 +121,16 @@ class app {
     require => File[$sitedirs]
   }
 
-  file { '/etc/magento/local.twolevels.xml':
-    content => template('app/local.twolevels.xml.erb'),
+  file { '/etc/magento/local.xml.phpunit':
+    content => template('app/local.xml.phpunit.erb'),
     owner   => 'nobody',
     group   => 'nobody',
     mode    => '664',
     require => File[$sitedirs]
   }
 
-  file { '/etc/magento/local.xml.phpunit':
-    content => template('app/local.xml.phpunit.erb'),
+  file { '/etc/magento/litle_SDK_config.ini':
+    content => template('app/litle_SDK_config.ini.erb'),
     owner   => 'nobody',
     group   => 'nobody',
     mode    => '664',
