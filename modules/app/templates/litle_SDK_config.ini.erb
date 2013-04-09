@@ -1,0 +1,17 @@
+<%
+
+if $environment == 'production'
+  $subdomain = 'payments'
+else
+  $subdomain = 'cert'
+end
+
+-%>
+user =TOTSY
+password =certj2Nw
+currency_merchant_map ['DEFAULT'] =115300
+url =https://<%= $subdomain %>.litle.com/vap/communicator/online
+proxy =
+version = 8.13
+timeout =  65
+reportGroup = Default Report Group
