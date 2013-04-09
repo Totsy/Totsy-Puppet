@@ -122,6 +122,7 @@ class system {
     name     => 'totsy',
     descr    => 'Totsy Repository',
     enabled  => 1,
-    gpgcheck => 0
+    gpgcheck => 0,
+    protect  => 1
   }
 }
