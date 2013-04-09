@@ -2,7 +2,7 @@
 
 class cache {
   package { 'redis':
-    ensure  => '2.6.2-1.el6.remi',
+    ensure  => '2.6.11-1.el6.remi',
     require => Yumrepo['totsyrepo']
   }
 
