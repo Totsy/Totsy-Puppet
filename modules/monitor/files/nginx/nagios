@@ -1,0 +1,141 @@
+#
+# www.totsy.com
+#
+server {
+	listen 8080;
+	server_name nagios.totsy.com www.nagios.totsy.com;
+
+	root /var/www/nagios.totsy.com;
+	index index.php index.html;
+	fastcgi_index index.php;
+
+	access_log /var/log/nginx/nagios.totsy.com-access.log;
+	error_log  /var/log/nginx/nagios.totsy.com-errors.log debug;
+
+
+auth_basic            "Restricted Nagios Area!";
+auth_basic_user_file  /etc/nagios/htpasswd.users;
+
+
+	###################################
+
+#        if ($host = 'totsy.com' ) {
+#                rewrite ^/(.*)$ http://www.totsy.com/$1 permanent;
+#        }
+
+	# Protect internal resources
+	#location ~ (/(app/|includes/|lib/|/pkginfo/|var/|report/config.xml)|/\.svn/|/.hta.+) {
+	#	deny all;
+	#}
+
+	# if the request starts with our frontcontroller, pass it on to fastcgi
+	location ~ \.php$
+	{
+		fastcgi_index index.php;
+		fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+		include /etc/nginx/fastcgi_params;
+		if (-e $request_filename) {
+			fastcgi_pass 127.0.0.1:9000;
+		}
+	}
+        
+        
+
+
+
+location /nagios {
+    alias /usr/share/nagios/html;
+  }
+
+  location ~ ^/nagios/(.*\.php)$ {
+    alias /usr/share/nagios/html/$1;
+    include /etc/nginx/fastcgi_params;
+    fastcgi_pass unix:/var/run/php5-fpm.sock;
+  }
+  
+  location ~ \.cgi$ {
+    root /usr/lib64/nagios/cgi-bin/;
+    rewrite ^/nagios/cgi-bin/(.*)\.cgi /$1.cgi break;
+    fastcgi_param AUTH_USER $remote_user;
+    fastcgi_param REMOTE_USER $remote_user;    
+    include /etc/nginx/fastcgi_params;
+    fastcgi_pass unix:/var/run/fcgiwrap.socket;
+  }  
+
+
+
+
+
+
+
+	location / {
+		# If the file exists as a static file serve it
+		# directly without running all
+		# the other rewite tests on it
+		if ($request_filename ~ "favicon\.ico$") {
+			break;
+		}
+		include /etc/nginx/fastcgi_params;
+		fastcgi_param SCRIPT_FILENAME $document_root/index.php;
+        	fastcgi_param SCRIPT_NAME /index.php;
+        	# rewrite - if file not found, pass it to the backend
+        	if (!-f $request_filename) {
+			fastcgi_pass 127.0.0.1:9000;
+            		break;
+        	}
+	}
+}
+
+#
+# www.totsy.com ---> SSL <---
+#
+server {
+        listen 8443;
+	server_name nagios.totsy.com ;
+
+	#ssl on;
+        #ssl_certificate     /etc/nginx/totsy_certs/totsy.com.crt;
+        #ssl_certificate_key /etc/nginx/totsy_certs/totsy.com.key;
+
+        root /var/www/nagios.totsy.com;
+        index index.php index.html;
+        fastcgi_index index.php;
+        access_log /var/log/nginx/nagios.totsy.com-access.log;
+        error_log  /var/log/nginx/nagios.totsy.com-errors.log warn;
+
+        ###################################
+
+#        if ($host = 'totsy.com' ) {
+#                rewrite ^/(.*)$ https://www.totsy.com/$1 permanent;
+#        }
+
+        # if the request starts with our frontcontroller, pass it on to fastcgi
+        location ~ \.php$
+        {
+                fastcgi_index index.php;
+		fastcgi_param HTTPS on;
+                fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+                include /etc/nginx/fastcgi_params;
+                if (-e $request_filename) {
+                        fastcgi_pass 127.0.0.1:9000;
+                }
+        }
+
+        location / {
+                # If the file exists as a static file serve it
+                # directly without running all
+                # the other rewite tests on it
+                if ($request_filename ~ "favicon\.ico$") {
+                        break;
+                }
+                include /etc/nginx/fastcgi_params;
+                fastcgi_param SCRIPT_FILENAME $document_root/index.php;
+                fastcgi_param SCRIPT_NAME /index.php;
+		fastcgi_param HTTPS on;
+                # rewrite - if file not found, pass it to the backend
+                if (!-f $request_filename) {
+                        fastcgi_pass 127.0.0.1:9000;
+                        break;
+                }
+        }
+}

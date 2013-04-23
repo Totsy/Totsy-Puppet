@@ -1,0 +1,94 @@
+$ORIGIN .
+$TTL 120	; 2 minutes
+totsy.net		IN SOA	totsy.net. root.totsy.net. (
+				2013041001 ; serial
+				10800      ; refresh (3 hours)
+				900        ; retry (15 minutes)
+				604800     ; expire (1 week)
+				120        ; minimum (2 minutes)
+				)
+			NS	ns1.totsy.net.
+			NS	ns2.totsy.net.
+
+$ORIGIN totsy.net.
+
+ns1		IN	A	10.68.1.97
+ns2		IN	A	10.68.1.67
+
+db0-dc0		IN	A	10.68.1.65
+db1-dc0		IN	A	10.68.1.66
+db2-dc0		IN	A	10.68.1.67
+db5-dc0         IN      A       10.68.1.122
+
+web0-dc0	IN	A	10.68.1.33
+web1-dc0	IN	A	10.68.1.34
+web2-dc0	IN	A	10.68.1.35
+web3-dc0	IN	A	10.68.1.36
+web4-dc0	IN	A	10.68.1.105
+web6-dc0	IN	A	10.68.18.144
+web7-dc0	IN	A	10.68.1.123
+web9-dc0	IN	A	10.68.18.160
+
+hv0-dc0		IN	A	10.68.1.97
+hv1-dc0		IN	A	10.68.1.98
+hv2-dc0		IN	A	10.68.1.99
+hv3-dc0		IN	A	10.68.1.100
+hv4-dc0		IN	A	10.68.1.101
+hv5-dc0		IN	A	10.68.1.102
+hv6-dc0		IN	A	10.68.1.103
+hv7-dc0		IN	A	10.68.1.104
+hv8-dc0		IN	A	10.68.1.105
+
+mcadmin-dc0	IN	A	10.68.18.145
+graylog         IN      A       10.68.18.182
+pentaho		IN	A	10.68.18.179
+cacti           IN      A       10.68.18.120
+infra           IN      A       10.68.1.120
+infra2		IN	A	10.68.1.121
+confluence	IN	A	10.68.18.22
+jira		IN	A	10.68.18.20
+jenkins		IN	A	10.68.18.148
+pimcore		IN	A	10.68.18.21
+db-eric		IN	A	10.68.18.186
+db-evan		IN	A	10.68.18.187
+db-david	IN	A	10.68.18.191
+db-tom		IN      A       10.68.18.185
+db-lawren       IN      A       10.68.18.192
+db-tharsan	IN      A       10.68.18.196
+db-infra	IN	A	10.68.18.172
+db-ben	        IN      A       10.68.18.180
+db-chris	IN	A	10.68.18.197
+db-beta		IN	A	10.68.18.203
+db-slav		IN	A	10.68.18.201
+db-zach		IN	A	10.68.18.34
+db-crown	IN	A	10.68.18.26
+db-services	IN	A	10.68.18.190
+
+web-eric	IN	A	10.68.18.195
+web-evan	IN	A	10.68.18.147
+web-david	IN	A	10.68.18.150
+web-tom		IN      A       10.68.18.140
+web-lawren 	IN      A       10.68.18.202
+web-tharsan	IN      A       10.68.18.194
+web-infra	IN	A	10.68.18.183
+web-ben         IN      A       10.68.18.181
+web-chris	IN	A	10.68.18.200
+web-beta	IN	A	10.68.18.204
+web-slav        IN      A       10.68.18.205
+web-zach        IN      A       10.68.18.33
+web-crown	IN	A	10.68.18.25
+mamasource	IN	A	10.68.18.207
+repo		IN	A	10.68.18.31
+atlassian	IN	A	10.68.18.33
+atlassian-jira	IN	A	10.68.18.28
+loadbalancer2	IN	A	10.68.18.28
+solaris		IN	A	10.68.19.10
+etl		IN	A	10.68.19.11
+etl2		IN	A	10.68.19.14
+web-yohanson	IN	A	10.68.18.24
+security	IN	A	172.16.84.27
+db-yohanson	IN	A	10.68.18.27
+
+
+master		IN	CNAME	hv0-dc0
+puppet		IN	CNAME	hv0-dc0

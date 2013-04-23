@@ -13,6 +13,12 @@ node baseweb inherits default {
   class { 'iptables': allowports => [ 80, 443 ] }
 }
 
+# special atlassian web node applies to atlassian servers
+node atlassianmixed inherits default {
+  include atlassian
+  class { 'iptables': allowports => [ 80, 443, 3306 ] }
+}
+     
 # base db node applies to all database servers
 node basedb inherits default {
   include database
@@ -26,6 +32,25 @@ node devweb inherits baseweb {
 
 # development database node for developers (and staging)
 node devdb inherits basedb {
+}
+
+node basemixed inherits default {
+  include web, app, database
+  class { "iptables": allowports => [80, 443, 3306] }
+}
+
+node controller inherits default {
+  include loadbalancer, cache
+  class { 'iptables': allowports => [80, 443, 53, 953] }
+}
+
+node mixedcontroller inherits default {
+  include web, app, database, loadbalancer, cache
+  class { 'iptables': allowports => [80, 443, 53, 953, 3306]}
+}
+
+node servermonitor inherits baseweb {
+  include monitor
 }
 
 ###########################################################
@@ -59,7 +84,6 @@ node /^web\d+-dc0$/ inherits baseweb {
   }
 
   $scout_key = $hostname ? {
-    'web9-dc0' => '4903064d-2f06-4a3d-9cec-3c4536f89527',
     'web7-dc0' => 'c6fe7a7c-77a4-40a4-8027-c312f760e8ca',
     'web4-dc0' => 'd457880f-e4f1-482b-a9cd-29ac0d89ccd4',
     'web3-dc0' => '2d2abd27-219d-4825-8e93-c51aea54e703',
@@ -81,14 +105,43 @@ node 'jenkins' inherits default {
   user::person { 'tbhuvanendran': }
 }
 
-# Atlassian services
-node 'confluence', 'jira', 'db-services' {
-  include group
-  user::person { [ 'jbogaty', 'kdowley', 'skharlamov' ]: }
+node 'loadbalancer2', 'haproxywithssl' inherits controller {
+  user::person { [ 'tbhuvanedran', 'skharlamov', 'cdavidowski', 'rminns', 'kdowley', 'jbogaty' ]: }
 }
 
-# Totsy Yum Repo and new Atlassian box
-node 'repo', 'atlassian' inherits default {
+node 'infra' inherits mixedcontroller {
+  $slaveof="10.68.1.97"
+  user::person { [ 'tbhuvanedran', 'skharlamov', 'cdavidowski', 'rminns', 'kdowley', 'jbogaty' ]: }
+  include scout
+}
+
+node 'cacti' inherits servermonitor {
+  user::person { ['tbhuvanedran', 'skharlamov', 'cdavidowski', 'rminns', 'kdowley', 'jbogaty']: }
+}
+
+# infra2
+node 'infra2' inherits default {
+  user::person { [ 'tbhuvanendran', 'rminns', 'kdowley', 'jbogaty', 'skharlamov', 'cdavidowski' ]: }
+
+  $scout_key = 'cab02cfe-5644-4a4b-8d9a-a6e644058576'
+  include scout
+}
+node 'pimcore' inherits basemixed {
+  user::person { [ 'tbhuvanendran', 'rminns', 'kdowley', 'jbogaty', 'skharlamov', 'cdavidowski' ]: }
+}
+
+# Totsy Yum Repo
+node 'repo' inherits default {
+  user::person { [ 'tbhuvanendran', 'rminns', 'kdowley', 'jbogaty', 'skharlamov' ]: }
+}
+
+# Confluence, JIRA
+node 'confluence', 'jira'  inherits atlassianmixed {
+  user::person { [ 'tbhuvanendran', 'rminns', 'kdowley', 'jbogaty', 'skharlamov' ]: }
+}
+
+# db-services
+node 'db-services' inherits basedb {
   user::person { [ 'tbhuvanendran', 'rminns', 'kdowley', 'jbogaty', 'skharlamov' ]: }
 }
 
@@ -126,6 +179,16 @@ node 'web-eric' inherits devweb {
   user::person { 'esmith': groups => 'superadmins' }
   app::vhost { 'totsy': }
   host { 'db_rw': ensure => present, ip => '10.68.18.186', name => 'db_read', host_aliases => 'db_write' }
+}
+
+# Farmer Yohanson's development environment (for testing the new load balancer node)
+node 'db-yohanson' inherits devdb {
+  user::person { 'jbogaty': groups => 'superadmins' }
+}
+node 'web-yohanson' inherits devweb {
+  user::person { 'jbogaty': groups => 'superadmins' }
+  app::vhost { 'totsy': }
+  host { 'db_rw': ensure => present, ip => '10.68.18.27', name => 'db_read', host_aliases => 'db_write' }
 }
 
 # Tom Royer
@@ -178,11 +241,11 @@ node 'web-chris' inherits devweb {
   host { 'db_rw': ensure => present, ip => '10.68.18.197', name => 'db_read', host_aliases => 'db_write' }
 }
 
-# Zach Selby
-node 'db-zach' inherits devdb {
+# Zach Selby / Crowny
+node 'db-zach', 'db-crown' inherits devdb {
   user::person { [ 'cdavidowski', 'zselby' ]: groups => 'superadmins' }
 }
-node 'web-zach' inherits devweb {
+node 'web-zach', 'web-crown'  inherits devweb {
   user::person { [ 'cdavidowski', 'zselby' ]: groups => 'superadmins' }
   app::vhost { 'totsy': }
   host { 'db_rw': ensure => present, ip => '10.68.18.21', name => 'db_read', host_aliases => 'db_write' }

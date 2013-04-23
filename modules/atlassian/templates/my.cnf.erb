@@ -1,0 +1,39 @@
+######
+[mysqld]
+relay-log=mysqld-relay-bin
+innodb_buffer_pool_size=6G
+slow_query_log=1
+slow_query_log_file=/var/log/mysql-slow-query.log
+innodb_lock_wait_timeout=300
+#innodb_file_per_table
+###### added by Omar to correct issues with indexing #####
+max_allowed_packet=100M
+###### Modified by Jon to support Atlassian packets  #####
+###### this was added by Pierre #############
+innodb_flush_method=ALL_O_DIRECT
+innodb_thread_concurrency=8
+innodb_file_format=Barracuda
+innodb_log_file_size=512M
+innodb_log_files_in_group=2
+
+# Settings user and group are ignored when systemd is used (fedora >= 15).
+# If you need to run mysqld under different user or group,
+# customize your systemd unit file for mysqld according to the
+# instructions in http://fedoraproject.org/wiki/Systemd
+user=mysql
+
+datadir=/var/lib/mysql
+socket=/var/lib/mysql/mysql.sock
+
+# Disabling symbolic-links is recommended to prevent assorted security risks
+symbolic-links=0
+
+# http://dev.mysql.com/doc/refman/5.5/en/performance-schema.html
+performance_schema
+
+# set a lower slow log threshold - tbhuvanendran, 2012-11-19
+long_query_time = 5
+
+[mysqld_safe]
+log-error=/var/log/mysqld.log
+pid-file=/var/run/mysqld/mysqld.pid

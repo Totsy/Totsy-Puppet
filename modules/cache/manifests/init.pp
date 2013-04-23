@@ -7,7 +7,7 @@ class cache {
   }
 
   file { '/etc/redis.conf':
-    source  => 'puppet:///modules/cache/redis.conf',
+    content => template("cache/redis.conf.erb"),
     owner   => 'root',
     group   => 'redis',
     mode    => '775',

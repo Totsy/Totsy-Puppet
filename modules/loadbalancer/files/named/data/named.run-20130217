@@ -1,0 +1,579 @@
+reloading configuration succeeded
+reloading zones succeeded
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+success resolving 'mirrors.bluehost.com/A' (in 'bluehost.com'?) after reducing the advertised EDNS UDP packet size to 512 octets
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+success resolving 'ns1.softlayer.com/A' (in 'softlayer.com'?) after reducing the advertised EDNS UDP packet size to 512 octets
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+success resolving 'mirrors.bluehost.com/A' (in 'bluehost.com'?) after reducing the advertised EDNS UDP packet size to 512 octets
+success resolving 'mirror.symnds.com/A' (in 'symnds.com'?) after disabling EDNS
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+success resolving 'mirrors.bluehost.com/A' (in 'bluehost.com'?) after reducing the advertised EDNS UDP packet size to 512 octets
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+success resolving 'mirrors.bluehost.com/A' (in 'bluehost.com'?) after reducing the advertised EDNS UDP packet size to 512 octets
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+success resolving 'mirrors.bluehost.com/A' (in 'bluehost.com'?) after reducing the advertised EDNS UDP packet size to 512 octets
+error (unexpected RCODE SERVFAIL) resolving 'dns.ptptt.fj.cn/A/IN': 202.101.110.55#53
+error (unexpected RCODE REFUSED) resolving '178.148.161.220.in-addr.arpa/PTR/IN': 202.101.111.55#53
+error (unexpected RCODE REFUSED) resolving '178.148.161.220.in-addr.arpa/PTR/IN': 202.101.111.55#53
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+success resolving 'mirrors.bluehost.com/A' (in 'bluehost.com'?) after reducing the advertised EDNS UDP packet size to 512 octets
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+validating @0x7f65380533f0: linux.mirrors.es.net A: no valid signature found
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+clients-per-query increased to 15
+clients-per-query increased to 20
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+clients-per-query decreased to 19
+success resolving 'mirrors.bluehost.com/A' (in 'bluehost.com'?) after reducing the advertised EDNS UDP packet size to 512 octets
+clients-per-query decreased to 18
+clients-per-query decreased to 17
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+clients-per-query decreased to 16
+clients-per-query decreased to 15
+clients-per-query decreased to 14
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+clients-per-query decreased to 13
+clients-per-query decreased to 12
+clients-per-query decreased to 11
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+success resolving 'ns1.softlayer.net/A' (in 'softlayer.net'?) after reducing the advertised EDNS UDP packet size to 512 octets
+clients-per-query decreased to 10
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+success resolving 'mirrors.bluehost.com/A' (in 'bluehost.com'?) after reducing the advertised EDNS UDP packet size to 512 octets
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+success resolving 'mirrors.bluehost.com/A' (in 'bluehost.com'?) after reducing the advertised EDNS UDP packet size to 512 octets
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+client 10.68.1.97#35108: RFC 1918 response from Internet for 10.19.68.10.in-addr.arpa
+client 10.68.1.97#37600: RFC 1918 response from Internet for 10.19.68.10.in-addr.arpa
+client 10.68.1.97#34453: RFC 1918 response from Internet for 10.19.68.10.in-addr.arpa
+client 10.68.1.97#40841: RFC 1918 response from Internet for 10.19.68.10.in-addr.arpa
+client 10.68.1.97#39500: RFC 1918 response from Internet for 10.19.68.10.in-addr.arpa
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+success resolving 'mirrors.bluehost.com/A' (in 'bluehost.com'?) after reducing the advertised EDNS UDP packet size to 512 octets
+received control channel command 'reload'
+loading configuration from '/etc/named.conf'
+reading built-in trusted keys from file '/etc/named.iscdlv.key'
+using default UDP/IPv4 port range: [1024, 65535]
+using default UDP/IPv6 port range: [1024, 65535]
+no IPv6 interfaces found
+using built-in trusted-keys for view _default
+reloading configuration succeeded
+reloading zones succeeded
+zone totsy.net/IN: zone serial (2012121802) unchanged. zone may fail to transfer to slaves.
+zone totsy.net/IN: loaded serial 2012121802
+zone totsy.net/IN: sending notifies (serial 2012121802)
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+error (connection refused) resolving 'mirrors.tummy.com/A/IN': 198.49.126.1#53
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+client 10.68.1.97#60594: RFC 1918 response from Internet for 10.19.68.10.in-addr.arpa
+client 10.68.1.97#38113: RFC 1918 response from Internet for 10.19.68.10.in-addr.arpa
+client 10.68.1.97#33709: RFC 1918 response from Internet for 10.19.68.10.in-addr.arpa
+client 10.68.1.97#58030: RFC 1918 response from Internet for 10.19.68.10.in-addr.arpa
+client 10.68.1.97#36265: RFC 1918 response from Internet for 10.19.68.10.in-addr.arpa
+client 10.68.1.97#36375: RFC 1918 response from Internet for 12.19.68.10.in-addr.arpa
+client 10.68.1.97#49471: RFC 1918 response from Internet for 12.19.68.10.in-addr.arpa
+client 10.68.1.97#55275: RFC 1918 response from Internet for 12.19.68.10.in-addr.arpa
+client 10.68.1.97#35442: RFC 1918 response from Internet for 12.19.68.10.in-addr.arpa
+client 10.68.1.97#38532: RFC 1918 response from Internet for 12.19.68.10.in-addr.arpa
+client 10.68.1.97#52135: RFC 1918 response from Internet for 12.19.68.10.in-addr.arpa
+client 10.68.1.97#52176: RFC 1918 response from Internet for 12.19.68.10.in-addr.arpa
+client 10.68.1.97#33131: RFC 1918 response from Internet for 12.19.68.10.in-addr.arpa
+client 10.68.1.97#44679: RFC 1918 response from Internet for 12.19.68.10.in-addr.arpa
+client 10.68.1.97#52482: RFC 1918 response from Internet for 12.19.68.10.in-addr.arpa
+client 10.68.1.97#57328: RFC 1918 response from Internet for 12.19.68.10.in-addr.arpa
+client 10.68.1.97#48904: RFC 1918 response from Internet for 12.19.68.10.in-addr.arpa
+client 10.68.1.97#58053: RFC 1918 response from Internet for 12.19.68.10.in-addr.arpa
+client 10.68.1.97#41989: RFC 1918 response from Internet for 12.19.68.10.in-addr.arpa
+client 10.68.1.97#39059: RFC 1918 response from Internet for 12.19.68.10.in-addr.arpa
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+success resolving 'mirrors.bluehost.com/A' (in 'bluehost.com'?) after reducing the advertised EDNS UDP packet size to 512 octets
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+client 10.68.1.97#37683: RFC 1918 response from Internet for 1.0.68.10.in-addr.arpa
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+success resolving 'mirrors.bluehost.com/A' (in 'bluehost.com'?) after reducing the advertised EDNS UDP packet size to 512 octets
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+validating @0x7f659c0561a0: linux.mirrors.es.net A: no valid signature found
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+success resolving 'centos.mirrors.chicagovps.net/A' (in 'chicagovps.net'?) after reducing the advertised EDNS UDP packet size to 512 octets
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+success resolving 'mirrors.bluehost.com/A' (in 'bluehost.com'?) after reducing the advertised EDNS UDP packet size to 512 octets
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+success resolving 'mirrors.bluehost.com/A' (in 'bluehost.com'?) after reducing the advertised EDNS UDP packet size to 512 octets
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+success resolving 'mirrors.bluehost.com/A' (in 'bluehost.com'?) after reducing the advertised EDNS UDP packet size to 512 octets
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+client 10.68.1.97#44921: RFC 1918 response from Internet for 10.19.68.10.in-addr.arpa
+client 10.68.1.97#49545: RFC 1918 response from Internet for 10.19.68.10.in-addr.arpa
+client 10.68.1.97#58626: RFC 1918 response from Internet for 10.19.68.10.in-addr.arpa
+client 10.68.1.97#45282: RFC 1918 response from Internet for 10.19.68.10.in-addr.arpa
+client 10.68.1.97#44305: RFC 1918 response from Internet for 10.19.68.10.in-addr.arpa
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+validating @0x7f65500161d0: mirror.pnl.gov A: no valid signature found
+validating @0x7f659c0561a0: mirrors.dmacc.net A: no valid signature found
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+client 10.68.1.97#39452: RFC 1918 response from Internet for 10.19.68.10.in-addr.arpa
+client 10.68.1.97#60895: RFC 1918 response from Internet for 10.19.68.10.in-addr.arpa
+client 10.68.1.97#43960: RFC 1918 response from Internet for 10.19.68.10.in-addr.arpa
+client 10.68.1.97#51160: RFC 1918 response from Internet for 10.19.68.10.in-addr.arpa
+client 10.68.1.97#47353: RFC 1918 response from Internet for 10.19.68.10.in-addr.arpa
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+success resolving 'mirrors.bluehost.com/A' (in 'bluehost.com'?) after reducing the advertised EDNS UDP packet size to 512 octets
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+client 10.68.1.97#59767: RFC 1918 response from Internet for 10.19.68.10.in-addr.arpa
+client 10.68.1.97#47035: RFC 1918 response from Internet for 10.19.68.10.in-addr.arpa
+client 10.68.1.97#47553: RFC 1918 response from Internet for 10.19.68.10.in-addr.arpa
+client 10.68.1.97#47260: RFC 1918 response from Internet for 10.19.68.10.in-addr.arpa
+client 10.68.1.97#48528: RFC 1918 response from Internet for 10.19.68.10.in-addr.arpa
+error (unexpected RCODE REFUSED) resolving 'pegasus.lug.udel.edu/AAAA/IN': 128.91.254.1#53
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+validating @0x7f65500151c0: linux.mirrors.es.net A: no valid signature found
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+success resolving 'mirrors.bluehost.com/A' (in 'bluehost.com'?) after reducing the advertised EDNS UDP packet size to 512 octets
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+validating @0x7f6558017570: rubys-studio.myshopify.com AAAA: no valid signature found
+validating @0x7f65740e0e40: rubys-studio.myshopify.com A: no valid signature found
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+validating @0x7f65540641a0: rubys-studio.myshopify.com A: no valid signature found
+success resolving 'mirrors.bluehost.com/A' (in 'bluehost.com'?) after reducing the advertised EDNS UDP packet size to 512 octets
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+error (unexpected RCODE SERVFAIL) resolving 'centos.org/DS/IN': 199.249.120.1#53
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+validating @0x7f6588159bb0: rubys-studio.myshopify.com AAAA: no valid signature found
+validating @0x7f655c0028d0: rubys-studio.myshopify.com A: no valid signature found
+success resolving 'mirrors.bluehost.com/A' (in 'bluehost.com'?) after reducing the advertised EDNS UDP packet size to 512 octets
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+error (unexpected RCODE SERVFAIL) resolving 'dl.rutracker.org/AAAA/IN': 195.82.147.50#53
+error (unexpected RCODE SERVFAIL) resolving 'dl.rutracker.org/A/IN': 195.82.147.50#53
+error (unexpected RCODE SERVFAIL) resolving 'rutracker.org/AAAA/IN': 195.82.147.50#53
+error (unexpected RCODE SERVFAIL) resolving 'static.rutracker.org/A/IN': 195.82.147.50#53
+error (unexpected RCODE SERVFAIL) resolving 'content.adriver.ru/A/IN': 81.222.128.101#53
+error (unexpected RCODE SERVFAIL) resolving 'ns2.nameself.com/A/IN': 83.222.14.129#53
+error (unexpected RCODE SERVFAIL) resolving 'ns1.nameself.com/A/IN': 77.221.159.237#53
+error (unexpected RCODE SERVFAIL) resolving 'ns2.nameself.com/A/IN': 89.108.122.149#53
+success resolving 'mirrors.bluehost.com/A' (in 'bluehost.com'?) after reducing the advertised EDNS UDP packet size to 512 octets
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+success resolving 'centos.mirror.lstn.net/A' (in 'lstn.net'?) after reducing the advertised EDNS UDP packet size to 512 octets
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+success resolving 'mirrors.bluehost.com/A' (in 'bluehost.com'?) after reducing the advertised EDNS UDP packet size to 512 octets
+validating @0x7f658004c5d0: linux.mirrors.es.net A: no valid signature found
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+success resolving 'mirrors.bluehost.com/A' (in 'bluehost.com'?) after reducing the advertised EDNS UDP packet size to 512 octets
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+success resolving 'ns2.softlayer.com/A' (in 'softlayer.com'?) after reducing the advertised EDNS UDP packet size to 512 octets
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+success resolving 'mirrors.bluehost.com/A' (in 'bluehost.com'?) after reducing the advertised EDNS UDP packet size to 512 octets
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+received control channel command 'reload'
+loading configuration from '/etc/named.conf'
+reading built-in trusted keys from file '/etc/named.iscdlv.key'
+using default UDP/IPv4 port range: [1024, 65535]
+using default UDP/IPv6 port range: [1024, 65535]
+no IPv6 interfaces found
+using built-in trusted-keys for view _default
+reloading configuration succeeded
+reloading zones succeeded
+zone totsy.net/IN: zone serial (2012121802) unchanged. zone may fail to transfer to slaves.
+zone totsy.net/IN: loaded serial 2012121802
+zone totsy.net/IN: sending notifies (serial 2012121802)
+success resolving 'mirrors.bluehost.com/A' (in 'bluehost.com'?) after reducing the advertised EDNS UDP packet size to 512 octets
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+success resolving 'mirrors.bluehost.com/A' (in 'bluehost.com'?) after reducing the advertised EDNS UDP packet size to 512 octets
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+client 10.68.1.97#49354: RFC 1918 response from Internet for 10.19.68.10.in-addr.arpa
+client 10.68.1.97#43698: RFC 1918 response from Internet for 10.19.68.10.in-addr.arpa
+client 10.68.1.97#53347: RFC 1918 response from Internet for 10.19.68.10.in-addr.arpa
+client 10.68.1.97#55644: RFC 1918 response from Internet for 10.19.68.10.in-addr.arpa
+client 10.68.1.97#57106: RFC 1918 response from Internet for 10.19.68.10.in-addr.arpa
+client 10.68.1.97#47867: RFC 1918 response from Internet for 12.19.68.10.in-addr.arpa
+client 10.68.1.97#58663: RFC 1918 response from Internet for 12.19.68.10.in-addr.arpa
+client 10.68.1.97#39344: RFC 1918 response from Internet for 12.19.68.10.in-addr.arpa
+client 10.68.1.97#36014: RFC 1918 response from Internet for 12.19.68.10.in-addr.arpa
+client 10.68.1.97#37499: RFC 1918 response from Internet for 12.19.68.10.in-addr.arpa
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+success resolving 'mirrors.bluehost.com/A' (in 'bluehost.com'?) after reducing the advertised EDNS UDP packet size to 512 octets
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+validating @0x7f65840440c0: mirror.pnl.gov A: no valid signature found
+validating @0x7f65740dfe40: mirrors.dmacc.net A: no valid signature found
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+success resolving 'mirrors.bluehost.com/A' (in 'bluehost.com'?) after reducing the advertised EDNS UDP packet size to 512 octets
+validating @0x7f656805f550: linux.mirrors.es.net A: no valid signature found
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+success resolving 'mirrors.bluehost.com/A' (in 'bluehost.com'?) after reducing the advertised EDNS UDP packet size to 512 octets
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+success resolving 'ns2.softlayer.com/A' (in 'softlayer.com'?) after reducing the advertised EDNS UDP packet size to 512 octets
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+success resolving 'mirrors.bluehost.com/A' (in 'bluehost.com'?) after reducing the advertised EDNS UDP packet size to 512 octets
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+success resolving 'mirrors.bluehost.com/A' (in 'bluehost.com'?) after reducing the advertised EDNS UDP packet size to 512 octets
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+lame server resolving 'scoutapp.com' (in 'scoutapp.com'?): 66.223.97.114#53
+lame server resolving 'scoutapp.com' (in 'scoutapp.com'?): 66.223.97.114#53
+lame server resolving 'scoutapp.com' (in 'scoutapp.com'?): 66.223.97.114#53
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+success resolving 'mirrors.bluehost.com/A' (in 'bluehost.com'?) after reducing the advertised EDNS UDP packet size to 512 octets
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+lame server resolving 'scoutapp.com' (in 'scoutapp.com'?): 69.64.67.242#53
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+lame server resolving 'scoutapp.com' (in 'scoutapp.com'?): 69.64.67.242#53
+lame server resolving 'scoutapp.com' (in 'scoutapp.com'?): 69.64.67.242#53
+success resolving 'mirrors.bluehost.com/A' (in 'bluehost.com'?) after reducing the advertised EDNS UDP packet size to 512 octets
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+lame server resolving 'scoutapp.com' (in 'scoutapp.com'?): 69.64.67.242#53
+lame server resolving 'scoutapp.com' (in 'scoutapp.com'?): 69.64.67.242#53
+lame server resolving 'scoutapp.com' (in 'scoutapp.com'?): 69.64.67.242#53
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+lame server resolving 'scoutapp.com' (in 'scoutapp.com'?): 69.64.67.242#53
+lame server resolving 'scoutapp.com' (in 'scoutapp.com'?): 69.64.67.242#53
+success resolving 'centos.mirrors.chicagovps.net/A' (in 'chicagovps.net'?) after disabling EDNS
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+lame server resolving 'scoutapp.com' (in 'scoutapp.com'?): 69.64.67.242#53
+lame server resolving 'scoutapp.com' (in 'scoutapp.com'?): 69.64.67.242#53
+lame server resolving 'scoutapp.com' (in 'scoutapp.com'?): 69.64.67.242#53
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+lame server resolving 'scoutapp.com' (in 'scoutapp.com'?): 69.64.67.242#53
+lame server resolving 'scoutapp.com' (in 'scoutapp.com'?): 69.64.67.242#53
+validating @0x7f659000f410: linux.mirrors.es.net A: no valid signature found
+success resolving 'mirrors.bluehost.com/A' (in 'bluehost.com'?) after reducing the advertised EDNS UDP packet size to 512 octets
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+lame server resolving 'scoutapp.com' (in 'scoutapp.com'?): 69.64.67.242#53
+lame server resolving 'scoutapp.com' (in 'scoutapp.com'?): 69.64.67.242#53
+lame server resolving 'scoutapp.com' (in 'scoutapp.com'?): 69.64.67.242#53
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+lame server resolving 'scoutapp.com' (in 'scoutapp.com'?): 69.64.67.242#53
+lame server resolving 'scoutapp.com' (in 'scoutapp.com'?): 69.64.67.242#53
+lame server resolving 'scoutapp.com' (in 'scoutapp.com'?): 69.64.67.242#53
+lame server resolving 'scoutapp.com' (in 'scoutapp.com'?): 69.64.67.242#53
+success resolving 'centos.mirrors.chicagovps.net/A' (in 'chicagovps.net'?) after reducing the advertised EDNS UDP packet size to 512 octets
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+lame server resolving 'scoutapp.com' (in 'scoutapp.com'?): 69.64.67.242#53
+lame server resolving 'scoutapp.com' (in 'scoutapp.com'?): 69.64.67.242#53
+lame server resolving 'scoutapp.com' (in 'scoutapp.com'?): 69.64.67.242#53
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+lame server resolving 'scoutapp.com' (in 'scoutapp.com'?): 69.64.67.242#53
+lame server resolving 'scoutapp.com' (in 'scoutapp.com'?): 69.64.67.242#53
+lame server resolving 'scoutapp.com' (in 'scoutapp.com'?): 69.64.67.242#53
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+success resolving 'mirrors.bluehost.com/A' (in 'bluehost.com'?) after reducing the advertised EDNS UDP packet size to 512 octets
+lame server resolving 'scoutapp.com' (in 'scoutapp.com'?): 69.64.67.242#53
+lame server resolving 'scoutapp.com' (in 'scoutapp.com'?): 69.64.67.242#53
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+lame server resolving 'scoutapp.com' (in 'scoutapp.com'?): 69.64.67.242#53
+lame server resolving 'scoutapp.com' (in 'scoutapp.com'?): 69.64.67.242#53
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+lame server resolving 'scoutapp.com' (in 'scoutapp.com'?): 69.64.67.242#53
+lame server resolving 'scoutapp.com' (in 'scoutapp.com'?): 69.64.67.242#53
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+lame server resolving 'scoutapp.com' (in 'scoutapp.com'?): 69.64.67.242#53
+lame server resolving 'scoutapp.com' (in 'scoutapp.com'?): 69.64.67.242#53
+lame server resolving 'scoutapp.com' (in 'scoutapp.com'?): 69.64.67.242#53
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+lame server resolving 'scoutapp.com' (in 'scoutapp.com'?): 69.64.67.242#53
+success resolving 'mirrors.bluehost.com/A' (in 'bluehost.com'?) after reducing the advertised EDNS UDP packet size to 512 octets
+lame server resolving 'scoutapp.com' (in 'scoutapp.com'?): 69.64.67.242#53
+lame server resolving 'scoutapp.com' (in 'scoutapp.com'?): 69.64.67.242#53
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+lame server resolving 'scoutapp.com' (in 'scoutapp.com'?): 69.64.67.242#53
+lame server resolving 'scoutapp.com' (in 'scoutapp.com'?): 69.64.67.242#53
+lame server resolving 'scoutapp.com' (in 'scoutapp.com'?): 69.64.67.242#53
+lame server resolving 'scoutapp.com' (in 'scoutapp.com'?): 69.64.67.242#53
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+lame server resolving 'scoutapp.com' (in 'scoutapp.com'?): 69.64.67.242#53
+lame server resolving 'scoutapp.com' (in 'scoutapp.com'?): 69.64.67.242#53
+lame server resolving 'scoutapp.com' (in 'scoutapp.com'?): 69.64.67.242#53
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+lame server resolving 'scoutapp.com' (in 'scoutapp.com'?): 69.64.67.242#53
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+lame server resolving 'scoutapp.com' (in 'scoutapp.com'?): 69.64.67.242#53
+success resolving 'mirrors.bluehost.com/A' (in 'bluehost.com'?) after reducing the advertised EDNS UDP packet size to 512 octets
+lame server resolving 'scoutapp.com' (in 'scoutapp.com'?): 69.64.67.242#53
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+lame server resolving 'scoutapp.com' (in 'scoutapp.com'?): 69.64.67.242#53
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+lame server resolving 'scoutapp.com' (in 'scoutapp.com'?): 69.64.67.242#53
+lame server resolving 'scoutapp.com' (in 'scoutapp.com'?): 69.64.67.242#53
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+lame server resolving 'scoutapp.com' (in 'scoutapp.com'?): 69.64.67.242#53
+lame server resolving 'scoutapp.com' (in 'scoutapp.com'?): 69.64.67.242#53
+lame server resolving 'scoutapp.com' (in 'scoutapp.com'?): 69.64.67.242#53
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+success resolving 'mirrors.bluehost.com/A' (in 'bluehost.com'?) after reducing the advertised EDNS UDP packet size to 512 octets
+lame server resolving 'scoutapp.com' (in 'scoutapp.com'?): 69.64.67.242#53
+lame server resolving 'scoutapp.com' (in 'scoutapp.com'?): 69.64.67.242#53
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+lame server resolving 'scoutapp.com' (in 'scoutapp.com'?): 69.64.67.242#53
+lame server resolving 'scoutapp.com' (in 'scoutapp.com'?): 69.64.67.242#53
+lame server resolving 'scoutapp.com' (in 'scoutapp.com'?): 69.64.67.242#53
+lame server resolving 'scoutapp.com' (in 'scoutapp.com'?): 69.64.67.242#53
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+lame server resolving 'scoutapp.com' (in 'scoutapp.com'?): 69.64.67.242#53
+lame server resolving 'scoutapp.com' (in 'scoutapp.com'?): 69.64.67.242#53
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+success resolving 'mirror.sanctuaryhost.com/A' (in 'sanctuaryhost.com'?) after disabling EDNS
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+success resolving 'mirrors.bluehost.com/A' (in 'bluehost.com'?) after reducing the advertised EDNS UDP packet size to 512 octets
+lame server resolving 'scoutapp.com' (in 'scoutapp.com'?): 69.64.67.242#53
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+lame server resolving 'scoutapp.com' (in 'scoutapp.com'?): 69.64.67.242#53
+lame server resolving 'scoutapp.com' (in 'scoutapp.com'?): 69.64.67.242#53
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+lame server resolving 'scoutapp.com' (in 'scoutapp.com'?): 69.64.67.242#53
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+managed-keys-zone ./IN: Failed to create fetch for DNSKEY update
+lame server resolving 'scoutapp.com' (in 'scoutapp.com'?): 69.64.67.242#53
+received control channel command 'reload'
+loading configuration from '/etc/named.conf'
+reading built-in trusted keys from file '/etc/named.iscdlv.key'
+using default UDP/IPv4 port range: [1024, 65535]
+using default UDP/IPv6 port range: [1024, 65535]
+no IPv6 interfaces found
+using built-in trusted-keys for view _default

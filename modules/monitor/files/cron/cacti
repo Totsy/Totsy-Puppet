@@ -1,0 +1,2 @@
+#*/5 * * * *	cacti	/usr/bin/php /usr/share/cacti/poller.php > /dev/null 2>&1/
+*/5 * * * *     cacti   /usr/bin/php /usr/share/cacti/poller.php --force --debug >> /var/log/cacti/poller.log 2>&1

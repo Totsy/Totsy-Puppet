@@ -1,0 +1,19 @@
+cert=/etc/ssl/certs/totsy.com.pem
+setuid=root
+setgid=root
+pid=/var/run/stunnel.pid
+output = /var/log/stunnel.log
+sslVersion = SSLv3
+options = NO_SSLv2
+ciphers = ALL:!aNULL:!ADH:!eNULL:!LOW:!EXP:RC4+RSA:+HIGH:+MEDIUM 
+
+socket=l:TCP_NODELAY=1
+socket=r:TCP_NODELAY=1
+ 
+[https]
+    <% if has_variable?("bindip") then -%>
+    accept=<%= bindip -%>:443
+    <% else -%>
+    accept=<%= ipaddress -%>:443
+    <% end -%>
+  connect=127.0.0.1:443

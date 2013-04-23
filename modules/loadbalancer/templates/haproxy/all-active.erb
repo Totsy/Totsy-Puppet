@@ -1,0 +1,144 @@
+#---------------------------------------------------------------------
+# Global settings
+#---------------------------------------------------------------------
+global
+    log         127.0.0.1 local2 
+    chroot      /var/lib/haproxy
+    pidfile     /var/run/haproxy.pid
+    maxconn     20000
+<% if has_variable?("release") then -%>
+<% if release == true then -%>
+    stats socket /var/run/haproxy.sock user root group release mode 0775 level admin
+<% end -%>
+<% end -%>
+    user        haproxy
+    group       haproxy
+    daemon
+
+#---------------------------------------------------------------------
+# common defaults that all the 'listen' and 'backend' sections will 
+# use if not designated in their block
+#---------------------------------------------------------------------
+defaults
+    mode        http
+    log         global
+    option      dontlognull
+    option	forwardfor
+    option      httpclose
+    option      httplog
+    option      redispatch
+    timeout connect 10000 # default 10 second time out if a backend is not found
+    timeout client 300000
+    timeout server 300000
+    maxconn     60000
+    balance     leastconn
+    retries     3
+
+frontend main_http
+    <% if has_variable?("bindip") then -%>
+    bind <%= bindip -%>:80
+    <% else -%>
+    bind 0.0.0.0:80
+    <% end -%>
+    acl is_admin  url_beg /index.php/admin
+    acl is_admin  url_beg /admin
+    acl is_adminprod hdr(host) -i admin.totsy.com
+    acl is_admin1prod hdr(host) -i admin1.totsy.com
+    acl is_mamasource hdr_beg(host) -i mamasource
+    acl is_totsy.net hdr_end(host) -i totsy.net
+    acl is_paypal url_beg /paypal/ipn
+#   acl is_checkout url_beg /checkout
+#
+    acl is_yohanson hdr_beg(host) -i yohanson
+
+    redirect prefix https://www.totsy.com  if is_admin
+    redirect prefix https://admin.totsy.com  if is_adminprod
+    redirect location https://admin.totsy.com if is_admin1prod
+#   redirect location https://admin.totsy.com  if is_admin
+#   redirect prefix https://admin.totsy.com  if is_adminprod
+    redirect location http://www.totsy.com if is_mamasource
+    redirect location http://www.totsy.com if is_totsy.net
+    use_backend admin_only if is_adminprod
+    use_backend web4_http_backend if is_paypal
+#   use_backend web4_http_backend if is_checkout
+
+   use_backend yohanson_site if is_yohanson
+
+    default_backend main_http_backend
+
+frontend main_https
+    bind 127.0.0.1:443
+    acl is_admin  url_beg /index.php/admin
+    acl is_admin  url_beg /admin
+    acl is_adminprod hdr(host) -i admin.totsy.com
+    acl is_admin1prod hdr(host) -i admin1.totsy.com
+    acl is_paypal url_beg /paypal/ipn
+#   acl is_checkout url_beg /checkout
+
+   acl is_yohanson hdr_beg(host) -i yohanson
+
+#   redirect location https://admin.totsy.com  if is_admin
+
+    use_backend admin_only if is_admin
+    use_backend admin_only if is_adminprod
+    use_backend admin_only if is_admin1prod
+    use_backend web4_https_backend if is_paypal
+#   use_backend web4_https_backend if is_checkout
+
+    use_backend yohanson_https_site if is_yohanson
+
+    default_backend main_https_backend
+
+<% if has_variable?("release") then -%>
+<% if release == true then -%>
+# status page.
+listen stats  <%= ipaddress -%>:8000
+    mode http
+    stats enable
+    stats hide-version
+    stats uri /haproxy
+    stats realm HAProxy\ Statistics
+    stats auth Statsuser:PassFourStats
+<% end -%>
+<% end -%>
+
+backend web4_http_backend
+    reqirep ^(True-Client-IP:)(.*) X-Real-IP:\2
+    reqadd X-Forwarded-Proto:\ http
+    server web3-dc0 10.68.32.36:80 check
+    server web4-dc0 10.68.32.105:80 check
+
+backend main_http_backend
+    reqirep ^(True-Client-IP:)(.*) X-Real-IP:\2
+    reqadd X-Forwarded-Proto:\ http
+    server infra2-dc0 10.68.1.121:80 check
+
+backend web4_https_backend
+    reqirep ^(True-Client-IP:)(.*) X-Real-IP:\2
+    reqadd X-Forwarded-Proto:\ https
+    server web3-dc0 10.68.32.36:443 check
+    server web4-dc0 10.68.32.105:443 check
+
+backend main_https_backend
+    reqirep ^(True-Client-IP:)(.*) X-Real-IP:\2
+    reqadd X-Forwarded-Proto:\ https
+    server web0-dc0 10.68.32.33:443 check
+    server web1-dc0 10.68.32.34:443 check
+    server web2-dc0 10.68.32.35:443 check
+    server web3-dc0 10.68.32.36:443 check
+    server web4-dc0 10.68.32.105:443 check
+
+backend admin_only
+    reqirep ^(True-Client-IP:)(.*) X-Real-IP:\2
+    reqadd X-Forwarded-Proto:\ https
+    server web7-dc0 10.68.1.123:443 check
+
+backend yohanson_site
+    reqirep ^(True-Client-IP:)(.*) X-Real-IP:\2
+    reqadd X-Forwarded-Proto:\ http
+    server web-yohanson 10.68.18.24:80 check
+
+backend yohanson_https_site
+    reqirep ^(True-Client-IP:)(.*) X-Real-IP:\2
+    reqadd X-Forwarded-Proto:\ http
+    server web-yohanson 10.68.18.24:443 check

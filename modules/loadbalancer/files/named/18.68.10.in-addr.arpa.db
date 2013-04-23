@@ -1,0 +1,17 @@
+@       IN      SOA     ns1.totsy.net. ns2.totsy.net.     (
+                  2012072501 ;Serial Number
+                  86400      ;refresh
+                  7200       ;retry
+                  3600000    ;expire
+                  86400      ;minimum
+
+)
+ 
+18.68.10.in-addr.arpa.                IN      NS      ns1.totsy.net.
+18.68.10.in-addr.arpa.                IN      NS      ns2.totsy.net.
+ 
+143             IN      PTR     staging.totsy.net.
+144             IN      PTR     web6-dc0.totsy.net.
+152             IN      PTR     db-slav.totsy.net.
+153             IN      PTR     web-slav.totsy.net.
+182             IN      PTR     graylog.totsy.net.
