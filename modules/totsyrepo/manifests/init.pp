@@ -12,7 +12,7 @@ class web {
   package {$repotools: ensure => 'latest'}
 
   file { '/etc/nginx/nginx.conf':
-    source  => 'puppet:///modules/web/nginx.conf',
+    source  => 'puppet:///modules/totsyrepo/nginx/nginx.conf',
     owner   => 'nginx',
     group   => 'nginx',
     mode    => '604',
