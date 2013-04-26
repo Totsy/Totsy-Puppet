@@ -1,15 +1,19 @@
 <%
 
-if $environment == 'production'
+if environment == 'production'
   $subdomain = 'payments'
+  $password  = 'j2Nw5Es2'
+  $mapval    = '9102716'
 else
   $subdomain = 'cert'
+  $password  = 'certj2Nw'
+  $mapval    = '9102716'
 end
 
 -%>
 user =TOTSY
-password =certj2Nw
-currency_merchant_map ['DEFAULT'] =115300
+password =<%= $password %>
+currency_merchant_map ['DEFAULT'] =<%= $mapval %>
 url =https://<%= $subdomain %>.litle.com/vap/communicator/online
 proxy =
 version = 8.13

@@ -73,7 +73,7 @@ $template GRAYLOG2,"<%%PRI%>1 %timegenerated:::date-rfc3339% %HOSTNAME% %syslogt
 $ActionForwardDefaultTemplate GRAYLOG2
 
 # Test file
-$InputFileName /var/log/nginx/<%= $approot %>-error.log
+$InputFileName /var/log/nginx/<%= $approot %>-errors.log
 $InputFileTag nginx-error
 $InputFileStateFile stat-file-nginxerror
 $InputFileSeverity error
