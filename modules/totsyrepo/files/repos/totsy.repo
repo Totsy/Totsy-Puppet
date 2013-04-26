@@ -1,0 +1,6 @@
+[totsy]
+name=Totsy Repository
+baseurl=http://repo.totsy.com/6/x86_64/
+enabled=1
+gpgcheck=0
+protect=1
