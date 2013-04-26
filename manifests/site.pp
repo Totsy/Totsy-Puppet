@@ -49,6 +49,10 @@ node mixedcontroller inherits default {
   class { 'iptables': allowports => [80, 443, 53, 953, 3306]}
 }
 
+node reposerver inherits default {
+  include totsyrepo
+}
+
 node servermonitor inherits baseweb {
   include monitor
 }
@@ -131,7 +135,7 @@ node 'pimcore' inherits basemixed {
 }
 
 # Totsy Yum Repo
-node 'repo' inherits baseweb {
+node 'repo' inherits reposerver {
   user::person { [ 'tbhuvanendran', 'rminns', 'kdowley', 'jbogaty', 'skharlamov' ]: }
 }
 
