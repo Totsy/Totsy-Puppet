@@ -6,7 +6,7 @@ global
     chroot      /var/lib/haproxy
     pidfile     /var/run/haproxy.pid
     maxconn     20000
-<% if has_variable?("release") then -%>
+<% if @release then -%>
 <% if release == true then -%>
     stats socket /var/run/haproxy.sock user root group release mode 0775 level admin
 <% end -%>
@@ -35,8 +35,8 @@ defaults
     retries     3
 
 frontend main_http
-    <% if has_variable?("bindip") then -%>
-    bind <%= bindip -%>:80
+    <% if @haproxy_bindto -%>
+    bind <%= @haproxy_bindto -%>:80
     <% else -%>
     bind 0.0.0.0:80
     <% end -%>

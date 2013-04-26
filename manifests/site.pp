@@ -131,7 +131,7 @@ node 'pimcore' inherits basemixed {
 }
 
 # Totsy Yum Repo
-node 'repo' inherits default {
+node 'repo' inherits baseweb {
   user::person { [ 'tbhuvanendran', 'rminns', 'kdowley', 'jbogaty', 'skharlamov' ]: }
 }
 

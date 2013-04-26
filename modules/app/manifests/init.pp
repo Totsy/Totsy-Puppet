@@ -190,9 +190,19 @@ class app {
   }
 
   # Install PHP Composer
-  exec { "curl -s https://getcomposer.org/installer | php && sudo mv composer.phar /usr/local/bin/composer":
+  exec { composerinstall:
+    command => "curl -s https://getcomposer.org/installer | php && sudo mv composer.phar /usr/local/bin/composer",
     creates => "/usr/local/bin/composer",
     path    => "/usr/bin:/bin"
+  }
+
+  cron { composerupdate:
+    command  => '/usr/local/bin/composer self-update',
+    hour     => '0',
+    minute   => '0',
+    monthday => '1',
+    month    => '*',
+    require  => Exec['composerinstall']
   }
 }
 

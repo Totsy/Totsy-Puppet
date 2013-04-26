@@ -160,8 +160,8 @@ dir /var/lib/redis/
 # different interval, or to listen to another port, and so on.
 #
 
-<% if has_variable?("slaveof") then -%>
-slaveof <%= slaveof -%> 6379
+<% if @redis_slaveof -%>
+bind <%= @redis_slaveof -%>:80
 <% else -%>
 #slaveof <masterip> <masterport>
 <% end -%>

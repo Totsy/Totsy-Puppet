@@ -11,9 +11,9 @@ socket=l:TCP_NODELAY=1
 socket=r:TCP_NODELAY=1
  
 [https]
-    <% if has_variable?("bindip") then -%>
-    accept=<%= bindip -%>:443
+    <% if @haproxy_bindto -%>
+    bind <%= @haproxy_bindto -%>:443
     <% else -%>
-    accept=<%= ipaddress -%>:443
+    bind <%= ipaddress -%>:443
     <% end -%>
   connect=127.0.0.1:443
